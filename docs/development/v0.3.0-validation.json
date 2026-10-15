@@ -1,0 +1,306 @@
+{
+  "version": "0.3.0",
+  "dateUtc": "2026-10-14T23:26:51.6814546Z",
+  "game": "KSP 1.12.5 build 03190 Windows x64",
+  "unity": "2019.4.18f1",
+  "sdk": "10.0.203",
+  "branch": "main",
+  "commitsCreated": 0,
+  "build": {
+    "warnings": 0,
+    "templateManagedAssembliesUnchanged": true,
+    "analyticAssertions": 86039,
+    "templateJakobianInstalled": false,
+    "deployedFilesMatchBuild": true,
+    "configuration": "Release",
+    "errors": 0,
+    "fixtureConfigByteIdenticalTo020": true
+  },
+  "deployment": {
+    "files": [
+      {
+        "path": "GameData/Jakobian/Plugins/Jakobian.dll",
+        "sha256": "41ef899d903dd5228a03a97ec93ccbb24818c18ef3564d1e009b28c16454c425"
+      },
+      {
+        "path": "GameData/Jakobian/Plugins/Jakobian.Core.dll",
+        "sha256": "c937508f31e449cc3ef7c529309d1e7acf80eeb410889f72a1807422360462a7"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Bodies.cfg",
+        "sha256": "42fb1f3d5fe7b67accef4b2a207c5f6440b711f4daf58e97525daf51b9c8a48c"
+      }
+    ],
+    "deployedUtc": "2026-10-14T23:21:31.7417601Z",
+    "version": "0.3.0.0"
+  },
+  "native": {
+    "flight": [
+      {
+        "altimeter": [
+          {
+            "nativeValueM": 7483.86551643038,
+            "mode": "ASL"
+          },
+          {
+            "nativeValueM": 2.85349876960026,
+            "mode": "AGL"
+          },
+          {
+            "nativeValueM": 7482.44410435614,
+            "mode": "ASL"
+          },
+          {
+            "nativeValueM": 0.665418386459351,
+            "mode": "AGL"
+          }
+        ],
+        "landed": true,
+        "body": "JakobianEllipsoid",
+        "reloadPassed": true,
+        "camera": {
+          "nativePitchHeadingZoomUnchanged": true,
+          "correctedClearanceM": 2.00000194700078,
+          "stockBodyGuardNoEffect": true,
+          "injectedClearanceM": -10,
+          "framesVerifiedAfterNativeUpdate": 10
+        },
+        "navigation": [
+          {
+            "groundErrorM": 3.63797880709171E-12,
+            "navballDeg": 0.0,
+            "upDeg": 0.0,
+            "phase": "approach",
+            "velocityError": 4.17046822770692E-13,
+            "globalUpDeg": 0.0,
+            "datumErrorM": 0.0
+          },
+          {
+            "groundErrorM": 0.00107787899469258,
+            "navballDeg": 0.0,
+            "upDeg": 0.0,
+            "phase": "landed-reload",
+            "velocityError": 3.0865254379085E-13,
+            "globalUpDeg": 0.0,
+            "datumErrorM": 0.0
+          }
+        ],
+        "screenshot": "instances/baseline/.dev/screenshots/JakobianEllipsoid-landed.png",
+        "oreLookup": [
+          {
+            "nativeAbundance": 0.1150189,
+            "phase": "approach"
+          },
+          {
+            "nativeAbundance": 0.115016,
+            "phase": "landed-reload"
+          }
+        ],
+        "save": "JakobianProbe-JakobianEllipsoid-20261014-232324",
+        "terrainColliderObserved": true
+      },
+      {
+        "altimeter": [
+          {
+            "nativeValueM": 214.326074564303,
+            "mode": "ASL"
+          },
+          {
+            "nativeValueM": 146.327681948596,
+            "mode": "AGL"
+          },
+          {
+            "nativeValueM": 54.4817255880062,
+            "mode": "ASL"
+          },
+          {
+            "nativeValueM": 0.557241797447205,
+            "mode": "AGL"
+          }
+        ],
+        "landed": true,
+        "body": "JakobianCube",
+        "reloadPassed": true,
+        "camera": {
+          "nativePitchHeadingZoomUnchanged": true,
+          "correctedClearanceM": 1.99998247591975,
+          "stockBodyGuardNoEffect": true,
+          "injectedClearanceM": -10,
+          "framesVerifiedAfterNativeUpdate": 10
+        },
+        "navigation": [
+          {
+            "groundErrorM": 9.09494701772928E-13,
+            "navballDeg": 0.0,
+            "upDeg": 0.0,
+            "phase": "approach",
+            "velocityError": 3.66808009719657E-13,
+            "globalUpDeg": 0.0,
+            "datumErrorM": 0.0
+          },
+          {
+            "groundErrorM": 0.000457825109151599,
+            "navballDeg": 0.0,
+            "upDeg": 0.0,
+            "phase": "landed-reload",
+            "velocityError": 2.6181959088191E-13,
+            "globalUpDeg": 0.0,
+            "datumErrorM": 0.0
+          }
+        ],
+        "screenshot": "instances/baseline/.dev/screenshots/JakobianCube-landed.png",
+        "oreLookup": [
+          {
+            "nativeAbundance": 0.02249173,
+            "phase": "approach"
+          },
+          {
+            "nativeAbundance": 0.02261127,
+            "phase": "landed-reload"
+          }
+        ],
+        "save": "JakobianProbe-JakobianCube-20261014-232343",
+        "terrainColliderObserved": true
+      },
+      {
+        "altimeter": [
+          {
+            "nativeValueM": 6840.57099491284,
+            "mode": "ASL"
+          },
+          {
+            "nativeValueM": 61.1337441685846,
+            "mode": "AGL"
+          },
+          {
+            "nativeValueM": 6791.81985528869,
+            "mode": "ASL"
+          },
+          {
+            "nativeValueM": 0.588250696659088,
+            "mode": "AGL"
+          }
+        ],
+        "landed": true,
+        "body": "JakobianPeanut",
+        "reloadPassed": true,
+        "camera": {
+          "nativePitchHeadingZoomUnchanged": true,
+          "correctedClearanceM": 2.00000025956797,
+          "stockBodyGuardNoEffect": true,
+          "injectedClearanceM": -10,
+          "framesVerifiedAfterNativeUpdate": 10
+        },
+        "navigation": [
+          {
+            "groundErrorM": 0.0,
+            "navballDeg": 0.0,
+            "upDeg": 0.0,
+            "phase": "approach",
+            "velocityError": 3.17207796535253E-13,
+            "globalUpDeg": 0.0,
+            "datumErrorM": 0.0
+          },
+          {
+            "groundErrorM": 0.000302338841720484,
+            "navballDeg": 0.0,
+            "upDeg": 0.0,
+            "phase": "landed-reload",
+            "velocityError": 3.5615954629975E-13,
+            "globalUpDeg": 0.0,
+            "datumErrorM": 0.0
+          }
+        ],
+        "screenshot": "instances/baseline/.dev/screenshots/JakobianPeanut-landed.png",
+        "oreLookup": [
+          {
+            "nativeAbundance": 0.1249379,
+            "phase": "approach"
+          },
+          {
+            "nativeAbundance": 0.1250055,
+            "phase": "landed-reload"
+          }
+        ],
+        "save": "JakobianProbe-JakobianPeanut-20261014-232454",
+        "terrainColliderObserved": true
+      }
+    ],
+    "log": "artifacts/flight/all-20261014-192131.log",
+    "markerCounts": {
+      "CAMERA_SEQUENCE_PASS": 3,
+      "NATIVE_CONTEXT_PASS": 4,
+      "NATIVE_NAVIGATION_PASS": 6,
+      "NATIVE_BODY_PASS": 4,
+      "FLIGHT_RELOAD_PASS": 3,
+      "ALTIMETER_MODE_PASS": 12,
+      "CAMERA_GUARD_PASS": 3,
+      "FLIGHT_LANDING_PASS": 3
+    },
+    "watchdog": {
+      "processDisposition": "exited",
+      "flightSuiteMarker": true,
+      "bootstrapMarker": false,
+      "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\flight\\all-20261014-192131.log"
+    },
+    "startupHeightDirectionsPerBody": 4,
+    "navigationTolerances": {
+      "surfaceVelocityMs": 0.1,
+      "actualAltimeterValueM": 0.01,
+      "datumM": 2,
+      "upDeg": 0.1,
+      "radialGroundM": 3,
+      "navballDeg": 0.1
+    },
+    "logSha256": "3d6918725676b12868a581bfb6a111ebed17135ea5c83c31711f2beab0f32de0",
+    "mode": "normal graphics, explicit development probe",
+    "shutdownException": "Native KnowledgeBase.OnMapFocusChange / MapView.OnDestroy null reference after FLIGHT_SUITE_PASS; still unresolved.",
+    "startupChartCoordinatesPerBody": 3,
+    "queryStockBodyExcluded": true,
+    "controlledDescent": "Test-only approximately 3 m/s velocity braking; native colliders and landed detection.",
+    "exceptionsBeforeSuitePass": 0
+  },
+  "experiments": [
+    {
+      "result": "Native ellipsoid navigation passed. Camera fixture failed because SetCamCoords rotated the camera parent after the endpoint was placed; fixture now assigns the actual endpoint after the parent change and verifies it begins underground.",
+      "log": "artifacts/flight/all-20261014-191204.log"
+    },
+    {
+      "result": "Startup shape/context checks passed. Optional scope fixture read a native prefab after native destruction at MainMenu. Removed the lifetime-invalid fixture; live-object registry ownership remains required and stock-body exclusion is tested.",
+      "log": "artifacts/flight/all-20261014-191452.log"
+    },
+    {
+      "result": "Full three-body suite passed. Screenshot review found readout used vessel origin; final build uses native centre-of-mass reference.",
+      "log": "artifacts/flight/all-20261014-191727.log"
+    }
+  ],
+  "archive": {
+    "folder": "instances/baseline/.dev/older-probe-saves",
+    "movedOwnSaves": [
+      "JakobianProbe-JakobianCube-20261014-230045",
+      "JakobianProbe-JakobianCube-20261014-231938",
+      "JakobianProbe-JakobianEllipsoid-20261014-230028",
+      "JakobianProbe-JakobianEllipsoid-20261014-231356",
+      "JakobianProbe-JakobianEllipsoid-20261014-231919",
+      "JakobianProbe-JakobianPeanut-20261014-230151",
+      "JakobianProbe-JakobianPeanut-20261014-232046"
+    ],
+    "deletedSaves": 0,
+    "activeSaves": [
+      "JakobianProbe-JakobianEllipsoid-20261014-232324",
+      "JakobianProbe-JakobianCube-20261014-232343",
+      "JakobianProbe-JakobianPeanut-20261014-232454"
+    ]
+  },
+  "limitations": [
+    "Radial shapes and native point gravity only; no general-topology or custom-force/cache injection acceptance.",
+    "Camera endpoint guard only; no swept segment/near-plane/all-mode or camera-mod certification.",
+    "Actual native resource lookup/coordinates tested; no drilling/scanning/custom biome/resource map acceptance.",
+    "Vacuum/dry only; no spatial air/water/intake/thermal/buoyancy provider acceptance.",
+    "No long-duration contact, EVA/wheels/fleet/warp or full stock gameplay regression.",
+    "No automatic load of 0.2.0 saves in this suite; fixture config is identical and older saves retained locally.",
+    "Template terrain visual seams and native shutdown UI exception remain open.",
+    "Kopernicus coexistence still rejected; third-party profiles not certified.",
+    "Readout snapshot refresh is 0.2 seconds; altimeter/navball native frame updates remain independent."
+  ]
+}

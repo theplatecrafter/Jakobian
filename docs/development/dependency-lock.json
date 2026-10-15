@@ -1,0 +1,61 @@
+[
+  {
+    "name": "Kopernicus",
+    "version": "release-251",
+    "url": "https://github.com/Kopernicus/Kopernicus/releases/download/release-251/Kopernicus-1.12.1-251.zip",
+    "cache": ".research/packages/Kopernicus-release-251.zip",
+    "sha256": "139e212be5d1860d323c7d3a5b7095f222dd7c6bf6f03a07954e853a4483e049",
+    "kind": "zip"
+  },
+  {
+    "name": "HarmonyKSP",
+    "version": "2.2.1.0",
+    "url": "https://github.com/KSPModdingLibs/HarmonyKSP/releases/download/2.2.1.0/HarmonyKSP_2.2.1.0_for_KSP1.8%2B.zip",
+    "cache": ".research/packages/HarmonyKSP-2.2.1.0.zip",
+    "sha256": "51d63f6739eaf22f12ce9456adace54385520c67cc13735d5300d5aa15c79476",
+    "kind": "zip"
+  },
+  {
+    "name": "ModuleManager",
+    "version": "4.2.3",
+    "url": "https://github.com/sarbian/ModuleManager/releases/download/v4.2.3/ModuleManager-4.2.3.zip",
+    "cache": ".research/packages/ModuleManager-4.2.3.zip",
+    "sha256": "100ae8dc1d3ab13ba15309633fe9cd15c9b54d7a50a9c779ebdf61c143b94c2a",
+    "kind": "zip"
+  },
+  {
+    "name": "KSPTextureLoader",
+    "version": "1.0.38",
+    "url": "https://github.com/Phantomical/KSPTextureLoader/releases/download/v1.0.38/KSPTextureLoader.zip",
+    "cache": ".research/packages/KSPTextureLoader-1.0.38.zip",
+    "sha256": "0a173d4f4cf90041909d07e38db896dd8fc0842e1c9df966773ff1aebb19659e",
+    "kind": "zip"
+  },
+  {
+    "name": "KSPCommunityFixes",
+    "version": "1.41.1",
+    "url": "https://github.com/KSPModdingLibs/KSPCommunityFixes/releases/download/1.41.1/KSPCommunityFixes_1.41.1.zip",
+    "cache": ".research/packages/KSPCommunityFixes-1.41.1.zip",
+    "sha256": "3b63c37d7da9ec0c93063374df1c7a365b02fa66ad6b033c7a2b6ae6ff18215e",
+    "kind": "zip"
+  },
+  {
+    "name": "ModularFlightIntegrator",
+    "version": "1.2.10.0",
+    "source_commit": "ed6b8e3bf03a7682894109a699431392d93b3882",
+    "url": "https://raw.githubusercontent.com/Kopernicus/Kopernicus/ed6b8e3bf03a7682894109a699431392d93b3882/dependencies/MFI_latest/ModularFlightIntegrator.dll",
+    "cache": ".research/Kopernicus/dependencies/MFI_latest/ModularFlightIntegrator.dll",
+    "sha256": "280b6a7b2452673697a8a54b8b449730d7f9344fd05e81ce72f97f48b35d91d9",
+    "kind": "dll",
+    "destination": "GameData/ModularFlightIntegrator/ModularFlightIntegrator.dll"
+  },
+  {
+    "name": "ModularFlightIntegrator-license",
+    "version": "same pinned source",
+    "url": "https://raw.githubusercontent.com/Kopernicus/Kopernicus/ed6b8e3bf03a7682894109a699431392d93b3882/dependencies/MFI_latest/LICENSE.txt",
+    "cache": ".research/Kopernicus/dependencies/MFI_latest/LICENSE.txt",
+    "sha256": "385b682575911f8d41c960700db6da54834288da60af166279faaaee6bc8d6b8",
+    "kind": "dll",
+    "destination": "GameData/ModularFlightIntegrator/LICENSE.txt"
+  }
+]

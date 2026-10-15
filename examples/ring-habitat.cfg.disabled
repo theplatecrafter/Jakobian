@@ -1,0 +1,100 @@
+// DESIGN EXAMPLE ONLY: proposed standalone Body fragment.
+// Place inside a Jakobian root with schemaVersion = 1.
+// Add Orbit/Properties/Template metadata before validating with the future loader.
+Body
+{
+    name = JakobianExampleHabitat
+    id = example/inner-floor-habitat
+    Shape
+    {
+        type = RingHabitat
+        floorRadius = 1000000
+        width = 10000
+        shellThickness = 1000
+        rimHeight = 1000
+    }
+    Rotation
+    {
+        axis = 0,1,0
+        period = 2006.066680710647 // 2*pi*sqrt(1000000/9.81), rotation-only model.
+        epoch = 0
+    }
+    Surfaces
+    {
+        Surface
+        {
+            id = floor
+            region = floor
+            role = HabitatFloor
+            normal = IntoHabitableSpace
+            collision = true
+            landing = ContactSupported
+            projection = CylindricalRibbon
+        }
+        Surface
+        {
+            id = hull
+            region = outerHull
+            role = Exterior
+            collision = true
+            landing = ContactSupported
+        }
+    }
+    Terrain
+    {
+        generatorVersion = 1
+        seed = 1970
+        Mods
+        {
+            NoiseHeight
+            {
+                surface = floor
+                order = 100
+                amplitude = 100
+                wavelength = 2000
+                displacement = AlongEmptyNormal // mountains protrude inward.
+            }
+        }
+    }
+    Gravity
+    {
+        type = RotationOnly // Frame forces, not extra inertial attraction.
+    }
+    Environment
+    {
+        Atmosphere
+        {
+            Volume
+            {
+                id = floor-air
+                type = SurfaceBand
+                surface = floor
+                containment = RimBounded
+                heightCoordinate = SurfaceDatum
+                maxHeight = 800
+                pressureUnit = kPa
+                oxygen = true
+                gasMotion = Corotating
+                pressureCurve
+                {
+                    key = 0 101.325
+                    key = 600 90
+                    key = 800 0
+                }
+            }
+        }
+        Fluids
+        {
+            Fluid
+            {
+                id = floor-lakes
+                type = Water
+                density = 1000
+                surface = floor
+                datumHeight = 10
+                containment = RimBoundedAndSolidClipped
+                motion = Corotating
+            }
+        }
+    }
+}

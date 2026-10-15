@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-14",
+  "component": "Jakobian 0.3.0 surface/navigation context",
+  "redistribution": "No Ringworld source or binary included.",
+  "source": "C:/Users/Hans/Documents/programming/Ring World KSP mods/Ring World KSP",
+  "nature": "Read-only concept reference: restore camera presentation offsets before native smoothing and audit final vessel-cache writers. Jakobian implements its own Update/LateUpdate component and scoped query/readback layer, without copying Harmony patches or modifying the Ringworld project.",
+  "sourceCodeCopied": false,
+  "references": [
+    {
+      "sha256": "16708051d7f5fdd87caa7f1f6f1729bd43ddf0b80409ce2ba87af32b1af0320b",
+      "file": "src/Ringworld.KSP/RingCameraTerrain.cs"
+    },
+    {
+      "sha256": "83429dff749a0cc75c240d285fe0669a0d22f9f0bd0f61aff107f38ffc24025a",
+      "file": "src/Ringworld.KSP/StockIntegration.cs"
+    }
+  ]
+}

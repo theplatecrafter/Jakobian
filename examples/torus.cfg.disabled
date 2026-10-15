@@ -1,0 +1,68 @@
+// DESIGN EXAMPLE ONLY. No arbitrary-body loader exists yet.
+// This proposed standalone config intentionally does not use the .cfg extension.
+Jakobian
+{
+    schemaVersion = 1
+    Body
+    {
+        name = JakobianExampleTorus
+        id = example/solid-torus
+        Template
+        {
+            name = Minmus
+            removePQS = true
+            removeOcean = true
+            removeAtmosphere = true
+        }
+        Properties
+        {
+            description = An experimental solid torus; gravity is a separate point field.
+            radius = 1000000 // Native reference radius; actual outer extent is 1010000 m.
+            gravParameter = 100000000000
+            rotates = false
+            isHomeWorld = false
+        }
+        Orbit
+        {
+            referenceBody = Sun
+            semiMajorAxis = 20000000000
+            eccentricity = 0
+            inclination = 0
+            longitudeOfAscendingNode = 0
+            argumentOfPeriapsis = 0
+            meanAnomalyAtEpoch = 0
+            epoch = 0
+        }
+        ScaledVersion
+        {
+            type = Vacuum // Jakobian generates the scaled mesh from Shape.
+        }
+        Shape
+        {
+            type = Torus
+            majorRadius = 1000000
+            minorRadius = 10000
+        }
+        Surfaces
+        {
+            Surface
+            {
+                id = exterior
+                region = exterior
+                collision = true
+                landing = ContactSupported
+                projection = Toroidal
+            }
+        }
+        Gravity
+        {
+            type = PointMass
+            source = NativeGravParameter
+        }
+        Compatibility
+        {
+            ownership = NativeBody
+            referenceRadius = 1000000
+        }
+    }
+}

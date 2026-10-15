@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-14",
+  "build": {
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "locked_restore": true
+  },
+  "analytic_checks": {
+    "passed": 16015,
+    "seed": 20261014,
+    "scope": "sphere/torus projection, chart reconstruction, sign/ambiguity, point gravity, reference frame signs; no native flight"
+  },
+  "metadata": {
+    "assemblies_inspected": 4,
+    "execution": "none"
+  },
+  "parser_inventory": {
+    "attribute_occurrences": 1944,
+    "scope": "pinned master static scan, not feature coverage"
+  },
+  "boots": [
+    {
+      "log": "artifacts/boot/baseline-20261014-130933.log",
+      "sha256": "05449876fe19585463b1825c8e856901d287407445f04d837314b3e809f04e3d",
+      "bootstrap_marker": true,
+      "jakobian_lines": [
+        "[Jakobian] Research scaffold 0.1.0; Unity=2019.4.18f1; peers=",
+        "[Jakobian] No arbitrary-body runtime is implemented in this scaffold.",
+        "[Jakobian] BOOT_PROBE_PASS"
+      ],
+      "null_reference_count": 0,
+      "profile": "stock diagnostic",
+      "disposition": "exited after marker"
+    },
+    {
+      "log": "artifacts/boot/kopernicus-20261014-131515.log",
+      "sha256": "1cd8c343992aad89b9e0b9636dae1c47ae16de1918b921e3f0caa1db29cb6cc2",
+      "bootstrap_marker": false,
+      "jakobian_lines": [],
+      "null_reference_count": 0,
+      "profile": "full profile including KSPCF",
+      "disposition": "manually terminated after stalled startup"
+    },
+    {
+      "log": "artifacts/boot/kopernicus-20261014-132203.log",
+      "sha256": "c8d0871f641560640f3a7897d7cbe5a0a1cb36d2430c38c6987812d83c157068",
+      "bootstrap_marker": false,
+      "jakobian_lines": [],
+      "null_reference_count": 0,
+      "profile": "full profile including KSPCF",
+      "disposition": "manually terminated after stalled startup"
+    },
+    {
+      "log": "artifacts/boot/kopernicus-20261014-132525.log",
+      "sha256": "bf95e5e5ecaf1161352411a1bdfebcec47200e95e7e65a2f7daf63c8bf739731",
+      "bootstrap_marker": false,
+      "jakobian_lines": [],
+      "null_reference_count": 0,
+      "profile": "full profile including KSPCF",
+      "disposition": "manually terminated after stalled startup"
+    },
+    {
+      "log": "artifacts/boot/kopernicus-20261014-133010.log",
+      "sha256": "9fe4c46861c271039631d0e54f28db30139150eb68a3708c6b0fd7153a8186de",
+      "bootstrap_marker": true,
+      "jakobian_lines": [
+        "[Jakobian] Research scaffold 0.1.0; Unity=2019.4.18f1; peers=ModuleManager 4.2.3.0, 0Harmony 2.2.1.0, ModularFlightIntegrator 1.0.0.0, Kopernicus 1.0.251.0",
+        "[Jakobian] No arbitrary-body runtime is implemented in this scaffold.",
+        "[Jakobian] BOOT_PROBE_PASS"
+      ],
+      "null_reference_count": 1,
+      "profile": "Kopernicus without KSPCF",
+      "disposition": "exited after marker"
+    }
+  ],
+  "limitations": [
+    "No arbitrary-body runtime or flight/save validation.",
+    "Full profile including KSPCF stalled in three launch modes; cause remains unresolved.",
+    "Without KSPCF reached MainMenu and bootstrap marker but logged one SpaceCenter.Start NullReferenceException; cause unresolved, not exception-free or full compatibility.",
+    "Unity editor version checked; asset compilation/license not tested.",
+    "No player saves loaded; prior Ringworld evidence not independently reproduced."
+  ],
+  "tool_checks": {
+    "powershell_syntax": "passed for all development scripts",
+    "python_compile": "passed for research, installer and documentation tools",
+    "documentation": {
+      "local_links_checked": 35,
+      "result": "passed"
+    },
+    "watchdog": {
+      "normal_exit": "passed",
+      "timeout_with_explicit_executable_identity": "passed",
+      "identity_guard": "refused an unavailable/different initial path in exploratory synthetic run"
+    },
+    "proposal_examples": "balanced braces only; no loader/schema validation"
+  },
+  "source_snapshots": {
+    "master_repositories": 5,
+    "exact_release_revisions": 3
+  },
+  "process_cleanup": "All KSP probes exited or were terminated after executable identity verification; no KSP process remains.",
+  "architecture_revision": {
+    "date": "2026-10-14",
+    "requirement": "Standalone Jakobian loader from M1; Kopernicus only a source reference and optional interoperability target",
+    "scope": "Documentation and disabled examples updated; no system loader implemented or new gameplay tests claimed",
+    "documentation_local_links_checked": 38,
+    "proposal_example_braces": "passed"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-14",
+  "workspace": "C:\\Users\\Hans\\Documents\\programming\\Jakobian",
+  "sdk": "10.0.203",
+  "python": "Python 3.13.14",
+  "game_build": "1.12.5 / 03190",
+  "game_unity": "2019.4.18f1",
+  "editor": {
+    "path": "C:/Program Files/Unity/Editor/Unity.exe",
+    "version": "2019.4.18f1",
+    "asset_build_tested": false
+  },
+  "game_target": "net472; C# 7.3",
+  "tools_target": "net10.0",
+  "profiles": {
+    "baseline": "Current standalone Jakobian build plus three nonspherical test moons and spherical control; automatic Release deployment",
+    "kopernicus": "Kopernicus 251, MM 4.2.3, Harmony 2.2.1.0, TextureLoader 1.0.38, MFI product 1.2.10.0; KSPCF disabled after full-profile stall"
+  },
+  "template_assembly_check": [
+    {
+      "file": "Assembly-CSharp.dll",
+      "matches_initial_inspection": true
+    },
+    {
+      "file": "Assembly-CSharp-firstpass.dll",
+      "matches_initial_inspection": true
+    },
+    {
+      "file": "UnityEngine.CoreModule.dll",
+      "matches_initial_inspection": true
+    },
+    {
+      "file": "UnityEngine.PhysicsModule.dll",
+      "matches_initial_inspection": true
+    }
+  ],
+  "template_jakobian_installed": false,
+  "git": {
+    "initialized": true,
+    "branch": "main",
+    "remote": "none",
+    "commits_created": 0
+  },
+  "development_build": "0.3.0"
+}

@@ -1,0 +1,5 @@
+{
+  "dotnet.defaultSolution": "Jakobian.sln",
+  "files.watcherExclude": { "**/template_instance/**": true, "**/instances/**": true, "**/.research/**": true },
+  "search.exclude": { "**/template_instance": true, "**/instances": true, "**/artifacts": true }
+}

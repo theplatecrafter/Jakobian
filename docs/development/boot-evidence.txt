@@ -1,0 +1,14 @@
+artifacts/boot/baseline-20261014-130933.log
+[Jakobian] Research scaffold 0.1.0; Unity=2019.4.18f1; peers=
+[Jakobian] No arbitrary-body runtime is implemented in this scaffold.
+[Jakobian] BOOT_PROBE_PASS
+artifacts/boot/kopernicus-20261014-131515.log
+
+artifacts/boot/kopernicus-20261014-132203.log
+
+artifacts/boot/kopernicus-20261014-132525.log
+
+artifacts/boot/kopernicus-20261014-133010.log
+[Jakobian] Research scaffold 0.1.0; Unity=2019.4.18f1; peers=ModuleManager 4.2.3.0, 0Harmony 2.2.1.0, ModularFlightIntegrator 1.0.0.0, Kopernicus 1.0.251.0
+[Jakobian] No arbitrary-body runtime is implemented in this scaffold.
+[Jakobian] BOOT_PROBE_PASS

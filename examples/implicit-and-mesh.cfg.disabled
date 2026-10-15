@@ -1,0 +1,22 @@
+// DESIGN FRAGMENTS ONLY. Each Shape belongs to a separate body definition.
+// Advanced implicit field: field units are m^2, NOT signed-distance metres.
+Shape
+{
+    type = Implicit
+    field = (sqrt(x*x+z*z)-1000000)^2+y*y-10000^2
+    boundsMin = -1010000,-10000,-1010000
+    boundsMax = 1010000,10000,1010000
+    minimumFeatureSize = 100
+    queryMethod = ConservativeBracketing
+}
+// Imported geometry requires future offline bake/validation tooling.
+Shape
+{
+    type = Mesh
+    asset = ExamplePack/PluginData/asteroid.jakmesh
+    units = Metres
+    axes = JakobianRightHanded
+    requireClosedManifold = true
+    surfaceLabels = ExamplePack/PluginData/asteroid-surfaces.json
+    atlas = ExamplePack/PluginData/asteroid-charts.json
+}

@@ -1,0 +1,144 @@
+{
+  "dateUtc": "2026-10-14T23:02:54.4474942Z",
+  "version": "0.2.0",
+  "game": "KSP 1.12.5 build 03190 Windows x64",
+  "unity": "2019.4.18f1",
+  "sdk": "10.0.203",
+  "branch": "main",
+  "commitsCreated": 0,
+  "build": {
+    "deployedFilesVerifiedAgainstBuild": true,
+    "warnings": 0,
+    "errors": 0,
+    "configuration": "Release",
+    "analyticAssertions": 38021,
+    "script": "tools/Build.ps1"
+  },
+  "deployment": {
+    "deployedUtc": "2026-10-14T22:58:30.9452883Z",
+    "files": [
+      {
+        "sha256": "cc2d1870b07043eed4c4f758f67c942d90942c1643aad737c1bf053999382aea",
+        "path": "GameData/Jakobian/Plugins/Jakobian.dll"
+      },
+      {
+        "sha256": "dd436adaffbc647bf9f75379525f87b283995fd0632ce15f5084526359f4a106",
+        "path": "GameData/Jakobian/Plugins/Jakobian.Core.dll"
+      },
+      {
+        "sha256": "42fb1f3d5fe7b67accef4b2a207c5f6440b711f4daf58e97525daf51b9c8a48c",
+        "path": "GameData/JakobianTestBodies/Bodies.cfg"
+      }
+    ],
+    "version": "0.2.0.0"
+  },
+  "native": {
+    "sampledDirectionsPerBody": 4,
+    "mode": "normal D3D11 graphics, explicit development probe",
+    "bodyStartupPass": [
+      "JakobianControl",
+      "JakobianEllipsoid",
+      "JakobianCube",
+      "JakobianPeanut"
+    ],
+    "exceptionTokenOccurrences": 11,
+    "log": "artifacts/flight/all-20261014-185831.log",
+    "heightToleranceM": 0.01,
+    "controlledDescent": "Test-only velocity braking at about 3 m/s substitutes for a lander engine; native terrain/collider/landed logic is unchanged.",
+    "suitePassed": true,
+    "watchdog": {
+      "flightSuiteMarker": true,
+      "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\flight\\all-20261014-185831.log",
+      "processDisposition": "exited",
+      "bootstrapMarker": false
+    },
+    "liveTerrainOwnershipChecked": true,
+    "kerbinIdentityRadiusChecked": true,
+    "bodyFrameChecked": true,
+    "flight": [
+      {
+        "activeRenderers": 1107,
+        "terrainColliderObserved": true,
+        "save": "JakobianProbe-JakobianEllipsoid-20261014-230028",
+        "diagnosticCameraClearanceM": 47.4223392739932,
+        "reloadPassed": true,
+        "nativeLanded": true,
+        "screenshot": "instances/baseline/.dev/screenshots/JakobianEllipsoid-landed.png",
+        "body": "JakobianEllipsoid"
+      },
+      {
+        "activeRenderers": 1215,
+        "terrainColliderObserved": true,
+        "save": "JakobianProbe-JakobianCube-20261014-230045",
+        "diagnosticCameraClearanceM": 65.0879773379756,
+        "reloadPassed": true,
+        "nativeLanded": true,
+        "screenshot": "instances/baseline/.dev/screenshots/JakobianCube-landed.png",
+        "body": "JakobianCube"
+      },
+      {
+        "activeRenderers": 1111,
+        "terrainColliderObserved": true,
+        "save": "JakobianProbe-JakobianPeanut-20261014-230151",
+        "diagnosticCameraClearanceM": 53.917130882397,
+        "reloadPassed": true,
+        "nativeLanded": true,
+        "screenshot": "instances/baseline/.dev/screenshots/JakobianPeanut-landed.png",
+        "body": "JakobianPeanut"
+      }
+    ],
+    "terrainMaterialIsolationChecked": true,
+    "logSha256": "6dd3e1ec38472b79c0314c927b46617b3742b4b00e43676252e9827d3802c379",
+    "exceptionSummary": {
+      "beforeSuitePassTokens": 0,
+      "phase": "shutdown after completed flight checks",
+      "logLines": [
+        18015,
+        18023
+      ],
+      "observedIssue": "KnowledgeBase.OnMapFocusChange NullReferenceException while MapView.OnDestroy removes a target during process shutdown, after FLIGHT_SUITE_PASS. Event error and exception stack are both logged.",
+      "sourceAttribution": "native stack observed; cause and normal interactive shutdown reproduction remain unverified"
+    }
+  },
+  "localChecks": {
+    "templateManagedAssemblyHashesMatchOriginal": true,
+    "allAuthoredMarkdownUnderDocs": true,
+    "documentationLinksAndProposalBraces": "pass",
+    "templateJakobianNotInstalled": true,
+    "powerShellSyntax": "pass"
+  },
+  "archive": {
+    "deletedSaves": 0,
+    "movedOwnProbeSaves": [
+      "JakobianProbe-JakobianCube-20261014-224310",
+      "JakobianProbe-JakobianCube-20261014-224759",
+      "JakobianProbe-JakobianCube-20261014-225219",
+      "JakobianProbe-JakobianCube-20261014-225615",
+      "JakobianProbe-JakobianEllipsoid-20261014-221114",
+      "JakobianProbe-JakobianEllipsoid-20261014-222420",
+      "JakobianProbe-JakobianEllipsoid-20261014-222702",
+      "JakobianProbe-JakobianEllipsoid-20261014-223321",
+      "JakobianProbe-JakobianEllipsoid-20261014-223802",
+      "JakobianProbe-JakobianEllipsoid-20261014-224252",
+      "JakobianProbe-JakobianEllipsoid-20261014-224743",
+      "JakobianProbe-JakobianEllipsoid-20261014-225203",
+      "JakobianProbe-JakobianEllipsoid-20261014-225559",
+      "JakobianProbe-JakobianPeanut-20261014-224905",
+      "JakobianProbe-JakobianPeanut-20261014-225324",
+      "JakobianProbe-JakobianPeanut-20261014-225720"
+    ],
+    "folder": "instances/baseline/.dev/older-probe-saves"
+  },
+  "limitations": [
+    "Initial radial backend only; no torus hole, cave or arbitrary mesh terrain.",
+    "Kopernicus coexistence deliberately rejected; no third-party mod gameplay certification.",
+    "Central native point gravity and airless/dry fixtures only.",
+    "Native six-hour rotation; static landed persistence remains uncertified.",
+    "No long-duration contact, EVA, wheel, fleet, all-surface, warp or stock-gameplay regression acceptance.",
+    "Template terrain materials show quad color/lighting seams; normal camera navigation and map silhouettes still require human acceptance.",
+    "Camera was re-aimed for landed screenshots; renderer counts/clearance do not establish complete visual correctness.",
+    "World descriptors and shape migrations are not frozen in saves; keep fixture geometry/IDs/spin stable.",
+    "Headless flight crashed in native RenderTexture creation; graphics required.",
+    "Native KnowledgeBase/MapView shutdown null reference after completed suite remains unresolved."
+  ]
+}

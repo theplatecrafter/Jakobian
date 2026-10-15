@@ -1,0 +1,29 @@
+[
+  {
+    "repository": "Kopernicus/Kopernicus",
+    "tag": "release-251",
+    "label": "Kopernicus-release251",
+    "commit": "bab156c666d6ea96801dfdac29b7326368fc9bd9",
+    "archive_url": "https://codeload.github.com/Kopernicus/Kopernicus/zip/bab156c666d6ea96801dfdac29b7326368fc9bd9",
+    "archive_sha256": "cb8882fe53ac5a7433f20a8b46a1b79cf31534470b1b1d321ab3c8851fecfe35",
+    "local_directory": ".research/Kopernicus-release251"
+  },
+  {
+    "repository": "KSPModdingLibs/KSPCommunityFixes",
+    "tag": "1.41.1",
+    "label": "KSPCommunityFixes-release1411",
+    "commit": "ca89fd3a154c69c05c09a0edd98c7b2ce4271503",
+    "archive_url": "https://codeload.github.com/KSPModdingLibs/KSPCommunityFixes/zip/ca89fd3a154c69c05c09a0edd98c7b2ce4271503",
+    "archive_sha256": "c3686530b387be9e97d85299b6f6ee679d96dbef4c579b8cf091b1ef5c7a5aad",
+    "local_directory": ".research/KSPCommunityFixes-release1411"
+  },
+  {
+    "repository": "Phantomical/KSPTextureLoader",
+    "tag": "v1.0.38",
+    "label": "KSPTextureLoader-release1038",
+    "commit": "299e4bb238bc82fc3b609a88db32d8513f21168a",
+    "archive_url": "https://codeload.github.com/Phantomical/KSPTextureLoader/zip/299e4bb238bc82fc3b609a88db32d8513f21168a",
+    "archive_sha256": "bfae988003016830d9aeaea22784ff5de6862963bbae0c9af82f2bec81fbbcc3",
+    "local_directory": ".research/KSPTextureLoader-release1038"
+  }
+]

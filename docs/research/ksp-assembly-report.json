@@ -1,0 +1,930 @@
+{
+  "inspection": "Metadata and IL call references only; game code was not executed.",
+  "build": "[config]\nbuild id = 03190\n2022.12.12 at 14:02:28 PST\nBranch: master\nlanguage = en-us\ndistribution name = Steam\n",
+  "unityPlayerFileVersion": "2019.4.18.3346596",
+  "assemblies": [
+    {
+      "file": "Assembly-CSharp.dll",
+      "sha256": "d9e42483f25ee80a9c11d6c1c0a0d29b4ec78c1e08d76c971b71580c9cce51e4",
+      "identity": "Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "runtime": "v4.0.30319",
+      "references": [
+        "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "KSPTrackIR, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "UnityEngine.UnityWebRequestModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "KSPAssets, Version=1.5.0.0, Culture=neutral, PublicKeyToken=null",
+        "System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756",
+        "UnityEngine.VehiclesModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c",
+        "UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.ScreenCaptureModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "Unity.Analytics.StandardEvents, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.UnityAnalyticsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "Unity.Analytics.DataPrivacy, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.VRModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.UnityWebRequestTextureModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.UnityWebRequestAudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.UnityWebRequestAssetBundleModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "types": [
+        {
+          "name": "KerbalEVA",
+          "fields": [
+            "Vector3d KerbalEVA::geeForce"
+          ],
+          "methods": [
+            {
+              "signature": "System.Void KerbalEVA::FixedUpdate()",
+              "visibility": "protected",
+              "virtualMethod": true,
+              "calls": [
+                "Vessel PartModule::get_vessel()",
+                "System.Void KerbalEVA::FixedUpdate()",
+                "System.Void KerbalEVA::getCoordinateFrame()",
+                "UnityEngine.Vector3 UnityEngine.Vector3::get_zero()",
+                "System.Void KerbalEVA::HandleMovementInput()",
+                "System.Void KerbalFSM::FixedUpdateFSM()",
+                "System.Void KerbalEVA::UpdatePackFuel()",
+                "System.Void KerbalEVA::UpdateHelmetOffChecks()",
+                "System.Void KerbalEVA::UpdateVisorPosition()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "CelestialBody",
+          "fields": [
+            "System.Double CelestialBody::Radius",
+            "System.Double CelestialBody::gravParameter",
+            "PQS CelestialBody::pqsController"
+          ],
+          "methods": [
+            {
+              "signature": "System.Double CelestialBody::GetPressure(System.Double)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Double CelestialBody::GetPressure(System.Double)",
+                "System.Single FloatCurve::Evaluate(System.Single)",
+                "System.Single UnityEngine.Mathf::Lerp(System.Single,System.Single,System.Single)",
+                "System.Double System.Math::Pow(System.Double,System.Double)"
+              ]
+            },
+            {
+              "signature": "System.Double CelestialBody::GetDensity(System.Double,System.Double)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Double CelestialBody::GetDensity(System.Double,System.Double)",
+                "System.Double PhysicsGlobals::get_IdealGasConstant()"
+              ]
+            },
+            {
+              "signature": "Vector3d CelestialBody::GetSurfaceNVector(System.Double,System.Double)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "Vector3d Planetarium::SphericalVector(System.Double,System.Double)",
+                "Vector3d Planetarium/CelestialFrame::LocalToWorld(Vector3d)",
+                "Vector3d Vector3d::get_xzy()"
+              ]
+            },
+            {
+              "signature": "Vector3d CelestialBody::GetWorldSurfacePosition(System.Double,System.Double,System.Double)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "Vector3d CelestialBody::GetRelSurfacePosition(System.Double,System.Double,System.Double)",
+                "Vector3d Vector3d::get_xzy()",
+                "Vector3d Planetarium/CelestialFrame::LocalToWorld(Vector3d)",
+                "Vector3d CelestialBody::get_position()",
+                "Vector3d Vector3d::op_Addition(Vector3d,Vector3d)"
+              ]
+            },
+            {
+              "signature": "System.Double CelestialBody::GetAltitude(Vector3d)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "Vector3d CelestialBody::get_position()",
+                "Vector3d Vector3d::op_Subtraction(Vector3d,Vector3d)",
+                "System.Double Vector3d::get_magnitude()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Orbit",
+          "fields": [
+            "System.Double Orbit::altitude"
+          ],
+          "methods": []
+        },
+        {
+          "name": "OrbitDriver",
+          "fields": [],
+          "methods": [
+            {
+              "signature": "System.Void OrbitDriver::FixedUpdate()",
+              "visibility": "nonpublic",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void OrbitDriver::FixedUpdate()",
+                "System.Void OrbitDriver::UpdateOrbit(System.Boolean)"
+              ]
+            },
+            {
+              "signature": "System.Void OrbitDriver::UpdateOrbit(System.Boolean)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void OrbitDriver::UpdateOrbit(System.Boolean)",
+                "System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)",
+                "System.Boolean OrbitDriver::CheckDominantBody(Vector3d)",
+                "CelestialBody OrbitDriver::get_referenceBody()",
+                "System.Void OrbitDriver::TrackRigidbody(CelestialBody,System.Double)",
+                "System.Void OrbitDriver::updateFromParameters()",
+                "System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)",
+                "Vector3d CelestialBody::get_position()",
+                "Vector3d Vector3d::op_Addition(Vector3d,Vector3d)",
+                "System.Single TimeWarp::get_fixedDeltaTime()",
+                "System.Void EventData\u00601\u003CVessel\u003E::Fire(T)",
+                "System.Void Orbit::DrawOrbit()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PartBuoyancy",
+          "fields": [],
+          "methods": [
+            {
+              "signature": "System.Void PartBuoyancy::FixedUpdate()",
+              "visibility": "nonpublic",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void PartBuoyancy::FixedUpdate()",
+                "System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)",
+                "CelestialBody Vessel::get_mainBody()",
+                "System.Boolean Part::get_ShieldedFromAirstream()",
+                "System.Single TimeWarp::get_fixedDeltaTime()",
+                "UnityEngine.Vector3 UnityEngine.Transform::get_position()",
+                "UnityEngine.Quaternion UnityEngine.Transform::get_rotation()",
+                "UnityEngine.Vector3 UnityEngine.Quaternion::op_Multiply(UnityEngine.Quaternion,UnityEngine.Vector3)",
+                "UnityEngine.Vector3 UnityEngine.Vector3::op_Addition(UnityEngine.Vector3,UnityEngine.Vector3)",
+                "Vector3d Vector3d::op_Implicit(UnityEngine.Vector3)",
+                "System.Double FlightGlobals::getAltitudeAtPos(Vector3d,CelestialBody)",
+                "DragCubeList Part::get_DragCubes()",
+                "System.Boolean DragCubeList::get_None()",
+                "System.Double PhysicsGlobals::get_BuoyancyRange()",
+                "System.Void PartBuoyancy::FindOverrideCube()",
+                "UnityEngine.Vector3 DragCube::get_Center()",
+                "UnityEngine.Vector3 DragCube::get_Size()",
+                "System.Void UnityEngine.Bounds::.ctor(UnityEngine.Vector3,UnityEngine.Vector3)",
+                "UnityEngine.Vector3 DragCubeList::get_WeightedCenter()",
+                "UnityEngine.Vector3 DragCubeList::get_WeightedSize()",
+                "UnityEngine.Vector3 UnityEngine.Bounds::get_min()",
+                "UnityEngine.Vector3 UnityEngine.Bounds::get_max()",
+                "UnityEngine.Matrix4x4 UnityEngine.Transform::get_localToWorldMatrix()",
+                "UnityEngine.Vector3 UnityEngine.Matrix4x4::MultiplyPoint3x4(UnityEngine.Vector3)",
+                "System.Void Vector3d::.ctor(System.Double,System.Double,System.Double)",
+                "UnityEngine.Vector3 Vector3d::op_Implicit(Vector3d)",
+                "System.Single FlightGlobals::getAltitudeAtPos(UnityEngine.Vector3,CelestialBody)",
+                "UnityEngine.Vector3 UnityEngine.Rigidbody::get_velocity()",
+                "System.Single UnityEngine.Vector3::get_magnitude()",
+                "Vector3d Krakensbane::GetFrameVelocity()",
+                "System.Double Vector3d::get_magnitude()",
+                "Vector3d FlightGlobals::getUpAxis(CelestialBody,Vector3d)",
+                "Vector3d Vector3d::op_UnaryNegation(Vector3d)",
+                "Vector3d Vector3d::op_Addition(UnityEngine.Vector3,Vector3d)",
+                "Vector3d Vector3d::op_Division(Vector3d,System.Double)",
+                "System.Single UnityEngine.Vector3::Dot(UnityEngine.Vector3,UnityEngine.Vector3)",
+                "System.Boolean VectorExtensions::IsZero(UnityEngine.Vector3)",
+                "System.Single System.Math::Abs(System.Single)",
+                "System.Single System.Math::Max(System.Single,System.Single)",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragScalarLerpDotMultBase()",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragScalarLerpDotMult()",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragTimer()",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragMinVel()",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragMinVelMult()",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragScalar()",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragScalarEnd()",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragScalarLerp()",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterLiftScalarEnd()",
+                "PartStates Part::get_State()",
+                "System.Void PartBuoyancy::UpdateDisplacement()",
+                "UnityEngine.Vector3 Krakensbane::GetFrameVelocityV3f()",
+                "UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)",
+                "UnityEngine.Vector3 UnityEngine.Vector3::op_Subtraction(UnityEngine.Vector3,UnityEngine.Vector3)",
+                "System.Single UnityEngine.Vector3::Distance(UnityEngine.Vector3,UnityEngine.Vector3)",
+                "System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)",
+                "PQS[] PQS::get_ChildSpheres()",
+                "Vector3d Vector3d::op_Multiply(Vector3d,System.Double)",
+                "FXObject FXMonger::Splash(UnityEngine.Vector3,System.Single)",
+                "System.Single PhysicsGlobals::get_BuoyancyMinCrashMult()",
+                "System.Single UnityEngine.Mathf::Max(System.Single,System.Single)",
+                "System.Single PhysicsGlobals::get_BuoyancyCrashToleranceMult()",
+                "System.Void EventReport::.ctor(FlightEvents,Part,System.String,System.String,System.Int32,System.String,System.Single)",
+                "System.Void EventData\u00601\u003CEventReport\u003E::Fire(T)",
+                "System.String System.String::Concat(System.Object[])",
+                "System.Void UnityEngine.MonoBehaviour::print(System.Object)",
+                "System.Boolean UnityEngine.MonoBehaviour::IsInvoking()",
+                "System.Void UnityEngine.MonoBehaviour::CancelInvoke()",
+                "System.Void UnityEngine.MonoBehaviour::Invoke(System.String,System.Single)",
+                "System.Double System.Math::Sin(System.Double)",
+                "System.Boolean PhysicsGlobals::get_BuoyancyUseCoBOffset()",
+                "UnityEngine.Vector3 UnityEngine.Vector3::get_zero()",
+                "UnityEngine.Vector3 UnityEngine.Vector3::op_Division(UnityEngine.Vector3,System.Single)",
+                "System.Double PhysicsGlobals::get_BuoyancyScaleAboveDepth()",
+                "System.Double PhysicsGlobals::get_BuoyancyScalar()",
+                "Vector3d FlightGlobals::getGeeForceAtPosition(Vector3d)",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragMultMinForMinDot()",
+                "System.Double System.Math::Min(System.Double,System.Double)",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragMinVelMultCOBOff()",
+                "System.Single PhysicsGlobals::get_BuoyancyForceOffsetLerp()",
+                "UnityEngine.Vector3 UnityEngine.Vector3::Lerp(UnityEngine.Vector3,UnityEngine.Vector3,System.Single)",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragPartVelGreaterVesselMult()",
+                "System.Double PhysicsGlobals::get_BuoyancyAngularDragMinControlSqrMag()",
+                "System.Single PhysicsGlobals::get_BuoyancyWaterAngularDragSlow()",
+                "System.Void UnityEngine.Rigidbody::set_angularDrag(System.Single)",
+                "System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)",
+                "System.Single PhysicsGlobals::get_BuoyancyWaterDragSlow()",
+                "System.Void UnityEngine.Rigidbody::set_drag(System.Single)",
+                "System.Single DragCubeList::get_AreaDrag()",
+                "System.Single PhysicsGlobals::get_DragCubeMultiplier()",
+                "System.Single PhysicsGlobals::get_DragMultiplier()",
+                "System.Single UnityEngine.Rigidbody::get_mass()",
+                "System.Single TimeWarp::get_CurrentRate()",
+                "TimeWarp/Modes TimeWarp::get_WarpMode()",
+                "System.Single UnityEngine.Rigidbody::get_drag()",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterDragExtraRBDragAboveDot()",
+                "System.Boolean VectorExtensions::IsInvalid(UnityEngine.Vector3)",
+                "System.Void VectorExtensions::Zero(UnityEngine.Vector3)",
+                "System.Boolean PhysicsGlobals::get_BuoyancyApplyForceOnDie()",
+                "System.Void Part::AddForceAtPosition(Vector3d,Vector3d)",
+                "System.Void Part::Die()",
+                "System.Boolean Vessel::checkSplashed()",
+                "T GameObjectExtension::GetComponentCached\u003CUnityEngine.Rigidbody\u003E(UnityEngine.Component,T\u0026)"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PQS",
+          "fields": [],
+          "methods": [
+            {
+              "signature": "System.Void PQS::FixedUpdate()",
+              "visibility": "nonpublic",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void PQS::Mod_OnSphereTransformUpdate()",
+                "UnityEngine.QuaternionD UnityEngine.QuaternionD::Inverse(UnityEngine.QuaternionD)"
+              ]
+            },
+            {
+              "signature": "System.Double PQS::GetSurfaceHeight(Vector3d)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Double PQS::GetSurfaceHeight(Vector3d,System.Boolean)"
+              ]
+            },
+            {
+              "signature": "System.Double PQS::GetSurfaceHeight(Vector3d,System.Boolean)",
+              "visibility": "nonpublic",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void PQS/VertexBuildData::Reset()",
+                "Vector3d Vector3d::get_normalized()",
+                "System.Void PQS::Mod_OnVertexBuildHeight(PQS/VertexBuildData,System.Boolean)"
+              ]
+            },
+            {
+              "signature": "System.Double PQS::GetAltitude(Vector3d)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "UnityEngine.Vector3 Vector3d::op_Implicit(Vector3d)",
+                "System.Double PQS::GetRelativeDistance(UnityEngine.Vector3)"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "FlightGlobals",
+          "fields": [],
+          "methods": [
+            {
+              "signature": "System.Void FlightGlobals::FixedUpdate()",
+              "visibility": "nonpublic",
+              "virtualMethod": false,
+              "calls": [
+                "System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)",
+                "System.Void FlightGlobals::FixedUpdate()",
+                "System.Void FlightGlobals::UpdateInformation(System.Boolean)",
+                "System.Void EventData\u00601\u003CSystem.Boolean\u003E::Fire(T)"
+              ]
+            },
+            {
+              "signature": "Vector3d FlightGlobals::getGeeForceAtPosition(Vector3d)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "CelestialBody FlightGlobals::getMainBody(Vector3d)",
+                "Vector3d FlightGlobals::getGeeForceAtPosition(Vector3d,CelestialBody)"
+              ]
+            },
+            {
+              "signature": "Vector3d FlightGlobals::getGeeForceAtPosition(Vector3d,CelestialBody)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "Vector3d Vector3d::get_zero()",
+                "Vector3d CelestialBody::get_position()",
+                "Vector3d Vector3d::op_Subtraction(Vector3d,Vector3d)",
+                "System.Double Vector3d::get_sqrMagnitude()",
+                "System.Double System.Math::Sqrt(System.Double)",
+                "Vector3d Vector3d::op_Multiply(Vector3d,System.Double)",
+                "Vector3d Vector3d::op_Division(Vector3d,System.Double)"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "FlightIntegrator",
+          "fields": [
+            "System.Double FlightIntegrator::altitude",
+            "System.Double FlightIntegrator::staticPressurekPa"
+          ],
+          "methods": [
+            {
+              "signature": "System.Void FlightIntegrator::FixedUpdate()",
+              "visibility": "protected",
+              "virtualMethod": true,
+              "calls": [
+                "System.Void FlightIntegrator::FixedUpdate()",
+                "System.Void FlightIntegrator::Setup()",
+                "System.Single TimeWarp::get_fixedDeltaTime()",
+                "Vessel FlightGlobals::get_ActiveVessel()",
+                "System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)",
+                "!!0 UnityEngine.Component::GetComponent\u003CPart\u003E()",
+                "System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)",
+                "System.Single PhysicsGlobals::get_DragCubeMultiplier()",
+                "System.Boolean PhysicsGlobals::get_DragCubesUseSpherical()",
+                "System.Boolean PhysicsGlobals::get_ApplyDrag()",
+                "System.Boolean PhysicsGlobals::get_ApplyDragToNonPhysicsParts()",
+                "System.Boolean PhysicsGlobals::get_DragUsesAcceleration()",
+                "System.Single PhysicsGlobals::get_DragMultiplier()",
+                "System.Double PhysicsGlobals::get_BuoyancyWaterAngularDragScalar()",
+                "System.Single PhysicsGlobals::get_AngularDragMultiplier()",
+                "System.Single PhysicsGlobals::get_BodyLiftMultiplier()",
+                "System.Double PhysicsGlobals::get_RadiationFactor()",
+                "System.Double PhysicsGlobals::get_SpaceTemperature()",
+                "System.Double PhysicsGlobals::get_FullConvectionAreaMin()",
+                "System.Double PhysicsGlobals::get_FullToCrossSectionLerpStart()",
+                "System.Double PhysicsGlobals::get_FullToCrossSectionLerpEnd()",
+                "System.Double PhysicsGlobals::get_StefanBoltzmanConstant()",
+                "System.Double PhysicsGlobals::get_SkinSkinConductionFactor()",
+                "System.Double PhysicsGlobals::get_ConductionFactor()",
+                "System.Double PhysicsGlobals::get_TurbulentConvectionStart()",
+                "System.Double PhysicsGlobals::get_TurbulentConvectionEnd()",
+                "System.Double PhysicsGlobals::get_TurbulentConvectionMult()",
+                "System.Double PhysicsGlobals::get_StandardSpecificHeatCapacity()",
+                "System.Int32 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Count()",
+                "UnityEngine.Vector3 Vector3d::op_Implicit(Vector3d)",
+                "System.Void FlightIntegrator::UpdateMassStats()",
+                "System.Void FlightIntegrator::SmoothVelocity()",
+                "System.Boolean Vessel::get_IgnoreSpeedActive()",
+                "System.Single UnityEngine.Vector3::get_magnitude()",
+                "UnityEngine.Vector3 UnityEngine.Vector3::get_zero()",
+                "UnityEngine.Vector3 UnityEngine.Vector3::op_Division(UnityEngine.Vector3,System.Single)",
+                "CelestialBody Vessel::get_mainBody()",
+                "System.Double FlightGlobals::getAltitudeAtPos(Vector3d,CelestialBody)",
+                "System.Void FlightIntegrator::CalculatePressure()",
+                "UnityEngine.Vector3 UnityEngine.Transform::get_position()",
+                "UnityEngine.Vector3 UnityEngine.Vector3::op_Subtraction(UnityEngine.Vector3,UnityEngine.Vector3)",
+                "System.Void FlightIntegrator::ThermoPrecalculate()",
+                "System.Void FlightIntegrator::CalculateConstantsAtmosphere()",
+                "System.Void FlightIntegrator::CalculateConstantsVacuum()",
+                "System.Double FlightIntegrator::CalculateDensityThermalLerp()",
+                "System.Double FlightIntegrator::CalculateBackgroundRadiationTemperature(System.Double)",
+                "System.Void FlightIntegrator::DragCubeSetupAndPartAeroStats(Vessel)",
+                "System.Void FlightIntegrator::CheckThermalGraph()",
+                "System.Void FlightIntegrator::UpdateOcclusion(System.Boolean)",
+                "System.Void FlightIntegrator::UpdateThermodynamics()",
+                "!0 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Item(System.Int32)",
+                "System.Void System.Collections.Generic.List\u00601\u003CPart/ForceHolder\u003E::Clear()",
+                "System.Void Vector3d::Zero()",
+                "System.Int32 System.Collections.Generic.List\u00601\u003CphysicalObject\u003E::get_Count()",
+                "System.Void FlightIntegrator::IntegratePhysicalObjects(System.Collections.Generic.List\u00601\u003CphysicalObject\u003E,System.Double)",
+                "Vector3d Vector3d::get_zero()",
+                "System.Boolean Vector3d::op_Inequality(Vector3d,Vector3d)",
+                "System.Void Vessel::OffsetVelocity(Vector3d)",
+                "System.Void FlightIntegrator::Integrate(Part)"
+              ]
+            },
+            {
+              "signature": "System.Void FlightIntegrator::CalculatePressure()",
+              "visibility": "protected",
+              "virtualMethod": true,
+              "calls": [
+                "System.Void FlightIntegrator::CalculatePressure()",
+                "System.Double CelestialBody::GetPressure(System.Double)"
+              ]
+            },
+            {
+              "signature": "System.Void FlightIntegrator::CalculateConstantsAtmosphere()",
+              "visibility": "protected",
+              "virtualMethod": true,
+              "calls": [
+                "System.Void CelestialBody::GetSolarAtmosphericEffects(System.Double,System.Double,System.Double\u0026,System.Double\u0026)",
+                "System.Double CelestialBody::GetFullTemperature(System.Double,System.Double)",
+                "System.Double FlightIntegrator::CalculateAtmosphericDensity(System.Double,System.Double)",
+                "System.Double CelestialBody::GetSpeedOfSound(System.Double,System.Double)",
+                "System.Void FlightIntegrator::CalculateConstantsAtmosphere()",
+                "System.Double PhysicsGlobals::get_NewtonianMachTempLerpStartMach()",
+                "System.Double PhysicsGlobals::get_NewtonianMachTempLerpEndMach()",
+                "System.Double UtilMath::Clamp01(System.Double)",
+                "System.Double PhysicsGlobals::get_NewtonianMachTempLerpExponent()",
+                "System.Double System.Math::Pow(System.Double,System.Double)",
+                "System.Double FlightIntegrator::CalculateShockTemperature()",
+                "System.Double System.Math::Max(System.Double,System.Double)",
+                "System.Double FlightIntegrator::CalculateConvectiveCoefficient()",
+                "System.Double PhysicsGlobals::get_TurbulentConvectionEnd()",
+                "System.Double PhysicsGlobals::get_TurbulentConvectionStart()",
+                "FloatCurve PhysicsGlobals::get_DragCurvePseudoReynolds()",
+                "System.Single FloatCurve::Evaluate(System.Single)"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "FloatingOrigin",
+          "fields": [],
+          "methods": [
+            {
+              "signature": "System.Void FloatingOrigin::FixedUpdate()",
+              "visibility": "protected",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void FloatingOrigin::FixedUpdate()",
+                "System.Single TimeWarp::get_CurrentRate()",
+                "System.Single TimeWarp::get_MaxPhysicsRate()",
+                "TimeWarp/Modes TimeWarp::get_WarpMode()",
+                "Vessel FlightGlobals::get_ActiveVessel()",
+                "System.Boolean Vessel::get_LandedOrSplashed()",
+                "Vector3d FlightGlobals::get_ship_velocity()",
+                "System.Double Vector3d::get_sqrMagnitude()",
+                "System.Boolean Vector3d::IsZero()",
+                "UnityEngine.Transform UnityEngine.Component::get_transform()",
+                "UnityEngine.Vector3 UnityEngine.Transform::get_position()",
+                "System.Single UnityEngine.Vector3::get_sqrMagnitude()",
+                "Vector3d Vector3d::op_Implicit(UnityEngine.Vector3)",
+                "System.Void FloatingOrigin::setOffset(Vector3d,Vector3d)",
+                "System.Void Vector3d::Zero()",
+                "System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)",
+                "Vector3d FlightGlobals::get_ship_srfVelocity()",
+                "System.Double Vector3d::get_magnitude()",
+                "Orbit Vessel::get_orbit()",
+                "System.Void CelestialBody::PreciseUpdateQuadPositions()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Krakensbane",
+          "fields": [],
+          "methods": [
+            {
+              "signature": "System.Void Krakensbane::FixedUpdate()",
+              "visibility": "protected",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void Krakensbane::FixedUpdate()",
+                "Vessel FlightGlobals::get_ActiveVessel()",
+                "System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)",
+                "!!0 UnityEngine.Component::GetComponent\u003CUnityEngine.Rigidbody\u003E()",
+                "System.Boolean UnityEngine.Object::op_Implicit(UnityEngine.Object)",
+                "System.Void Vector3d::Zero()",
+                "System.Boolean Krakensbane::SafeToEngage(System.Boolean\u0026)",
+                "System.Void FloatingOrigin::SetSafeToEngage(System.Boolean)",
+                "System.Double Vector3d::get_sqrMagnitude()",
+                "System.Void Krakensbane::AddExcess(Vector3d)",
+                "System.Boolean Vector3d::IsZero()",
+                "System.Void Krakensbane::Zero()",
+                "System.Single UnityEngine.Time::get_fixedDeltaTime()",
+                "Vector3d Vector3d::op_Multiply(Vector3d,System.Double)",
+                "System.Void FloatingOrigin::SetOutOfFrameOffset(Vector3d)"
+              ]
+            },
+            {
+              "signature": "System.Boolean Krakensbane::SafeToEngage(System.Boolean\u0026)",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Collections.Generic.List\u00601\u003CVessel\u003E FlightGlobals::get_VesselsLoaded()",
+                "System.Int32 System.Collections.Generic.List\u00601\u003CVessel\u003E::get_Count()",
+                "Vessel FlightGlobals::get_ActiveVessel()",
+                "System.Boolean Krakensbane::SafeToEngage(System.Boolean\u0026)",
+                "!0 System.Collections.Generic.List\u00601\u003CVessel\u003E::get_Item(System.Int32)",
+                "System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)",
+                "System.Boolean Vessel::get_LandedOrSplashed()",
+                "Vector3d Vector3d::op_UnaryNegation(Vector3d)",
+                "System.Double Vector3d::Dot(Vector3d,Vector3d)",
+                "System.Single UnityEngine.Time::get_fixedDeltaTime()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Vessel",
+          "fields": [
+            "System.Double Vessel::altitude",
+            "System.Boolean Vessel::packed",
+            "System.Boolean Vessel::Landed",
+            "System.Boolean Vessel::Splashed",
+            "Vector3d Vessel::srf_velocity",
+            "Vector3d Vessel::upAxis",
+            "System.Double Vessel::geeForce",
+            "System.Double Vessel::staticPressurekPa",
+            "System.Double Vessel::atmDensity",
+            "Vector3d Vessel::north",
+            "Vector3d Vessel::east",
+            "System.Single Vessel::heightFromTerrain",
+            "System.Double Vessel::terrainAltitude"
+          ],
+          "methods": [
+            {
+              "signature": "System.Boolean Vessel::checkLanded()",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Boolean Vessel::checkLanded()",
+                "System.Boolean VesselPrecalculate::get_isEasingGravity()",
+                "System.Int32 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Count()",
+                "!0 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Item(System.Int32)",
+                "System.Void Vessel::SetLandedAt(System.String,UnityEngine.GameObject,System.String)",
+                "CelestialBody Vessel::get_mainBody()",
+                "System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)"
+              ]
+            },
+            {
+              "signature": "System.Void Vessel::GoOnRails()",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void Vessel::GoOnRails()",
+                "System.Void VesselPrecalculate::GoOnRails()",
+                "System.Int32 System.Collections.Generic.List\u00601\u003CVesselModule\u003E::get_Count()",
+                "!0 System.Collections.Generic.List\u00601\u003CVesselModule\u003E::get_Item(System.Int32)",
+                "System.Void VesselModule::OnGoOnRails()",
+                "System.Void EventData\u00601\u003CVessel\u003E::Fire(T)",
+                "System.Void FlightCtrlState::Neutralize()",
+                "System.String Vessel::GetDisplayName()",
+                "System.String System.String::Concat(System.String,System.String,System.String)",
+                "System.Void UnityEngine.MonoBehaviour::print(System.Object)",
+                "System.Int32 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Count()",
+                "!0 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Item(System.Int32)",
+                "System.Void Part::Pack()",
+                "System.Single Vessel::GetHeightFromTerrain(System.Boolean)",
+                "System.Boolean Vessel::get_LandedOrSplashed()",
+                "System.Void OrbitDriver::SetOrbitMode(OrbitDriver/UpdateMode)",
+                "System.Void UnityEngine.Component::SendMessage(System.String,UnityEngine.SendMessageOptions)"
+              ]
+            },
+            {
+              "signature": "System.Void Vessel::GoOffRails()",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void Vessel::GoOffRails()",
+                "System.Boolean Vessel::PhysicsHoldExpired()",
+                "T Vessel::FindPartModuleImplementing\u003CModuleGroundPart\u003E()",
+                "System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)",
+                "CelestialBody Vessel::get_mainBody()",
+                "System.Collections.Generic.List\u00601\u003CPart\u003E Vessel::get_Parts()",
+                "System.Int32 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Count()",
+                "System.Boolean Vessel::CheckGroundCollision()",
+                "System.Void Vessel::RemovePhysicsHoldLock()",
+                "System.Void VesselPrecalculate::GoOffRails()",
+                "System.Boolean Vessel::get_LandedOrSplashed()",
+                "System.Boolean FlightGlobals::get_RefFrameIsRotating()",
+                "System.Int32 System.Collections.Generic.List\u00601\u003CVesselModule\u003E::get_Count()",
+                "!0 System.Collections.Generic.List\u00601\u003CVesselModule\u003E::get_Item(System.Int32)",
+                "System.Void VesselModule::OnGoOffRails()",
+                "System.String Vessel::GetDisplayName()",
+                "System.String System.String::Concat(System.String,System.String)",
+                "System.Void UnityEngine.MonoBehaviour::print(System.Object)",
+                "Vessel FlightGlobals::get_ActiveVessel()",
+                "Orbit Vessel::get_orbit()",
+                "Vector3d Orbit::GetVel()",
+                "Vector3d Vector3d::get_zero()",
+                "UnityEngine.Vector3 UnityEngine.Transform::get_position()",
+                "Vector3d Vector3d::op_Implicit(UnityEngine.Vector3)",
+                "Vector3d CelestialBody::getRFrmVel(Vector3d)",
+                "Vector3d Vector3d::op_Subtraction(Vector3d,Vector3d)",
+                "Vector3d Krakensbane::GetFrameVelocity()",
+                "System.Void Krakensbane::AddFrameVelocity(Vector3d)",
+                "!0 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Item(System.Int32)",
+                "System.Void Part::Unpack()",
+                "System.Void Part::InitializeModules()",
+                "System.Void OrbitDriver::SetOrbitMode(OrbitDriver/UpdateMode)",
+                "System.Void Part::ResumeVelocity()",
+                "System.Void Vector3d::Zero()",
+                "System.Void UnityEngine.Debug::Break()",
+                "System.Void FlightInputHandler::SetLaunchCtrlState()",
+                "System.Void FlightInputHandler::ResumeVesselCtrlState(Vessel)",
+                "System.Void UnityEngine.Component::SendMessage(System.String,UnityEngine.SendMessageOptions)",
+                "System.Void EventData\u00601\u003CVessel\u003E::Fire(T)"
+              ]
+            },
+            {
+              "signature": "System.Single Vessel::GetHeightFromSurface()",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Single Vessel::GetHeightFromSurface()",
+                "UnityEngine.Vector3 UnityEngine.Transform::get_position()",
+                "CelestialBody Vessel::get_mainBody()",
+                "System.Single FlightGlobals::getAltitudeAtPos(UnityEngine.Vector3,CelestialBody)",
+                "Vector3d Vector3d::op_Implicit(UnityEngine.Vector3)",
+                "Vector3d FlightGlobals::getUpAxis(CelestialBody,Vector3d)",
+                "Vector3d Vector3d::op_UnaryNegation(Vector3d)",
+                "UnityEngine.Vector3 Vector3d::op_Implicit(Vector3d)",
+                "System.Boolean UnityEngine.Physics::Raycast(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.RaycastHit\u0026,System.Single,System.Int32,UnityEngine.QueryTriggerInteraction)",
+                "System.Single UnityEngine.RaycastHit::get_distance()"
+              ]
+            },
+            {
+              "signature": "System.Void Vessel::FixedUpdate()",
+              "visibility": "nonpublic",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void Vessel::FixedUpdate()",
+                "System.Void Vessel::UpdateCaches()"
+              ]
+            },
+            {
+              "signature": "System.Void Vessel::UpdatePosVel()",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Boolean Vessel::get_LandedOrSplashed()",
+                "System.Void Vessel::UpdatePosVel()",
+                "CelestialBody Vessel::get_mainBody()",
+                "UnityEngine.Vector3 UnityEngine.Transform::get_position()",
+                "Vector3d Vector3d::op_Implicit(UnityEngine.Vector3)",
+                "System.Void CelestialBody::GetLatLonAlt(Vector3d,System.Double\u0026,System.Double\u0026,System.Double\u0026)",
+                "Orbit Vessel::get_orbit()",
+                "System.Void CelestialBody::GetLatLonAltOrbital(Vector3d,System.Double\u0026,System.Double\u0026,System.Double\u0026)",
+                "UnityEngine.Quaternion UnityEngine.Transform::get_rotation()",
+                "UnityEngine.Quaternion UnityEngine.Quaternion::Inverse(UnityEngine.Quaternion)",
+                "UnityEngine.Quaternion UnityEngine.Quaternion::op_Multiply(UnityEngine.Quaternion,UnityEngine.Quaternion)",
+                "System.Single Vessel::GetHeightFromTerrain(System.Boolean)",
+                "System.Double Vessel::PQSAltitude()",
+                "Vector3d Orbit::GetRelativeVel()",
+                "System.Double Vector3d::get_magnitude()",
+                "Vector3d Orbit::GetVel()",
+                "Vector3d CelestialBody::getRFrmVelOrbit(Orbit)",
+                "Vector3d Vector3d::op_Subtraction(Vector3d,Vector3d)",
+                "Vector3d FlightGlobals::getUpAxis(CelestialBody,Vector3d)",
+                "System.Double Vector3d::Dot(Vector3d,Vector3d)",
+                "System.Double Vector3d::get_sqrMagnitude()",
+                "System.Double System.Math::Sqrt(System.Double)",
+                "Vector3d Vector3d::op_Division(Vector3d,System.Double)",
+                "System.Boolean System.Double::IsNaN(System.Double)",
+                "System.Void Vector3d::Zero()",
+                "Vector3d CelestialBody::get_position()",
+                "Vector3d Vector3d::op_Subtraction(UnityEngine.Vector3,Vector3d)",
+                "Vector3d Vector3d::get_normalized()",
+                "UnityEngine.Transform UnityEngine.Component::get_transform()",
+                "UnityEngine.Vector3 UnityEngine.Transform::get_up()",
+                "UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(UnityEngine.Vector3,System.Single)",
+                "Vector3d Vector3d::op_Addition(Vector3d,UnityEngine.Vector3)",
+                "Vector3d Vector3d::op_Subtraction(Vector3d,UnityEngine.Vector3)",
+                "Vector3d Vector3d::Exclude(Vector3d,Vector3d)",
+                "Vector3d CelestialBody::getRFrmVel(Vector3d)",
+                "System.Void Vessel::UpdateDistanceTraveled()"
+              ]
+            },
+            {
+              "signature": "System.Void Vessel::UpdateCaches()",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Int32 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Count()",
+                "System.Void Vessel::UpdateCaches()",
+                "System.Int32 System.Collections.Generic.List\u00601\u003CProtoPartSnapshot\u003E::get_Count()",
+                "System.Void Vessel::RebuildCrewList()",
+                "System.Void Vessel::UpdateResourceSets()",
+                "System.Void System.Collections.Generic.List\u00601\u003CPartModule\u003E::Clear()",
+                "!0 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Item(System.Int32)",
+                "System.Void System.Collections.Generic.List\u00601\u003CPartModule\u003E::AddRange(System.Collections.Generic.IEnumerable\u00601\u003C!0\u003E)"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "VesselPrecalculate",
+          "fields": [],
+          "methods": [
+            {
+              "signature": "System.Void VesselPrecalculate::FixedUpdate()",
+              "visibility": "public",
+              "virtualMethod": false,
+              "calls": [
+                "System.Void VesselPrecalculate::MainPhysics(System.Boolean)"
+              ]
+            },
+            {
+              "signature": "System.Void VesselPrecalculate::GoOnRails()",
+              "visibility": "public",
+              "virtualMethod": true,
+              "calls": [
+                "System.Void VesselPrecalculate::GoOnRails()",
+                "System.Boolean Vector3d::IsZero()",
+                "System.Void VesselPrecalculate::ApplyVelocityCorrection()",
+                "System.Void VesselPrecalculate::CalculatePhysicsStats()",
+                "CelestialBody Vessel::get_mainBody()",
+                "System.Void OrbitDriver::TrackRigidbody(CelestialBody,System.Double)",
+                "System.Void Vector3d::Zero()"
+              ]
+            },
+            {
+              "signature": "System.Void VesselPrecalculate::GoOffRails()",
+              "visibility": "public",
+              "virtualMethod": true,
+              "calls": []
+            },
+            {
+              "signature": "System.Void VesselPrecalculate::CalculateGravity()",
+              "visibility": "public",
+              "virtualMethod": true,
+              "calls": [
+                "CelestialBody Vessel::get_mainBody()",
+                "Vector3d FlightGlobals::getGeeForceAtPosition(Vector3d,CelestialBody)",
+                "System.Void VesselPrecalculate::CalculateGravity()",
+                "System.Void Vessel::IgnoreGForces(System.Int32)",
+                "System.Void VesselPrecalculate::StartEasing()",
+                "System.Void VesselPrecalculate::StopEasing()",
+                "System.Boolean Vessel::get_LandedOrSplashed()",
+                "System.Boolean UnityEngine.Object::op_Equality(UnityEngine.Object,UnityEngine.Object)",
+                "Orbit Vessel::get_orbit()",
+                "System.Double PhysicsGlobals::get_OrbitDriftAltThreshold()",
+                "Vector3d CelestialBody::get_position()",
+                "Vector3d Vector3d::op_Subtraction(Vector3d,Vector3d)",
+                "System.Double Orbit::GetOrbitalStateVectorsAtUT(System.Double,Vector3d\u0026,Vector3d\u0026)",
+                "Vector3d Orbit::GetRotFrameVelAtPos(CelestialBody,Vector3d)",
+                "System.Void Vector3d::Swizzle()",
+                "System.Double Vector3d::get_sqrMagnitude()",
+                "System.Double PhysicsGlobals::get_OrbitDriftSqrThreshold()",
+                "Vector3d Vector3d::op_Addition(Vector3d,Vector3d)",
+                "Vector3d Vector3d::op_Multiply(Vector3d,System.Double)",
+                "System.Void Vector3d::Zero()",
+                "System.Boolean VectorExtensions::IsInvalid(Vector3d)",
+                "System.Int32 PhysicsGlobals::get_OrbitDriftFramesToWait()",
+                "Vector3d FlightGlobals::getCoriolisAcc(Vector3d,CelestialBody)",
+                "Vector3d FlightGlobals::getCentrifugalAcc(Vector3d,CelestialBody)",
+                "Vector3d Orbit::GetRotFrameVel(CelestialBody)"
+              ]
+            },
+            {
+              "signature": "System.Void VesselPrecalculate::CalculatePhysicsStats()",
+              "visibility": "public",
+              "virtualMethod": true,
+              "calls": [
+                "System.Void VesselPrecalculate::CalculatePhysicsStats()",
+                "UnityEngine.Transform Vessel::get_ReferenceTransform()",
+                "System.Collections.Generic.List\u00601\u003CPart\u003E Vessel::get_Parts()",
+                "System.Int32 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Count()",
+                "UnityEngine.Quaternion UnityEngine.Transform::get_rotation()",
+                "UnityEngine.QuaternionD UnityEngine.QuaternionD::op_Implicit(UnityEngine.Quaternion)",
+                "UnityEngine.QuaternionD UnityEngine.QuaternionD::Inverse(UnityEngine.QuaternionD)",
+                "Vector3d Vector3d::get_zero()",
+                "System.Void UnityEngine.Physics::SyncTransforms()",
+                "!0 System.Collections.Generic.List\u00601\u003CPart\u003E::get_Item(System.Int32)",
+                "System.Boolean UnityEngine.Object::op_Inequality(UnityEngine.Object,UnityEngine.Object)",
+                "UnityEngine.Vector3 UnityEngine.Rigidbody::get_worldCenterOfMass()",
+                "Vector3d Vector3d::op_Implicit(UnityEngine.Vector3)",
+                "Vector3d Vector3d::op_Multiply(Vector3d,System.Double)",
+                "Vector3d Vector3d::op_Addition(Vector3d,Vector3d)",
+                "UnityEngine.Vector3 UnityEngine.Rigidbody::get_velocity()",
+                "UnityEngine.Vector3 UnityEngine.Rigidbody::get_angularVelocity()",
+                "Vector3d UnityEngine.QuaternionD::op_Multiply(UnityEngine.QuaternionD,Vector3d)",
+                "Vector3d Krakensbane::GetFrameVelocity()",
+                "UnityEngine.Vector3 Vector3d::op_Implicit(Vector3d)",
+                "UnityEngine.Vector3 UnityEngine.Transform::InverseTransformPoint(UnityEngine.Vector3)",
+                "System.Boolean Vector3d::op_Inequality(Vector3d,Vector3d)",
+                "UnityEngine.Matrix4x4 UnityEngine.Matrix4x4::get_zero()",
+                "UnityEngine.Matrix4x4 UnityEngine.Matrix4x4::get_identity()",
+                "UnityEngine.Quaternion UnityEngine.QuaternionD::op_Implicit(UnityEngine.QuaternionD)",
+                "UnityEngine.Vector3 UnityEngine.Rigidbody::get_inertiaTensor()",
+                "UnityEngine.Matrix4x4 KSPUtil::ToDiagonalMatrix2(UnityEngine.Vector3,UnityEngine.Matrix4x4\u0026)",
+                "UnityEngine.Transform UnityEngine.Component::get_transform()",
+                "UnityEngine.Quaternion UnityEngine.Quaternion::op_Multiply(UnityEngine.Quaternion,UnityEngine.Quaternion)",
+                "UnityEngine.Quaternion UnityEngine.Rigidbody::get_inertiaTensorRotation()",
+                "UnityEngine.Quaternion UnityEngine.Quaternion::Inverse(UnityEngine.Quaternion)",
+                "UnityEngine.Vector3 UnityEngine.Vector3::get_zero()",
+                "UnityEngine.Vector3 UnityEngine.Vector3::get_one()",
+                "UnityEngine.Matrix4x4 UnityEngine.Matrix4x4::TRS(UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Vector3)",
+                "UnityEngine.Matrix4x4 UnityEngine.Matrix4x4::op_Multiply(UnityEngine.Matrix4x4,UnityEngine.Matrix4x4)",
+                "System.Void KSPUtil::Add(UnityEngine.Matrix4x4\u0026,UnityEngine.Matrix4x4\u0026)",
+                "UnityEngine.Vector3 UnityEngine.Rigidbody::get_position()",
+                "Vector3d Vector3d::op_Subtraction(UnityEngine.Vector3,Vector3d)",
+                "UnityEngine.Vector3 UnityEngine.Transform::InverseTransformDirection(UnityEngine.Vector3)",
+                "System.Single UnityEngine.Rigidbody::get_mass()",
+                "System.Single UnityEngine.Vector3::get_sqrMagnitude()",
+                "System.Void KSPUtil::ToDiagonalMatrix2(System.Single,UnityEngine.Matrix4x4\u0026)",
+                "UnityEngine.Vector3 UnityEngine.Vector3::op_Multiply(System.Single,UnityEngine.Vector3)",
+                "System.Void KSPUtil::OuterProduct2(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Matrix4x4\u0026)",
+                "Vector3d KSPUtil::Diag(UnityEngine.Matrix4x4)",
+                "System.Void VectorExtensions::Zero(UnityEngine.Vector3)",
+                "System.Boolean Vessel::get_LandedOrSplashed()",
+                "System.Boolean OrbitDriver::get_Ready()",
+                "System.Void Orbit::Init()",
+                "System.Void OrbitDriver::updateFromParameters(System.Boolean)",
+                "CelestialBody Vessel::get_mainBody()",
+                "Vector3d CelestialBody::get_position()",
+                "UnityEngine.Vector3 UnityEngine.Transform::TransformPoint(UnityEngine.Vector3)",
+                "UnityEngine.Vector3 UnityEngine.Rigidbody::GetPointVelocity(UnityEngine.Vector3)",
+                "UnityEngine.Vector3 UnityEngine.Quaternion::op_Multiply(UnityEngine.Quaternion,UnityEngine.Vector3)",
+                "System.Void Vector3d::Zero()"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ConfigNode",
+          "fields": [],
+          "methods": []
+        }
+      ]
+    },
+    {
+      "file": "Assembly-CSharp-firstpass.dll",
+      "sha256": "058da112ebb5c6c1ef7abc512bb44ffc415951d0c5f0a36f8dfc6c6445db4a34",
+      "identity": "Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "runtime": "v4.0.30319",
+      "references": [
+        "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "UnityEngine.UnityWebRequestWWWModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "TDx.TDxInput, Version=1.1.0.0, Culture=neutral, PublicKeyToken=3bbf7d14b78dc9f5",
+        "UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "types": []
+    },
+    {
+      "file": "UnityEngine.CoreModule.dll",
+      "sha256": "36d48c2068f85117781e380375d027ef0942f3b0c98654282603649106d76a72",
+      "identity": "UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "runtime": "v2.0.50727",
+      "references": [
+        "mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "UnityEngine.SharedInternalsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      ],
+      "types": []
+    },
+    {
+      "file": "UnityEngine.PhysicsModule.dll",
+      "sha256": "b9554e5b8c17d50ba942a028424674c2356668fea4f5e5f2c71238c271f236d8",
+      "identity": "UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "runtime": "v2.0.50727",
+      "references": [
+        "mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "UnityEngine.SharedInternalsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+        "UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      ],
+      "types": []
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+template_instance/
+instances/
+.research/
+.tools/
+artifacts/
+**/bin/
+**/obj/
+.vs/
+*.user
+local.settings.json
+Directory.Build.local.props
+**/Library/
+**/Temp/
+**/Logs/
+**/UserSettings/
+**/__pycache__/

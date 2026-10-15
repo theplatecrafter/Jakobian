@@ -1,0 +1,64 @@
+[
+  {
+    "repository": "Kopernicus/Kopernicus",
+    "branch": "master",
+    "commit": "ed6b8e3bf03a7682894109a699431392d93b3882",
+    "commit_date": "2026-10-12T01:15:38Z",
+    "archive_url": "https://codeload.github.com/Kopernicus/Kopernicus/zip/ed6b8e3bf03a7682894109a699431392d93b3882",
+    "archive_sha256": "38e04bae1d87ab04657457dae51b1909d461635988093f5a0d62b32d1c3f6711",
+    "license_metadata": {
+      "key": "lgpl-3.0",
+      "name": "GNU Lesser General Public License v3.0",
+      "spdx_id": "LGPL-3.0",
+      "url": "https://api.github.com/licenses/lgpl-3.0",
+      "node_id": "MDc6TGljZW5zZTEy"
+    },
+    "local_directory": ".research/Kopernicus"
+  },
+  {
+    "repository": "Kopernicus/KopernicusExamples",
+    "branch": "master",
+    "commit": "39c2542be71dd546c82732dcb5447a5c1b6ca015",
+    "commit_date": "2016-10-22T22:32:11Z",
+    "archive_url": "https://codeload.github.com/Kopernicus/KopernicusExamples/zip/39c2542be71dd546c82732dcb5447a5c1b6ca015",
+    "archive_sha256": "334611e366148be26af8279513c4dc61e42e3bb1cf3a3d888df51d581ee41efb",
+    "license_metadata": {
+      "key": "lgpl-3.0",
+      "name": "GNU Lesser General Public License v3.0",
+      "spdx_id": "LGPL-3.0",
+      "url": "https://api.github.com/licenses/lgpl-3.0",
+      "node_id": "MDc6TGljZW5zZTEy"
+    },
+    "local_directory": ".research/KopernicusExamples"
+  },
+  {
+    "repository": "sarbian/ModularFlightIntegrator",
+    "branch": "master",
+    "commit": "03f07cd6e498ed003f84ee97ce976430e6447256",
+    "commit_date": "2021-02-27T16:23:34Z",
+    "archive_url": "https://codeload.github.com/sarbian/ModularFlightIntegrator/zip/03f07cd6e498ed003f84ee97ce976430e6447256",
+    "archive_sha256": "0893690257e5999566ea7e4c21eb2d1e971b363b49d7bc74e313549b9939432b",
+    "license_metadata": null,
+    "local_directory": ".research/ModularFlightIntegrator"
+  },
+  {
+    "repository": "KSPModdingLibs/KSPCommunityFixes",
+    "branch": "master",
+    "commit": "bc2e03ad1d1b0dcdb1d7d91b8f0f2d3d21cdb63a",
+    "commit_date": "2026-09-09T23:27:57Z",
+    "archive_url": "https://codeload.github.com/KSPModdingLibs/KSPCommunityFixes/zip/bc2e03ad1d1b0dcdb1d7d91b8f0f2d3d21cdb63a",
+    "archive_sha256": "706770e33f1710ab8d23422ac4518e40c57f0099a1e759524ec35109904f755f",
+    "license_metadata": null,
+    "local_directory": ".research/KSPCommunityFixes"
+  },
+  {
+    "repository": "sarbian/ModuleManager",
+    "branch": "master",
+    "commit": "54b6de3d28175e0be3acd5bfc5454e232ed7dd78",
+    "commit_date": "2026-09-22T18:36:17Z",
+    "archive_url": "https://codeload.github.com/sarbian/ModuleManager/zip/54b6de3d28175e0be3acd5bfc5454e232ed7dd78",
+    "archive_sha256": "94ab8f9da3d5d19d3b11b2645d6b563c6cc9f19a4f745893bafed7d03963f670",
+    "license_metadata": null,
+    "local_directory": ".research/ModuleManager"
+  }
+]
