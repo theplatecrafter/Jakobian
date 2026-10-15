@@ -11,4 +11,5 @@ while ($true) {
 }
 $taskMarker = (Test-Path -LiteralPath $LogPath) -and [IO.File]::ReadAllText($LogPath).Contains('[Jakobian] BOOT_PROBE_PASS')
 $taskFlightMarker = (Test-Path -LiteralPath $LogPath) -and [IO.File]::ReadAllText($LogPath).Contains('[Jakobian] FLIGHT_SUITE_PASS')
-@{ processDisposition = $taskResult; bootstrapMarker = $taskMarker; flightSuiteMarker = $taskFlightMarker; log = $LogPath } | ConvertTo-Json | Set-Content -LiteralPath ($LogPath + '.result.json')
+$taskRegressionMarker = (Test-Path -LiteralPath $LogPath) -and [IO.File]::ReadAllText($LogPath).Contains('[Jakobian] REGRESSION_SUITE_PASS')
+@{ processDisposition = $taskResult; bootstrapMarker = $taskMarker; flightSuiteMarker = $taskFlightMarker; regressionSuiteMarker = $taskRegressionMarker; log = $LogPath } | ConvertTo-Json | Set-Content -LiteralPath ($LogPath + '.result.json')

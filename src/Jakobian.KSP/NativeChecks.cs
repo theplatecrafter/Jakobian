@@ -8,6 +8,7 @@ namespace Jakobian.KSP
     {
         internal static void Run()
         {
+            TorusMeshChecks.Run();
             if (SystemLoader.Error != null) throw new InvalidOperationException(SystemLoader.Error);
             if (SystemLoader.Definitions.Count > 0 && !SystemLoader.Bound) throw new InvalidOperationException("System binding incomplete.");
             CelestialBody kerbin = FlightGlobals.Bodies.Single(b => b.bodyName == "Kerbin");
@@ -28,7 +29,7 @@ namespace Jakobian.KSP
                 Debug.Log("[Jakobian] TERRAIN_BIND " + pair.Key + " kind=" + modifier.shapeKind + " axisX=" + modifier.axisX + " enabled=" + modifier.modEnabled);
                 foreach (var direction in new[] { new global::Vector3d(1, 0, 0), new global::Vector3d(0, 1, 0), new global::Vector3d(0, 0, 1), new global::Vector3d(1, 1, 1) })
                 {
-                    double expected = pair.Value.Shape.RadiusAt(new Jakobian.Core.Vector3d(direction.x, direction.y, direction.z));
+                    double expected = pair.Value.Surface.RadiusAt(new Jakobian.Core.Vector3d(direction.x, direction.y, direction.z));
                     double actual = body.pqsController.GetSurfaceHeight(direction.normalized);
                     if (Math.Abs(expected - actual) > .01) throw new InvalidOperationException(pair.Key + " PQS height mismatch: " + actual + " expected " + expected);
                 }
@@ -48,7 +49,10 @@ namespace Jakobian.KSP
                     double nativeFloor = body.pqsController.GetSurfaceHeight(local.normalized);
                     if (Math.Abs(context.LocalSurface.Clearance - (local.magnitude - nativeFloor)) > .01)
                         throw new InvalidOperationException("Context ground mismatch: " + pair.Key);
+                    if (context.BiomeName != ScienceUtil.GetExperimentBiome(body,coordinates.x,coordinates.y))
+                        throw new InvalidOperationException("Native science biome mismatch: " + pair.Key);
                 }
+                if (pair.Value.Assets.BiomePixels != null) MappedSurfaceChecks.Run(body,pair.Value);
                 Debug.Log("[Jakobian] NATIVE_CONTEXT_PASS " + pair.Key + " frame=Y/Z chart=stock down=gravity ground=radial");
                 Debug.Log("[Jakobian] NATIVE_BODY_PASS " + pair.Key + " PQS=analytic shape=" + pair.Value.Shape.Kind + " vertices=" + mesh.vertexCount);
             }

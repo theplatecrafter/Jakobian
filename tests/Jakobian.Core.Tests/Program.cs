@@ -54,7 +54,144 @@ internal static class Program
         Assert(!ReferencePhysics.TryPointGravity(zero, 1, out _), "point singularity rejected");
         RadialChecks();
         SurfaceContextChecks();
+        SolidChecks();
+        MapChecks();
         Console.WriteLine("PASS: " + checks + " analytic geometry and frame checks. No KSP flight validation implied.");
+    }
+
+    private static void MapChecks()
+    {
+        var bytes = new byte[4*3*4];
+        for (int y=0;y<3;y++) for (int x=0;x<4;x++)
+        {
+            byte value = (byte)(y==0 ? 0 : y==2 ? 255 : 10+x*40);
+            int i=(y*4+x)*4; bytes[i]=bytes[i+1]=bytes[i+2]=value; bytes[i+3]=255;
+        }
+        var map = new RadialMap(4,3,bytes);
+        Vector3d Direction(double u, double v) => new Vector3d(Math.Cos((v-.5)*Math.PI)*Math.Cos(u*2*Math.PI),Math.Sin((v-.5)*Math.PI),Math.Cos((v-.5)*Math.PI)*Math.Sin(u*2*Math.PI));
+        Near(map.Bilinear(Direction(.125,.5)).R,30.0/255,1e-12,"map independent interpolation oracle");
+        Near(map.Bilinear(Direction(.875,.5)).R,70.0/255,1e-12,"map interpolates across periodic seam");
+        Near(map.Bilinear(new Vector3d(1,0,-1e-20)).R,10.0/255,1e-12,"rounded negative seam wraps to first column");
+        for (int y=0;y<=64;y++) for(int x=0;x<=128;x++)
+        {
+            MapColor color=map.Bilinear(Direction((double)x/128,(double)y/64));
+            Assert(color.R>=0 && color.R<=1,"complete scaled grid stays within sampler bounds");
+        }
+        Assert(map.Nearest(Direction(.20,.5))==0x323232ff,"biomes use nearest palette, never blended colors");
+        Near(map.Bilinear(Direction(0,.25)).R,5.0/255,1e-12,"latitude interpolation includes pole endpoints");
+        bytes[0]=200;
+        Near(map.Bilinear(new Vector3d(0,-1,0)).R,0,0,"map owns a defensive copy");
+        bool rejected=false;
+        try { new RadialMap(4,3,bytes); } catch(ArgumentException) { rejected=true; }
+        Assert(rejected,"conflicting pole longitudes rejected");
+        var shape = new RadialShape(RadialShapeKind.Ellipsoid,9000,5500,7000);
+        var terrain = new MappedRadialSurface(shape,map,-50,600);
+        rejected=false;
+        try { new MappedRadialSurface(shape,null,0,1); } catch(ArgumentException) { rejected=true; }
+        Assert(rejected,"nonzero displacement needs map");
+        rejected=false;
+        try { new MappedRadialSurface(shape,map,0,2000); } catch(ArgumentException) { rejected=true; }
+        Assert(rejected,"displacement cannot exceed conservative radial bounds");
+        for (int i=0;i<360;i++)
+        {
+            double u=(i+.123)/360, v=.05+.9*((i*37)%359)/359;
+            Vector3d direction=Direction(u,v);
+            double radius=shape.RadiusAt(direction)-50+600*map.Bilinear(direction).R;
+            Assert(terrain.TrySample(direction*(radius+42),shape.MinimumRadius,out var sample),"mapped radial context");
+            Near(sample.Clearance,42,1e-8,"mapped ground includes height displacement");
+            Near(sample.ReferenceAltitude,radius+42-shape.MinimumRadius,1e-8,"terrain does not move native datum");
+            Assert(radius>=terrain.MinimumRadius && radius<=terrain.BoundingRadius,"mapped bounds contain terrain");
+            Vector3d lonTangent=terrain.SurfacePoint(Direction(u+1e-6,v))-terrain.SurfacePoint(Direction(u-1e-6,v));
+            Vector3d latTangent=terrain.SurfacePoint(Direction(u,v+1e-6))-terrain.SurfacePoint(Direction(u,v-1e-6));
+            Vector3d expected=Vector3d.Cross(latTangent,lonTangent); expected/=expected.Length;
+            VectorNear(sample.Normal,expected,2e-5,"mapped normal independent longitude/latitude stencil");
+            Near(map.Bilinear(Direction(u+1,v)).R,map.Bilinear(direction).R,1e-12,"periodic longitude wrap");
+        }
+        Assert(!terrain.TrySample(new Vector3d(),5500,out _),"mapped centre remains undefined");
+    }
+
+    private static void SolidChecks()
+    {
+        var torus = new AnalyticSolid(1000, 200);
+        var sphere = new AnalyticSolid(500);
+        Assert(torus.Classify(new Vector3d(), 1e-6) == SolidLocation.Outside, "torus centre is empty");
+        Assert(torus.Classify(new Vector3d(1000, 0, 0), 1e-6) == SolidLocation.Inside, "torus tube is solid");
+        SolidRayHit[] hits;
+        Assert(torus.RaycastAll(new Vector3d(-2000, 0, 0), new Vector3d(1, 0, 0), 4000, 1e-5, 2048, out hits) == GeometryQueryStatus.Complete && hits.Length == 4, "four torus crossings");
+        for (int i = 0; i < 4; i++)
+        {
+            Near(hits[i].Distance, new[] { 800d, 1200, 2800, 3200 }[i], 1e-5, "torus crossing oracle");
+            Assert(hits[i].Crossing == (i % 2 == 0 ? BoundaryCrossing.Enter : BoundaryCrossing.Exit), "entry exit orientation");
+        }
+        Assert(torus.RaycastAll(new Vector3d(0, -2000, 0), new Vector3d(0, 1, 0), 4000, 1e-5, 2048, out hits) == GeometryQueryStatus.Complete && hits.Length == 0, "hole transit has no ground hit");
+        Assert(torus.RaycastAll(new Vector3d(1200, -500, 0), new Vector3d(0, 1, 0), 1000, 1e-5, 2048, out hits) == GeometryQueryStatus.Complete && hits.Length == 1 && hits[0].Crossing == BoundaryCrossing.Touch, "torus tangent touch");
+        Assert(torus.RaycastAll(new Vector3d(-2000, 0, 0), new Vector3d(1, 0, 0), 4000, 1e-5, 1, out hits) == GeometryQueryStatus.BudgetExceeded && hits.Length == 0, "budget failure exposes no partial hit set");
+        Assert(sphere.RaycastAll(new Vector3d(), new Vector3d(4, 0, 0), 1000, 1e-5, 512, out hits) == GeometryQueryStatus.Complete && hits.Length == 1, "inside sphere ray");
+        Near(hits[0].Distance, 500, 1e-5, "direction normalized into metre distances");
+        Assert(hits[0].Crossing == BoundaryCrossing.Exit, "inside sphere exit");
+        Assert(torus.RaycastAll(new Vector3d(), new Vector3d(), 1000, 1e-5, 512, out hits) == GeometryQueryStatus.InvalidInput, "invalid ray direction");
+        Assert(torus.RaycastAll(new Vector3d(-1e11, 0, 0), new Vector3d(1, 0, 0), 2e11, 1e-5, 2048, out hits) == GeometryQueryStatus.Indeterminate && hits.Length == 0, "unresolvable coordinate precision explicitly rejected");
+        var tinyHole = new AnalyticSolid(1000, 999.999999);
+        Assert(tinyHole.RaycastAll(new Vector3d(-3000, 0, 0), new Vector3d(1, 0, 0), 6000, 1e-5, 2048, out hits) == GeometryQueryStatus.Indeterminate && hits.Length == 0, "unresolvable hole is not silently closed by merging crossings");
+        var random = new Random(441023);
+        for (int i = 0; i < 2000; i++)
+        {
+            double y = random.NextDouble() * 600 - 300, z = random.NextDouble() * 3000 - 1500;
+            var expected = new System.Collections.Generic.List<double>();
+            if (Math.Abs(y) < 200)
+            {
+                double tube = Math.Sqrt(200 * 200 - y * y), outer = 1000 + tube, inner = 1000 - tube;
+                if (Math.Abs(z) < outer)
+                {
+                    double x = Math.Sqrt(outer * outer - z * z); expected.Add(2000 - x); expected.Add(2000 + x);
+                    if (Math.Abs(z) < inner) { x = Math.Sqrt(inner * inner - z * z); expected.Add(2000 - x); expected.Add(2000 + x); }
+                }
+            }
+            expected.Sort();
+            Assert(torus.RaycastAll(new Vector3d(-2000, y, z), new Vector3d(1, 0, 0), 4000, 1e-5, 2048, out hits) == GeometryQueryStatus.Complete && hits.Length == expected.Count, "independent annular cross-section crossing count");
+            for (int j = 0; j < hits.Length; j++) Near(hits[j].Distance, expected[j], 1e-5, "annular cross-section intersection oracle");
+        }
+        for (int i = 0; i < 1000; i++)
+        {
+            double u = random.NextDouble() * Math.PI * 2, v = .1 + random.NextDouble() * (Math.PI - .2);
+            double radial = 1000 + 200 * Math.Cos(v), y = 200 * Math.Sin(v);
+            var origin = new Vector3d(radial * Math.Cos(u), -500, radial * Math.Sin(u));
+            Assert(torus.RaycastAll(origin, new Vector3d(0, 7, 0), 1000, 1e-5, 2048, out hits) == GeometryQueryStatus.Complete && hits.Length == 2, "parametric vertical tube ray");
+            Near(hits[0].Distance, 500 - y, 1e-5, "parametric tube lower crossing");
+            Near(hits[1].Distance, 500 + y, 1e-5, "parametric tube upper crossing");
+            foreach (var hit in hits)
+            {
+                Near(torus.SignedDistance(hit.Point), 0, 1e-5, "ray boundary oracle");
+                VectorNear(hit.Point, origin + new Vector3d(0, 1, 0) * hit.Distance, 1e-7, "ray distance reconstructs point");
+            }
+        }
+        const int tu = 8, tv = 4, n = 8;
+        var edges = new System.Collections.Generic.Dictionary<string, int>();
+        for (int u = 0; u < tu; u++) for (int v = 0; v < tv; v++)
+        {
+            var patch = TorusMeshBaker.Build(1000, 200, u, v, tu, tv, n);
+            var next = TorusMeshBaker.Build(1000, 200, (u + 1) % tu, v, tu, tv, n);
+            for (int j = 0; j <= n; j++) VectorNear(patch.Vertices[n * (n + 1) + j] + patch.Anchor, next.Vertices[j] + next.Anchor, 1e-10, "periodic patch U seam");
+            next = TorusMeshBaker.Build(1000, 200, u, (v + 1) % tv, tu, tv, n);
+            for (int j = 0; j <= n; j++) VectorNear(patch.Vertices[j * (n + 1) + n] + patch.Anchor, next.Vertices[j * (n + 1)] + next.Anchor, 1e-10, "periodic patch V seam");
+            for (int k = 0; k < patch.Vertices.Length; k++) Near(torus.SignedDistance(patch.Vertices[k] + patch.Anchor), 0, 1e-10, "baked vertex on exact boundary");
+            for (int k = 0; k < patch.Triangles.Length; k += 3)
+            {
+                int a = patch.Triangles[k], b = patch.Triangles[k + 1], c = patch.Triangles[k + 2];
+                Vector3d normal = Vector3d.Cross(patch.Vertices[b] - patch.Vertices[a], patch.Vertices[c] - patch.Vertices[a]);
+                Assert(Vector3d.Dot(normal, patch.Normals[a]) > 0, "torus triangles face out of solid, including inner wall");
+                int[] corners = { a, b, c };
+                for (int e = 0; e < 3; e++)
+                {
+                    int id1 = Weld(corners[e]), id2 = Weld(corners[(e + 1) % 3]);
+                    string key = Math.Min(id1, id2) + ":" + Math.Max(id1, id2);
+                    edges.TryGetValue(key, out int count); edges[key] = count + 1;
+                }
+                int Weld(int index) => ((u * n + index / (n + 1)) % (tu * n)) * (tv * n) + ((v * n + index % (n + 1)) % (tv * n));
+            }
+        }
+        foreach (int count in edges.Values) Assert(count == 2, "watertight welded edge has two incident triangles");
+        Assert(tu * tv * n * n - edges.Count + tu * tv * n * n * 2 == 0, "closed torus Euler characteristic zero");
     }
 
     private static void SurfaceContextChecks()

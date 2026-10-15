@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-15",
+  "kind": "Read-only local reference inspection; no Git commands, source copying or reference-workspace edits",
+  "referenceRoot": "C:\\Users\\Hans\\Documents\\programming\\Ring World KSP mods\\Ring World KSP",
+  "files": [
+    {
+      "path": "src/Ringworld.Core/Geometry.cs",
+      "sha256": "e4e7b304ea3a44f483ada1d636ccc7b8384aabd705b9c7f2ce4c0de9fbe90184"
+    },
+    {
+      "path": "src/Ringworld.KSP/RingworldFlight.cs",
+      "sha256": "002cc77bb1aa525a55674caffa7c7bec61583730071f55110cfd02388715da54"
+    },
+    {
+      "path": "src/Ringworld.KSP/Settings.cs",
+      "sha256": "873c69dd19a59405f64abcce606879f71070f00ad0dab37489d32dde88f9f8c8"
+    }
+  ],
+  "observations": [
+    "Geometry distinguishes inertial and rotating velocity and includes Coriolis/centrifugal terms.",
+    "Flight coordinator deduplicates rigidbodies and applies desired-minus-existing stock acceleration with mass-independent force mode.",
+    "Chart entry/exit code carries position, velocity, orientation and angular velocity; framework needs general domain/frame ownership rather than a single ring assumption."
+  ],
+  "limitations": [
+    "Local source inspection is not independent runtime validation.",
+    "No Ringworld source has been copied into the current Jakobian changes.",
+    "These findings do not establish Jakobian centrifuge or arbitrary-gravity support."
+  ]
+}

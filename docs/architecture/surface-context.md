@@ -6,7 +6,7 @@ Development 0.3.0 introduces a first runtime query service for the supported rad
 
 - **Gravity vertical:** the direction opposite physical gravitational acceleration. Current bodies use native central point gravity, so up is radial. The navball's level horizon and gravity-relative compass should use this vertical.
 - **Geometric normal:** the direction away from solid terrain, perpendicular to its local boundary. This describes contact orientation and slope. It is generally different from gravity vertical on an ellipsoid, cube or peanut.
-- **Ground below:** the first surface encountered along a declared downward query. The current radial backend can answer the centre-directed ray exactly. Its signed clearance is `length(position) - shape.RadiusAt(direction)`. It is not Euclidean nearest distance or normal displacement.
+- **Ground below:** the first surface encountered along a declared downward query. The current radial backend can answer the centre-directed ray exactly. Its signed clearance is `length(position) - terrain.RadiusAt(direction)`. It is not Euclidean nearest distance or normal displacement.
 
 Reference altitude remains centre distance minus native reference radius. It may be kilometres above zero while the craft is touching ground. Stock datum/terrain altimeter modes retain their existing meanings; the flight readout labels both values explicitly. Do not replace datum altitude globally with terrain clearance or point-gravity acceleration with the terrain normal.
 
@@ -14,13 +14,13 @@ Rotating habitats and custom fields will require an explicit apparent-vertical p
 
 ## Implemented queries
 
-`RadialSurfaceQuery.TrySample` is pure core code. Inputs use body-local Y-up metres. It returns the radial ground point, analytic outward normal, radial clearance, datum altitude, latitude/longitude, slope and compass basis. Normal derivatives are analytic for all four current shape families. The centre and nonfinite inputs fail. At a pole the result explicitly has `HasHeading = false`; north/east are zero instead of an invented compass direction.
+`RadialSurfaceQuery.TrySample` is pure core code. Inputs use body-local Y-up metres. It returns the radial ground point, analytic outward normal, radial clearance, datum altitude, latitude/longitude, slope and compass basis. Normal derivatives are analytic for all four base shape families. Development 0.5.0 adds `MappedRadialSurface`: the same map-displaced radius drives PQS, the scaled mesh and shared queries; displaced normals use symmetric tangent derivatives. See [radial maps](../modders/radial-maps.md). The centre and nonfinite inputs fail. At a pole the result explicitly has `HasHeading = false`; north/east are zero instead of an invented compass direction.
 
 `Jakobian.KSP.BodyQueries.Sample` adapts that result to a live body and current floating-origin world position. It accepts only the registered live Jakobian body instances, never a stock body or a same-named prefab. It returns an explicit status; default output fields are not usable unless the status is `Available`.
 
 The result includes stable body/surface IDs, local geometry, world ground/normal/gravity/up/north/east, and the native corotation velocity evaluated at the query point relative to the body's translating origin. The latter is not the body's orbital velocity or a rigidbody velocity in the Krakensbane frame. `UniversalTime` and `UnityFrame` identify the snapshot; neither is a durable origin or surface-anchor identity. Re-query after a frame/origin/UT change. Calls touching game objects run on the Unity main thread. The flight panel and native-cache comparisons query at vessel centre of mass; camera queries use the actual camera endpoint.
 
-The current environment provider explicitly reports airless/dry, zero pressure Pa and zero gas density kg/m³. This does not set ambient radiation/temperature to zero, provide water physics, assign a biome or invent resource abundance.
+The current environment provider explicitly reports airless/dry, zero pressure Pa and zero gas density kg/m³. This does not set ambient radiation/temperature to zero, provide water physics or invent resource abundance. The sample separately supplies a `BiomeName`, using the authored Atlas palette or the retained native template map on the older fixtures.
 
 KSP's `CelestialFrame` uses Z-up while Unity and PQS use Y-up. Both vector transforms swizzle X/Z/Y before and after the native frame operation. Native checks compare positions/coordinates to independent `CelestialBody` APIs, including oblique latitudes/longitudes and a near-pole point.
 
@@ -35,7 +35,7 @@ KSP's `CelestialFrame` uses Z-up while Unity and PQS use Y-up. Both vector trans
 | Air / fluids | native airless/dry behavior, explicit query capability | per-part volume/datum/flow, thermal/intake/aero/buoyancy adapters |
 | Resources | create a native planetary abundance request using shared body/index/lat/lon and native datum altitude | custom chart biomes, resource maps, scanning and extraction on arbitrary surfaces |
 
-`CreatePlanetaryResourceRequest` is a coordinate bridge. `ResourceMap` retains abundance, biome, scanning and lock behavior. The caller names the resource and chooses `CheckForLock`. No global harvesting/intake/resource patch is installed. The current template-derived biome data is not a custom Jakobian biome-map implementation. Calling the native abundance lookup does not certify drilling, scanners or resource balance.
+`CreatePlanetaryResourceRequest` is a coordinate bridge. `ResourceMap` retains abundance, biome, scanning and lock behavior. The caller names the resource and chooses `CheckForLock`. No global harvesting/intake/resource patch is installed. Development 0.5.0 supplies an authored radial biome map on Atlas through native `CBAttributeMapSO.GetAtt`; older fixtures retain their template-derived biome data. Native science and resource lookup are checked against the shared biome sample. Calling the native abundance lookup does not certify drilling, scanners or resource balance.
 
 ## Camera constraints and scope
 

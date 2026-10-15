@@ -1,6 +1,6 @@
 # Terrain, maps, biomes and resources
 
-Status: proposed specification. Jakobian configures native spherical `PQS` through its own standalone loader; supported modifier semantics must be implemented and tested.
+Status: proposed full specification. Development 0.5.0 implements the restricted [radial map and biome contract](../modders/radial-maps.md); the general chart/volume pipeline below remains future work. Jakobian configures native spherical `PQS` through its own standalone loader; supported modifier semantics must be implemented and tested.
 
 ## Terrain pipeline
 

@@ -1,0 +1,15 @@
+{
+  "target": "StandaloneWindows64",
+  "editor": "2019.4.18f1",
+  "sources": [
+    {
+      "path": "unity/Jakobian.Assets/Assets/JakobianMappedTerrain.shader",
+      "sha256": "681f1e616cfd76785ce88005ce34676cf5093da466e532c705f274cfbdaf4009"
+    },
+    {
+      "path": "unity/Jakobian.Assets/Assets/Editor/BuildBundles.cs",
+      "sha256": "b5886343d64798626452a6a05cd83de9e443fbfc6c1050bba97468dbabb2bc58"
+    }
+  ],
+  "bundleSha256": "3dd9409d1258a87f42ca5d9f4fc9f62fee0ee93662ae380a105994c2345f5d43"
+}

@@ -1,0 +1,364 @@
+{
+  "version": "0.5.0",
+  "status": "validated-development-slice",
+  "game": "KSP 1.12.5 / 03190 Windows x64",
+  "unity": "2019.4.18f1",
+  "build": {
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "coreAssertions": 122589,
+    "deployedFilesMatchBuild": true,
+    "templateManagedAssembliesUnchanged": true,
+    "originalFourBodyConfigPreserved": true,
+    "deployedAssetCount": 9,
+    "deployedFilesMatchTestedSnapshots": true
+  },
+  "deployment": {
+    "version": "0.5.0.0",
+    "files": [
+      {
+        "sha256": "3c11b97a82eeb7f628b317fb799ad1ebb4c53db0a3cdb04ea6124bf28cd1787c",
+        "path": "GameData/Jakobian/Plugins/Jakobian.dll"
+      },
+      {
+        "sha256": "a306f731c6e654778604b7a79dcda5250c2ceabba3c763078bd6d59c6c57c194",
+        "path": "GameData/Jakobian/Plugins/Jakobian.Core.dll"
+      },
+      {
+        "sha256": "3dd9409d1258a87f42ca5d9f4fc9f62fee0ee93662ae380a105994c2345f5d43",
+        "path": "GameData/Jakobian/Assets/jakobian-shaders"
+      },
+      {
+        "sha256": "a39155aac7c798620584e56a4cfaf849255c74856448f24d4ee81bc677967ee7",
+        "path": "GameData/Jakobian/Assets/shader-manifest.json"
+      },
+      {
+        "sha256": "0178646efb7bdaf023fa2a31372b9549bbe219c221bba322cb0a66561a82cd30",
+        "path": "GameData/JakobianTestBodies/Atlas.cfg"
+      },
+      {
+        "sha256": "42fb1f3d5fe7b67accef4b2a207c5f6440b711f4daf58e97525daf51b9c8a48c",
+        "path": "GameData/JakobianTestBodies/Bodies.cfg"
+      },
+      {
+        "sha256": "6b56221e1fba04ab36063ab2cd18155e3000ec2e625345cd75da260e8aa4875c",
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-biomes.png"
+      },
+      {
+        "sha256": "011ff6c9cb6b4b5be89388a91d4b5b0de308b2c262c80cec5f40afc66aa8d9ce",
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-color.png"
+      },
+      {
+        "sha256": "c2960616ae1d013f9a65c2f4c782a3bc62594c2c732a4720890ef2af82dbf37f",
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-height.png"
+      }
+    ],
+    "deployedUtc": "2026-10-15T05:01:59.6960329Z"
+  },
+  "boot": {
+    "log": "artifacts/boot/baseline-20261015-003631.log",
+    "sha256": "bbda3b19dac1bdbeaecb19451c8f014a8804f3f26a5c34f23ef9d6a6603b964c",
+    "watchdog": {
+      "flightSuiteMarker": false,
+      "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\boot\\baseline-20261015-003631.log",
+      "regressionSuiteMarker": false,
+      "processDisposition": "exited",
+      "bootstrapMarker": true
+    },
+    "exceptionTokens": 0,
+    "mappedSurfaceSamples": 2520,
+    "biomesReached": 4,
+    "deployment": {
+      "deployedUtc": "2026-10-15T04:36:31.7072611Z",
+      "files": [
+        {
+          "sha256": "4e8ec0789d1b1a0de63ae2b3ee79e42a5c1d9ea708d18da70e1d9e52d34a6960",
+          "path": "GameData/Jakobian/Plugins/Jakobian.dll"
+        },
+        {
+          "sha256": "a306f731c6e654778604b7a79dcda5250c2ceabba3c763078bd6d59c6c57c194",
+          "path": "GameData/Jakobian/Plugins/Jakobian.Core.dll"
+        },
+        {
+          "sha256": "bcab01400c1f966e4d206511b071b1b851a1e95579eeff1b629d728d57f0bc7a",
+          "path": "GameData/Jakobian/Assets/jakobian-shaders"
+        },
+        {
+          "sha256": "53c22a9793594d86722e701ba17c522fa7109249df2ac9b4dd2b8047a2456f2f",
+          "path": "GameData/Jakobian/Assets/shader-manifest.json"
+        },
+        {
+          "sha256": "0178646efb7bdaf023fa2a31372b9549bbe219c221bba322cb0a66561a82cd30",
+          "path": "GameData/JakobianTestBodies/Atlas.cfg"
+        },
+        {
+          "sha256": "42fb1f3d5fe7b67accef4b2a207c5f6440b711f4daf58e97525daf51b9c8a48c",
+          "path": "GameData/JakobianTestBodies/Bodies.cfg"
+        },
+        {
+          "sha256": "6b56221e1fba04ab36063ab2cd18155e3000ec2e625345cd75da260e8aa4875c",
+          "path": "GameData/JakobianTestBodies/Maps/Atlas-biomes.png"
+        },
+        {
+          "sha256": "011ff6c9cb6b4b5be89388a91d4b5b0de308b2c262c80cec5f40afc66aa8d9ce",
+          "path": "GameData/JakobianTestBodies/Maps/Atlas-color.png"
+        },
+        {
+          "sha256": "c2960616ae1d013f9a65c2f4c782a3bc62594c2c732a4720890ef2af82dbf37f",
+          "path": "GameData/JakobianTestBodies/Maps/Atlas-height.png"
+        }
+      ],
+      "version": "0.5.0.0"
+    },
+    "scope": "Initial boot; final startup checks also ran inside the final Atlas and regression suites."
+  },
+  "initialFailure": {
+    "log": "artifacts/boot/baseline-20261015-003327.log",
+    "cause": "tiny negative longitude wrapped to exactly UV=1",
+    "resolved": "explicit endpoint wrap; core seam and complete scaled-grid checks; corrected native startup passed"
+  },
+  "generalBodyRuntime": "not implemented: function programs, nonradial celestial fixture, rotating habitats, mass integration and influence domains remain milestones",
+  "atmosphereAndWater": "not enabled",
+  "preVisualFlight": {
+    "log": "artifacts/flight/all-20261015-003824.log",
+    "deployment": {
+      "deployedUtc": "2026-10-15T04:36:31.7072611Z",
+      "files": [
+        {
+          "sha256": "4e8ec0789d1b1a0de63ae2b3ee79e42a5c1d9ea708d18da70e1d9e52d34a6960",
+          "path": "GameData/Jakobian/Plugins/Jakobian.dll"
+        },
+        {
+          "sha256": "a306f731c6e654778604b7a79dcda5250c2ceabba3c763078bd6d59c6c57c194",
+          "path": "GameData/Jakobian/Plugins/Jakobian.Core.dll"
+        },
+        {
+          "sha256": "bcab01400c1f966e4d206511b071b1b851a1e95579eeff1b629d728d57f0bc7a",
+          "path": "GameData/Jakobian/Assets/jakobian-shaders"
+        },
+        {
+          "sha256": "53c22a9793594d86722e701ba17c522fa7109249df2ac9b4dd2b8047a2456f2f",
+          "path": "GameData/Jakobian/Assets/shader-manifest.json"
+        },
+        {
+          "sha256": "0178646efb7bdaf023fa2a31372b9549bbe219c221bba322cb0a66561a82cd30",
+          "path": "GameData/JakobianTestBodies/Atlas.cfg"
+        },
+        {
+          "sha256": "42fb1f3d5fe7b67accef4b2a207c5f6440b711f4daf58e97525daf51b9c8a48c",
+          "path": "GameData/JakobianTestBodies/Bodies.cfg"
+        },
+        {
+          "sha256": "6b56221e1fba04ab36063ab2cd18155e3000ec2e625345cd75da260e8aa4875c",
+          "path": "GameData/JakobianTestBodies/Maps/Atlas-biomes.png"
+        },
+        {
+          "sha256": "011ff6c9cb6b4b5be89388a91d4b5b0de308b2c262c80cec5f40afc66aa8d9ce",
+          "path": "GameData/JakobianTestBodies/Maps/Atlas-color.png"
+        },
+        {
+          "sha256": "c2960616ae1d013f9a65c2f4c782a3bc62594c2c732a4720890ef2af82dbf37f",
+          "path": "GameData/JakobianTestBodies/Maps/Atlas-height.png"
+        }
+      ],
+      "version": "0.5.0.0"
+    },
+    "scope": "Initial four-body contact/navigation/reload passed, but visual QA exposed corrupted texture channels. Superseded by focused GPU/contact validation; not final texture acceptance."
+  },
+  "atlasFlight": {
+    "log": "artifacts/flight/JakobianAtlas-20261015-005347.log",
+    "sha256": "ebdf888e225e1db830e50ae01c830e533751703e6fa037660971fbd4e3cd4bb9",
+    "watchdog": {
+      "bootstrapMarker": false,
+      "regressionSuiteMarker": false,
+      "flightSuiteMarker": true,
+      "processDisposition": "exited",
+      "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\flight\\JakobianAtlas-20261015-005347.log"
+    },
+    "exceptionTokens": 0,
+    "save": "JakobianProbe-JakobianAtlas-20261015-045529",
+    "mappedContactMeshes": 8,
+    "gpuPalettePixelCounts": {
+      "warm": 57862,
+      "cool": 4876,
+      "neutral": 4157
+    },
+    "markers": {
+      "MAPPED_SURFACE_PASS": 1,
+      "MAPPED_CONTACT_MESH_PASS": 1,
+      "MAPPED_GPU_PASS": 1,
+      "NATIVE_NAVIGATION_PASS": 2,
+      "ALTIMETER_MODE_PASS": 4,
+      "CAMERA_SEQUENCE_PASS": 1,
+      "FLIGHT_LANDING_PASS": 1,
+      "FLIGHT_RELOAD_PASS": 1,
+      "FLIGHT_SUITE_PASS": 1
+    },
+    "deploymentSnapshot": "artifacts/flight/JakobianAtlas-20261015-005347.log.deployment.json"
+  },
+  "visualDebugging": [
+    {
+      "log": "artifacts/flight/JakobianAtlas-20261015-004502.log",
+      "cause": "Diagnostic selected retained template prop; selector corrected to PQ tiles."
+    },
+    {
+      "log": "artifacts/flight/JakobianAtlas-20261015-004848.log",
+      "cause": "Finished PQS UV2 overwritten by native planet-relative modifier; mapped directions moved to UV3/UV4. Failed-run direct-flight shutdown also logged the known native UI exception."
+    }
+  ],
+  "validatedUtc": "2026-10-15T05:03:03.868824+00:00",
+  "branch": "main",
+  "commitsCreatedByAgent": 0,
+  "regression": {
+    "log": "artifacts/regression/regression-20261015-005641.log",
+    "sha256": "ebefd4156f8b3d7e895813613edf836e18f320333d523c12447ef9cfe59dd380",
+    "watchdog": {
+      "flightSuiteMarker": false,
+      "bootstrapMarker": false,
+      "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\regression\\regression-20261015-005641.log",
+      "processDisposition": "exited",
+      "regressionSuiteMarker": true
+    },
+    "deploymentSnapshot": "artifacts/regression/regression-20261015-005641.log.deployment.json",
+    "historicalCases": [
+      {
+        "fixture": "v0.2.0-JakobianCube.sfs",
+        "body": "JakobianCube",
+        "copy": "JakobianUpgrade-v0.2.0-JakobianCube-20261015-045825"
+      },
+      {
+        "fixture": "v0.2.0-JakobianEllipsoid.sfs",
+        "body": "JakobianEllipsoid",
+        "copy": "JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261015-045844"
+      },
+      {
+        "fixture": "v0.2.0-JakobianPeanut.sfs",
+        "body": "JakobianPeanut",
+        "copy": "JakobianUpgrade-v0.2.0-JakobianPeanut-20261015-045902"
+      },
+      {
+        "fixture": "v0.3.0-JakobianCube.sfs",
+        "body": "JakobianCube",
+        "copy": "JakobianUpgrade-v0.3.0-JakobianCube-20261015-045920"
+      },
+      {
+        "fixture": "v0.3.0-JakobianEllipsoid.sfs",
+        "body": "JakobianEllipsoid",
+        "copy": "JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261015-045937"
+      },
+      {
+        "fixture": "v0.3.0-JakobianPeanut.sfs",
+        "body": "JakobianPeanut",
+        "copy": "JakobianUpgrade-v0.3.0-JakobianPeanut-20261015-045955"
+      }
+    ],
+    "exceptionTokens": 0,
+    "inputManifest": [
+      {
+        "version": "0.2.0",
+        "body": "JakobianEllipsoid",
+        "sha256": "2b3735c04a90333b43c98ae256b588590e071cc01fc6515c65933b9b88eea624",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\older-probe-saves\\JakobianProbe-JakobianEllipsoid-20261014-230028\\persistent.sfs",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.2.0-JakobianEllipsoid.sfs"
+      },
+      {
+        "version": "0.2.0",
+        "body": "JakobianCube",
+        "sha256": "0d6eff516ce9b727c2c4fd1a876c6e5a9179fcd9290f08b70d013f43ff589373",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\older-probe-saves\\JakobianProbe-JakobianCube-20261014-230045\\persistent.sfs",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.2.0-JakobianCube.sfs"
+      },
+      {
+        "version": "0.2.0",
+        "body": "JakobianPeanut",
+        "sha256": "ba6b3108553b914270f80de5f20b40c568217aa145e24df10528035b31400201",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\older-probe-saves\\JakobianProbe-JakobianPeanut-20261014-230151\\persistent.sfs",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.2.0-JakobianPeanut.sfs"
+      },
+      {
+        "version": "0.3.0",
+        "body": "JakobianEllipsoid",
+        "sha256": "4c9469e869d6d8881103903320ba2f95dad4e3c0867f66a339db10d0b77a21bc",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianEllipsoid-20261014-232324\\persistent.sfs",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.3.0-JakobianEllipsoid.sfs"
+      },
+      {
+        "version": "0.3.0",
+        "body": "JakobianCube",
+        "sha256": "ec51970230e49995fde9743c598ca6f939486bfba9a46f6dd7a970b0ac9b1f8b",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianCube-20261014-232343\\persistent.sfs",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.3.0-JakobianCube.sfs"
+      },
+      {
+        "version": "0.3.0",
+        "body": "JakobianPeanut",
+        "sha256": "3e360fe4dbd41048cc2266325b5b35a795a815241e8706bf9b34441fb58d2c06",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianPeanut-20261014-232454\\persistent.sfs",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.3.0-JakobianPeanut.sfs"
+      }
+    ],
+    "originalAndStagedInputHashesPreserved": true,
+    "stockOrbit": "body=Kerbin scope=excluded coastSeconds=10 orbit=stable reload=passed",
+    "privateOutputsArchivedUnder": "instances/baseline/.dev/regression-results",
+    "privateOutputFolders": [
+      "JakobianUpgrade-v0.2.0-JakobianCube-20261015-045825",
+      "JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261015-045844",
+      "JakobianUpgrade-v0.2.0-JakobianPeanut-20261015-045902",
+      "JakobianUpgrade-v0.3.0-JakobianCube-20261015-045920",
+      "JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261015-045937",
+      "JakobianUpgrade-v0.3.0-JakobianPeanut-20261015-045955",
+      "JakobianStock-20261015-050013"
+    ]
+  },
+  "assets": {
+    "editor": "2019.4.18f1",
+    "buildLog": "artifacts/unity-build.log",
+    "buildLogSha256": "d1fb9955499c606572e8727f2c772d6d658e19a640b0596a31aca002e833969c",
+    "shaderManifest": {
+      "target": "StandaloneWindows64",
+      "editor": "2019.4.18f1",
+      "sources": [
+        {
+          "path": "unity/Jakobian.Assets/Assets/JakobianMappedTerrain.shader",
+          "sha256": "681f1e616cfd76785ce88005ce34676cf5093da466e532c705f274cfbdaf4009"
+        },
+        {
+          "path": "unity/Jakobian.Assets/Assets/Editor/BuildBundles.cs",
+          "sha256": "b5886343d64798626452a6a05cd83de9e443fbfc6c1050bba97468dbabb2bc58"
+        }
+      ],
+      "bundleSha256": "3dd9409d1258a87f42ca5d9f4fc9f62fee0ee93662ae380a105994c2345f5d43"
+    },
+    "generator": "tools/Generate-TestMaps.py",
+    "generatorSha256": "5096da3c00ac6ee90a78dc411c0ec8fde89e700743d16bdaf58ee42131ae4f0f",
+    "platformsValidated": [
+      "Windows x64 / D3D11"
+    ],
+    "detailLimit": "Macro albedo only; the demo uses 256x129 maps and has no fine detail/normal/splat material system."
+  },
+  "screenshots": [
+    {
+      "path": "artifacts/validation/v0.5.0/JakobianAtlas-overview.png",
+      "sha256": "622cce613d53b9738c14817ee206e5433363d9a928e6f44c260d32295a97c7ac",
+      "scope": "isolated native scaled-mesh GPU render"
+    },
+    {
+      "path": "artifacts/validation/v0.5.0/JakobianAtlas-landed.png",
+      "sha256": "e558933c5309020972f76febb9cf7d89c51d5b5913e7d4bc284c23b2b76b583d",
+      "scope": "native flight camera after contact; macro albedo has limited close-up detail"
+    }
+  ],
+  "runtimeLimitations": [
+    "Radial airless/dry gameplay only; no arbitrary expression geometry runtime.",
+    "Torus closed-solid/mesh foundations only; no torus celestial fixture or rotating habitat.",
+    "Native point gravity and spherical SOI remain authoritative.",
+    "Atmosphere/water, mass compilation, influence domains and numerical flight are future milestones.",
+    "Kopernicus coexistence, visual-provider adapters and broad mod compatibility remain unimplemented.",
+    "Career science/archives, scanner/drill operation and resource overlays are not certified."
+  ],
+  "processesAtHandoff": {
+    "probeGamesRunning": false,
+    "unityEditorsRunning": false
+  }
+}

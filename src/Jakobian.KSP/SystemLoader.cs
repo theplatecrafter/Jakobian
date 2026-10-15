@@ -40,6 +40,7 @@ namespace Jakobian.KSP
                 // Initial body hierarchy is append-only beneath stock parents; no ambiguous cycles.
                 foreach (BodyDefinition d in definitions)
                     if (!originals.Any(b => b.celestialBody.bodyName == d.Parent)) throw new ArgumentException("Initial loader requires a stock orbit parent.");
+                foreach (BodyDefinition d in definitions) Definitions.Add(d.Name, d);
 
                 container = new GameObject("Jakobian Prefab"); container.SetActive(false);
                 PSystem system = container.AddComponent<PSystem>();
@@ -71,7 +72,6 @@ namespace Jakobian.KSP
                     PSystemBody body = BuildBody(template, parent, definition);
                     parent.children.Add(body);
                 }
-                foreach (BodyDefinition d in definitions) Definitions.Add(d.Name, d);
                 PSystemManager.Instance.OnPSystemReady.Add(OnReady);
                 PSystemManager.Instance.systemPrefab = system;
                 Published = true;
@@ -100,24 +100,49 @@ namespace Jakobian.KSP
             cb.angularVelocity = global::Vector3d.zero; cb.zUpAngularVelocity = global::Vector3d.zero; cb.angularV = 0;
             cb.inverseRotation = false;
             cb.atmosphere = false; cb.ocean = false; cb.sphereOfInfluence = d.Soi;
+            if (d.Assets.BiomePixels != null)
+            {
+                var map = ScriptableObject.CreateInstance<RadialBiomeMap>(); map.name = d.Name + " biomes"; map.Initialize(d.Assets); cb.BiomeMap = map;
+            }
             body.orbitDriver.orbit = new Orbit(d.Inclination, 0, d.OrbitRadius, 0, 0, d.Phase, 0, parent.celestialBody);
             body.orbitDriver.referenceBody = parent.celestialBody; cb.orbitDriver = body.orbitDriver;
             body.orbitDriver.orbitColor = d.Color;
             body.scaledVersion = Instantiate(template.scaledVersion, container.transform, true);
             body.scaledVersion.name = d.Name; body.scaledVersion.transform.localScale = Vector3.one;
-            MeshFilter filter = body.scaledVersion.GetComponent<MeshFilter>(); filter.sharedMesh = ScaledShapeMesh.Build(d.Shape);
+            MeshFilter filter = body.scaledVersion.GetComponent<MeshFilter>(); filter.sharedMesh = ScaledShapeMesh.Build(d.Surface,d.Assets.AlbedoTexture != null);
             Renderer renderer = body.scaledVersion.GetComponent<Renderer>(); renderer.sharedMaterial = new Material(renderer.sharedMaterial);
             var texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
             texture.SetPixels(new[] { d.Color, d.Color, d.Color, d.Color }); texture.Apply();
             renderer.sharedMaterial.SetTexture("_MainTex", texture);
-            SphereCollider pick = body.scaledVersion.GetComponent<SphereCollider>(); if (pick != null) pick.radius = (float)(d.Shape.BoundingRadius / 6000);
+            if (d.Assets.AlbedoTexture != null)
+            {
+                renderer.sharedMaterial = new Material(SurfaceAssets.TerrainShader); renderer.sharedMaterial.SetTexture("_MainTex",d.Assets.AlbedoTexture);
+                foreach (ScaledSpaceFader fader in body.scaledVersion.GetComponentsInChildren<ScaledSpaceFader>(true))
+                { fader.floatName = "_Opacity"; fader.highQualityShaderFadeStart = fader.highQualityShaderFadeEnd = 0; }
+            }
+            SphereCollider pick = body.scaledVersion.GetComponent<SphereCollider>(); if (pick != null) pick.radius = (float)(d.Surface.BoundingRadius / 6000);
             body.pqsVersion = Instantiate(template.pqsVersion, container.transform, true);
             body.pqsVersion.name = d.Name; body.pqsVersion.radius = cb.Radius; cb.pqsController = body.pqsVersion;
             // Instantiate copies component references, not material assets. Fade writes must
             // never change another body's terrain or the retained stock template material.
             body.pqsVersion.surfaceMaterial = new Material(template.pqsVersion.surfaceMaterial);
+            // Native PQS selects a quality-tier material later. Isolate ALL tiers, not
+            // just the currently selected pointer, so a setting change cannot re-share stock assets.
+            body.pqsVersion.lowQualitySurfaceMaterial = Clone(template.pqsVersion.lowQualitySurfaceMaterial);
+            body.pqsVersion.mediumQualitySurfaceMaterial = Clone(template.pqsVersion.mediumQualitySurfaceMaterial);
+            body.pqsVersion.highQualitySurfaceMaterial = Clone(template.pqsVersion.highQualitySurfaceMaterial);
+            body.pqsVersion.ultraQualitySurfaceMaterial = Clone(template.pqsVersion.ultraQualitySurfaceMaterial);
             if (template.pqsVersion.fallbackMaterial != null)
                 body.pqsVersion.fallbackMaterial = new Material(template.pqsVersion.fallbackMaterial);
+            if (d.Assets.AlbedoTexture != null)
+            {
+                var material = new Material(SurfaceAssets.TerrainShader) { name = d.Name + " terrain" };
+                material.SetTexture("_MainTex",d.Assets.AlbedoTexture);
+                body.pqsVersion.surfaceMaterial = body.pqsVersion.lowQualitySurfaceMaterial = body.pqsVersion.mediumQualitySurfaceMaterial
+                    = body.pqsVersion.highQualitySurfaceMaterial = body.pqsVersion.ultraQualitySurfaceMaterial = material;
+                body.pqsVersion.fallbackMaterial = new Material(material);
+            }
+            body.pqsVersion.materialsForUpdates = new List<Material>();
             foreach (PQSMod mod in body.pqsVersion.GetComponentsInChildren<PQSMod>(true))
             {
                 if (mod is PQSMod_CelestialBodyTransform)
@@ -139,11 +164,12 @@ namespace Jakobian.KSP
             var modifier = modifierObject.AddComponent<RadialTerrain>();
             modifier.sphere = body.pqsVersion; modifier.modEnabled = true; modifier.order = 100000;
             modifier.shapeKind = (int)d.Shape.Kind; modifier.axisX = d.Shape.X; modifier.axisY = d.Shape.Y; modifier.axisZ = d.Shape.Z;
-            modifier.exponent = d.Shape.Exponent; modifier.lobes = d.Shape.Lobes; modifier.surfaceColor = d.Color;
+            modifier.exponent = d.Shape.Exponent; modifier.lobes = d.Shape.Lobes; modifier.surfaceColor = d.Color; modifier.bodyName = d.Name;
             body.pqsVersion.minLevel = 2; body.pqsVersion.maxLevel = 9;
             Debug.Log("[Jakobian] BODY_COMPILED " + d.Name + " id=" + d.Id + " shape=" + d.Shape.Kind + " refRadius=" + cb.Radius);
             return body;
         }
+        private static Material Clone(Material source) => source == null ? null : new Material(source);
 
         private static IEnumerable<PSystemBody> Flatten(PSystemBody body)
         {

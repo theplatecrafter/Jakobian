@@ -1,6 +1,6 @@
 # Gravity, reference frames and trajectories
 
-Status: proposed full runtime design. Development 0.3.0 runs native central point gravity for radial bodies and exposes a shared geometry/navigation context, while the core also tests rotating-frame formulas. Custom fields and rotating-habitat force/cache adapters below remain future work. See [surface context](../architecture/surface-context.md) for the implemented vertical/normal/altitude distinctions.
+Status: proposed full runtime design. The accepted [mathematical body and influence-domain contract](../architecture/mathematical-bodies-and-fields.md) expands the implementation gates for authored functions, mass volumes and centrifugal habitats. Development 0.3.0 runs native central point gravity for radial bodies and exposes a shared geometry/navigation context, while the core also tests rotating-frame formulas. Custom fields and rotating-habitat force/cache adapters below remain future work. See [surface context](../architecture/surface-context.md) for the implemented vertical/normal/altitude distinctions.
 
 ## Geometry does not define gravity
 

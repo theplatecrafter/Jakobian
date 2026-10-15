@@ -1,4 +1,4 @@
-param([Parameter(Mandatory)][ValidatePattern('^[a-z][a-z0-9-]{0,40}$')][string]$Instance, [switch]$Graphics, [ValidateRange(30,1800)][int]$TimeoutSeconds = 600)
+param([Parameter(Mandatory)][ValidatePattern('^[a-z][a-z0-9-]{0,40}$')][string]$Instance, [switch]$Graphics = $true, [ValidateRange(30,1800)][int]$TimeoutSeconds = 600)
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path $PSScriptRoot -Parent
 $taskInstance = Join-Path $taskRoot "instances/$Instance"
@@ -7,6 +7,7 @@ if (-not (Test-Path -LiteralPath (Join-Path $taskInstance 'GameData/Jakobian/Plu
 $taskLogs = Join-Path $taskRoot 'artifacts/boot'
 New-Item -ItemType Directory -Path $taskLogs -Force | Out-Null
 $taskLog = Join-Path $taskLogs ("$Instance-" + (Get-Date -Format 'yyyyMMdd-HHmmss') + '.log')
+Copy-Item -LiteralPath (Join-Path $taskInstance '.jakobian-build.json') -Destination ($taskLog + '.deployment.json')
 # Returns immediately. The MainMenu scaffold records a marker and quits only this probe process.
 $taskArguments = @('-jakobianBootProbe','-logFile',('"' + $taskLog + '"'))
 if ($Graphics) { $taskArguments += @('-force-d3d11','-screen-fullscreen','0','-screen-width','640','-screen-height','360') } else { $taskArguments += @('-batchmode','-nographics') }

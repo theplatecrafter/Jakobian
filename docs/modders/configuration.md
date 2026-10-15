@@ -1,8 +1,8 @@
 # Proposed configuration language and Kopernicus migration
 
-Status: **development 0.2.0 has a small implemented standalone subset**. The general language below remains a design proposal. Files under `examples/` use `.cfg.disabled` to keep future features out of the game database. The enabled pack is [Bodies.cfg](../../GameData/JakobianTestBodies/Bodies.cfg).
+Status: **development 0.5.0 has a restricted implemented standalone subset**. Mapped radial terrain and native biomes are described in [radial maps](radial-maps.md). The general language below remains a design proposal. Files under `examples/` use `.cfg.disabled` to keep future features out of the game database. The enabled pack is [Bodies.cfg](../../GameData/JakobianTestBodies/Bodies.cfg).
 
-## Implemented 0.2.0 subset
+## Implemented subset through 0.5.0
 
 The loader reads `Jakobian` roots with `schemaVersion = 1` and repeated `Body` nodes. Unknown/duplicate fields and unsupported child nodes are rejected. Current keys are:
 
@@ -13,14 +13,15 @@ The loader reads `Jakobian` roots with `schemaVersion = 1` and repeated `Body` n
 | `Properties` | `radius`, `gravParameter`, `sphereOfInfluence`, `description`, `rotates`, `rotationPeriod` |
 | `Orbit` | stock `referenceBody`, `semiMajorAxis`, `inclination`, `meanAnomalyAtEpoch`, `eccentricity = 0` |
 | `Shape` | `type`, `axisX`, `axisY`, `axisZ`, `exponent`, `lobes` |
+| `Terrain` | `heightMap`, `colorMap`, `offset`, `deformity`, `biomeMap`, repeated `Biomes/Biome` definitions; see [map contract](radial-maps.md) |
 
-`name`, stable `id` and an unused integer `flightGlobalsIndex >= 17` are required. Keep them stable in saves. The supplied fixtures reserve 17–20. Dimensions are metres; `gravParameter` is m³/s²; orbit inclination is degrees, mean anomaly radians, rotation period seconds. Colors are scalar channels in [0, 1]. Parents must be existing stock bodies. There is no current support for replacing a stock body, making a homeworld, elliptical orbits, custom terrain maps, atmosphere, ocean or biome definitions. Kopernicus installed alongside this build produces an ownership error rather than two competing publications.
+`name`, stable `id` and an unused integer `flightGlobalsIndex >= 17` are required. Keep them stable in saves. The supplied fixtures reserve 17–21. Dimensions are metres; `gravParameter` is m³/s²; orbit inclination is degrees, mean anomaly radians, rotation period seconds. Colors are scalar channels in [0, 1]. Parents must be existing stock bodies. There is no current support for replacing a stock body, making a homeworld, elliptical orbits, atmosphere, ocean, arbitrary expression geometry or general-solid flight. Kopernicus installed alongside this build produces an ownership error rather than two competing publications.
 
 Omitting `Shape` selects a sphere. Supported case-sensitive types are `Sphere`, `Ellipsoid`, `Superellipsoid` and `Peanut`. Axes default to `Properties.radius` (default 5000 m); a sphere uses `axisX`. Ellipsoid axes are semiaxes. Superellipsoid uses the Lp surface with `exponent` in [2, 16]; exponent 8 gives rounded cube faces. Peanut uses `axisX * (1 + lobes * (2 * direction.x² - 1))`, with `lobes` in [0, 0.65]; its Y/Z axes are unused. Axes must be between 100 and 100,000,000 m, although extreme scales have not been validated in native flight. The native reference radius is currently computed as the shape's minimum radial bound; authored `Properties.radius` supplies axis defaults rather than an independent datum in this subset.
 
 Gravity is native central point gravity. All current bodies are airless and dry. `rotates` defaults true and `rotationPeriod` defaults 21600 seconds; positive spin periods must be at least 60 seconds. The human fixtures use six-hour rotation. Static frames exist experimentally, but zero-spin landed save persistence is not certified. Shape geometry and rotation must remain unchanged while reusing test saves; descriptor migration is future work.
 
-Shapes are sampled in native PQS local axes, with exactly one positive radius per direction. This cannot represent a torus hole or a cave. All stock template height/color noise is replaced by the analytic radius and body color; native material/UV, terrain lifecycle and collider modifiers are retained. Source validation and the latest evidence are described in [development 0.2.0](../development/v0.2.0.md).
+Shapes are sampled in native PQS local axes, with exactly one positive radius per direction. This cannot represent a torus hole or a cave. All stock template height/color noise is replaced by the analytic radius plus optional mapped displacement and albedo; native material/UV, terrain lifecycle and collider modifiers are retained. Source validation and the latest evidence are described in [development 0.2.0](../development/v0.2.0.md).
 
 ## Familiar structure
 

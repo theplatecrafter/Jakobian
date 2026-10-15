@@ -1,4 +1,4 @@
-param([ValidateSet('all','JakobianControl','JakobianEllipsoid','JakobianCube','JakobianPeanut')][string]$Body = 'all')
+param([ValidateSet('all','JakobianControl','JakobianEllipsoid','JakobianCube','JakobianPeanut','JakobianAtlas')][string]$Body = 'all')
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path $PSScriptRoot -Parent
 $taskInstance = Join-Path $taskRoot 'instances/baseline'
@@ -7,6 +7,7 @@ if (Get-Process -Name KSP_x64 -ErrorAction SilentlyContinue | Where-Object { $_.
 $taskLogDirectory = Join-Path $taskRoot 'artifacts/flight'
 New-Item -ItemType Directory -Path $taskLogDirectory -Force | Out-Null
 $taskLog = Join-Path $taskLogDirectory ($Body + '-' + (Get-Date -Format 'yyyyMMdd-HHmmss') + '.log')
+Copy-Item -LiteralPath (Join-Path $taskInstance '.jakobian-build.json') -Destination ($taskLog + '.deployment.json')
 $taskArguments = @("-jakobianFlightProbe=$Body",'-screen-fullscreen','0','-screen-width','960','-screen-height','540','-logFile',('"' + $taskLog + '"'))
 $taskProcess = Start-Process -FilePath $taskExe -WorkingDirectory $taskInstance -WindowStyle Hidden -ArgumentList $taskArguments -PassThru
 $taskWatchArgs = @('-NoProfile','-File',('"' + (Join-Path $PSScriptRoot 'Watch-Probe.ps1') + '"'),'-ProbeId',$taskProcess.Id,'-ExpectedExecutable',('"' + $taskExe + '"'),'-StartTicks',$taskProcess.StartTime.Ticks,'-LogPath',('"' + $taskLog + '"'),'-TimeoutSeconds','1200')

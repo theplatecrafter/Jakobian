@@ -77,6 +77,7 @@ namespace Jakobian.KSP
                     + "\nDatum altitude: " + sample.LocalSurface.ReferenceAltitude.ToString("F1") + " m"
                     + "\nSurface slope: " + sample.LocalSurface.SlopeDegrees.ToString("F1") + "°"
                     + "\nGravity: " + sample.GravityWorld.magnitude.ToString("F3") + " m/s²"
+                    + "\nBiome: " + sample.BiomeName
                     + (sample.LocalSurface.HasHeading ? "" : "\nCompass undefined at pole");
             }
         }

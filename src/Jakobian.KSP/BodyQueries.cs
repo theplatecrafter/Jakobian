@@ -8,6 +8,7 @@ namespace Jakobian.KSP
     public readonly struct BodyPointSample
     {
         public readonly string BodyId, SurfaceId;
+        public readonly string BiomeName;
         public readonly double UniversalTime;
         public readonly int UnityFrame;
         public readonly RadialSurfaceSample LocalSurface;
@@ -21,6 +22,8 @@ namespace Jakobian.KSP
         internal BodyPointSample(CelestialBody body, BodyDefinition definition, RadialSurfaceSample surface, global::Vector3d gravity, global::Vector3d position)
         {
             BodyId = definition.Id; SurfaceId = "exterior"; LocalSurface = surface;
+            BiomeName = definition.Assets.BiomePixels == null ? ScienceUtil.GetExperimentBiome(body,surface.LatitudeDegrees,surface.LongitudeDegrees)
+                : definition.Assets.Biomes[definition.Assets.BiomePixels.Nearest(surface.RadialUp)].name;
             UniversalTime = Planetarium.GetUniversalTime(); UnityFrame = UnityEngine.Time.frameCount;
             GroundWorld = body.position + BodyQueries.LocalToWorldVector(body, surface.Point);
             SurfaceNormalWorld = BodyQueries.LocalToWorldVector(body, surface.Normal);
@@ -44,7 +47,7 @@ namespace Jakobian.KSP
             if (!SystemLoader.OwnedBodies.TryGetValue(body, out definition)) return BodyQueryStatus.UnsupportedBody;
             global::Vector3d local = WorldToLocalVector(body, worldPosition - body.position);
             RadialSurfaceSample surface;
-            if (!RadialSurfaceQuery.TrySample(definition.Shape, Core(local), body.Radius, out surface)) return BodyQueryStatus.InvalidPosition;
+            if (!definition.Surface.TrySample(Core(local), body.Radius, out surface)) return BodyQueryStatus.InvalidPosition;
             Jakobian.Core.Vector3d gravity;
             if (!ReferencePhysics.TryPointGravity(Core(worldPosition - body.position), definition.Mu, out gravity)) return BodyQueryStatus.InvalidPosition;
             sample = new BodyPointSample(body, definition, surface, Ksp(gravity), worldPosition);

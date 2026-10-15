@@ -48,4 +48,12 @@ Development 0.2.0 implements the first standalone parser/publication/binding pat
 
 Development 0.3.0 adds the first shared radial surface context, analytic normals, explicit datum/down-ray distances, a native resource-coordinate bridge, an external-camera endpoint guard and native navigation/UI/cache validation. Gravity vertical and surface normal are independent. Full M1 canonical general-query semantics and saved-world reconciliation are still incomplete; no arbitrary-field cache injection or general-topology claim follows from this radial slice.
 
-Next close M1's native terrain/contact, stock regression and save/reload gaps, then implement M2's general query/collision/anchor path for a true torus. The radial backend remains a supported restricted family; it does not become the general topology model.
+Development 0.4.0 adds the first closed-solid sphere/torus query contract, bounded ray intersections and deterministic anchored torus mesh patches. Isolated native collider checks distinguish inner/outer contact from empty hole transit. Retained-save upgrade and stock-orbit fixtures expand M1 regression coverage. These are prerequisites for a general-body runtime, not a completed torus celestial body or full M1/M2 acceptance.
+
+Next close M1's saved-descriptor reconciliation and broader lifecycle/stock coverage gaps, then implement M2's general query/collision/anchor path for a true torus. The radial backend remains a supported restricted family; it does not become the general topology model.
+
+Development 0.5.0 adds a restricted part of M3: radial height/albedo maps, a shared displaced geometry field and native science/resource biome integration on a new ellipsoid fixture. General terrain charts, caves, atmosphere and water are not enabled.
+
+## Required general-body expansion
+
+The accepted [mathematical bodies, mass and influence-volume contract](../architecture/mathematical-bodies-and-fields.md) is part of the framework scope. After the static torus runtime/contact/anchor gate, implement bounded mathematical expression geometry; arbitrary influence-domain event detection and numerical point-field propagation; rigidly rotating habitats with inertial/rotating centrifugal and Coriolis parity; then mass compilation and distributed gravity, followed by spatial gas/fluid integration. Every step must cover loaded and unloaded craft, save/reload, multiple bodies and force ownership. A mathematical surface, a material volume, mass density and a gravity domain are separate definitions.

@@ -4,7 +4,7 @@
 
 Main local repository: `C:\Users\Hans\Documents\programming\Jakobian`, now on **main**, with commits/remotes/publication managed by the owner. The supplied `template_instance` remains the source of licensed game references; scripts deploy only into independent marked copies under `instances/`. Source/game/save/dependency caches are excluded by `.gitignore`.
 
-The required architecture is standalone: Jakobian's core and loader do not require Kopernicus. Development 0.3.0 includes the independent system loader/native radial terrain backend, shared surface/navigation queries, a camera clearance guard and flight readout, with four enabled fixtures. The Kopernicus instance/dependency lock below is a research and optional coexistence profile, not Jakobian's required installation graph. Baseline is the active human-testing instance and runs with Kopernicus absent. Current code rejects a competing Kopernicus loader; optional coexistence still requires implementation.
+The required architecture is standalone: Jakobian's core and loader do not require Kopernicus. Development 0.5.0 includes the independent system loader/native radial terrain backend, shared surface/navigation queries, a camera clearance guard and flight readout, with five enabled fixtures including mapped terrain/native biomes on Atlas, plus closed-solid/torus mesh foundations and historical/stock regression tools. The Kopernicus instance/dependency lock below is a research and optional coexistence profile, not Jakobian's required installation graph. Baseline is the active human-testing instance and runs with Kopernicus absent. Current code rejects a competing Kopernicus loader; optional coexistence still requires implementation.
 
 Installed and inspected:
 
@@ -76,7 +76,7 @@ If a newly pinned upstream set cannot boot, retain its failure evidence and crea
 
 ## Unity assets project
 
-`unity/Jakobian.Assets` is a minimal Unity 2019.4.18f1 source project with an editor build method. No game shader or asset bundle has been authored yet. Open it in the matching editor when rendering work starts, label reviewed assets with bundle names, then invoke `JakobianAssets.BuildBundles` targeting Windows x64. Output is under ignored `artifacts/unity`.
+`unity/Jakobian.Assets` is a Unity 2019.4.18f1 source project with the original mapped-terrain shader and an explicit editor bundle build. Run `tools/Build-Assets.ps1` after changing shader sources; it waits for the hidden editor, stages a successful Windows x64 bundle into `GameData/Jakobian/Assets`, and writes source/bundle hashes. Intermediate output remains under ignored `artifacts/unity`. `tools/Build.ps1` deploys the staged bundle and rejects mismatched source/bundle hashes. The player consumes the reviewed staged bundle; the Unity editor is needed only for shader rebuilds.
 
 Unity installation/version was verified; no claim that Unity license activation, batch asset compilation or an arbitrary-body shader was validated in this pass. Game C# compilation does not require opening Unity. Preserve upstream shader license/source notices if any are ported.
 

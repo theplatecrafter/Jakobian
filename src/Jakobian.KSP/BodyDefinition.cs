@@ -10,13 +10,15 @@ namespace Jakobian.KSP
     {
         internal string Name, Id, Template, Parent, Description;
         internal RadialShape Shape;
+        internal SurfaceAssets Assets;
+        internal MappedRadialSurface Surface => Assets.Surface;
         internal double Mu, OrbitRadius, Inclination, Phase, Soi, RotationPeriod;
         internal int Index;
         internal Color Color;
 
         internal static BodyDefinition Parse(ConfigNode node)
         {
-            Check(node, "name,id,flightGlobalsIndex,red,green,blue", "Template,Properties,Orbit,Shape");
+            Check(node, "name,id,flightGlobalsIndex,red,green,blue", "Template,Properties,Orbit,Shape,Terrain");
             Check(node.GetNode("Template"), "name", "");
             Check(node.GetNode("Properties"), "radius,gravParameter,sphereOfInfluence,description,rotates,rotationPeriod", "");
             Check(node.GetNode("Orbit"), "referenceBody,semiMajorAxis,inclination,meanAnomalyAtEpoch,eccentricity", "");
@@ -45,12 +47,15 @@ namespace Jakobian.KSP
                 throw new ArgumentException(name + ": invalid index, gravity, orbit or SOI bounds.");
             // Reject unsupported dynamics/environment rather than silently giving them different meanings.
             if (Number(orbit, "eccentricity", 0) != 0
-                || node.HasNode("Terrain") || node.HasNode("Environment") || node.HasNode("Atmosphere") || node.HasNode("Ocean") || node.HasNode("PQS") || node.HasNode("Gravity") || node.HasNode("Rotation"))
-                throw new ArgumentException(name + ": initial backend is circular-orbit and airless; terrain/environment overrides are not implemented.");
+                || node.HasNode("Environment") || node.HasNode("Atmosphere") || node.HasNode("Ocean") || node.HasNode("PQS") || node.HasNode("Gravity") || node.HasNode("Rotation"))
+                throw new ArgumentException(name + ": current radial backend is circular-orbit, airless and dry.");
             bool rotates = true;
             if (properties != null && properties.HasValue("rotates") && !bool.TryParse(properties.GetValue("rotates"), out rotates)) throw new ArgumentException(name + ": invalid rotates boolean.");
             if (!rotates) definition.RotationPeriod = 0;
             else if (definition.RotationPeriod < 60) throw new ArgumentException(name + ": rotating bodies require rotationPeriod >= 60 seconds.");
+            definition.Assets = SurfaceAssets.Load(definition,node.GetNode("Terrain"));
+            if (definition.OrbitRadius <= definition.Surface.BoundingRadius * 20 || definition.Soi < definition.Surface.BoundingRadius * 5)
+                throw new ArgumentException(name + ": terrain exceeds orbit/SOI bounds.");
             return definition;
         }
 
@@ -63,16 +68,16 @@ namespace Jakobian.KSP
                 if (Array.IndexOf(allowedValues, value.name) < 0 || !seen.Add(value.name)) throw new ArgumentException("Unsupported or duplicate value " + node.name + "/" + value.name);
             seen.Clear();
             foreach (ConfigNode child in node.nodes)
-                if (Array.IndexOf(allowedChildren, child.name) < 0 || (child.name != "Body" && !seen.Add(child.name))) throw new ArgumentException("Unsupported or duplicate node " + node.name + "/" + child.name);
+                if (Array.IndexOf(allowedChildren, child.name) < 0 || ((child.name != "Body" && child.name != "Biome") && !seen.Add(child.name))) throw new ArgumentException("Unsupported or duplicate node " + node.name + "/" + child.name);
         }
 
-        private static string Required(ConfigNode node, string key)
+        internal static string Required(ConfigNode node, string key)
         {
             string value = node?.GetValue(key);
             if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("Missing " + key + " in " + node?.name);
             return value.Trim();
         }
-        private static double Number(ConfigNode node, string key, double fallback)
+        internal static double Number(ConfigNode node, string key, double fallback)
         {
             string text = node?.GetValue(key);
             if (text == null) return fallback;

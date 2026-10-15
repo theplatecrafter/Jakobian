@@ -21,12 +21,20 @@ namespace Jakobian.KSP
             try { NativeChecks.Run(); }
             catch (Exception error) { Fail(error.ToString()); yield break; }
             string selection = argument.Substring("-jakobianFlightProbe=".Length);
-            string[] targets = selection == "all" ? new[] { "JakobianEllipsoid", "JakobianCube", "JakobianPeanut" } : new[] { selection };
+            string[] targets = selection == "all" ? new[] { "JakobianEllipsoid", "JakobianCube", "JakobianPeanut", "JakobianAtlas" } : new[] { selection };
             foreach (string target in targets)
             {
                 yield return RunBody(target);
                 if (!running) yield break;
             }
+            // Quit through normal scene teardown instead of destroying the flight
+            // map/UI directly during Application.Quit callback ordering.
+            yield return new WaitForSeconds(1);
+            HighLogic.LoadScene(GameScenes.MAINMENU);
+            float menuDeadline = Time.realtimeSinceStartup + 90;
+            while (HighLogic.LoadedScene != GameScenes.MAINMENU && Time.realtimeSinceStartup < menuDeadline) yield return null;
+            if (HighLogic.LoadedScene != GameScenes.MAINMENU) { Fail("Return to MainMenu timed out."); yield break; }
+            yield return new WaitForSeconds(2);
             Debug.Log("[Jakobian] FLIGHT_SUITE_PASS bodies=" + targets.Length);
             running = false; Application.Quit();
         }
@@ -56,13 +64,13 @@ namespace Jakobian.KSP
                 ship.SetValue("landed", "False", true); ship.SetValue("splashed", "False", true);
                 ConfigNode orbit = ship.GetNode("ORBIT");
                 double ut = double.Parse(state.GetValue("UT"), System.Globalization.CultureInfo.InvariantCulture);
-                var initialOrbit = new Orbit(0, 0, SystemLoader.Definitions[target].Shape.BoundingRadius + 100, 0, 0, 0, ut, body);
+                var initialOrbit = new Orbit(0, 0, SystemLoader.Definitions[target].Surface.BoundingRadius + 100, 0, 0, 0, ut, body);
                 global::Vector3d orbitPoint = initialOrbit.getRelativePositionAtUT(ut);
                 var futureFrame = new Planetarium.CelestialFrame();
                 double angle = body.initialRotation + (body.rotates ? ut * 360 / body.rotationPeriod : 0) - Planetarium.InverseRotAngle;
                 Planetarium.CelestialFrame.PlanetaryFrame(0, 90, angle, ref futureFrame);
                 global::Vector3d local = futureFrame.WorldToLocal(orbitPoint).xzy;
-                double floorRadius = SystemLoader.Definitions[target].Shape.RadiusAt(new Jakobian.Core.Vector3d(local.x, local.y, local.z));
+                double floorRadius = SystemLoader.Definitions[target].Surface.RadiusAt(new Jakobian.Core.Vector3d(local.x, local.y, local.z));
                 orbit.SetValue("SMA", (floorRadius + 100).ToString(System.Globalization.CultureInfo.InvariantCulture), true);
                 orbit.SetValue("ECC", "0", true); orbit.SetValue("INC", "0", true); orbit.SetValue("LPE", "0", true); orbit.SetValue("LAN", "0", true); orbit.SetValue("MNA", "0", true);
                 orbit.SetValue("EPH", state.GetValue("UT"), true); orbit.SetValue("REF", body.flightGlobalsIndex.ToString(), true);
@@ -153,6 +161,11 @@ namespace Jakobian.KSP
                 if (active.Landed)
                 {
                     if (!colliderSeen) { Fail("Landed flag without observed terrain collider."); yield break; }
+                    if (SystemLoader.Definitions[target].Assets.AlbedoTexture != null)
+                    {
+                        try { MappedSurfaceChecks.ContactMeshes(body); MappedSurfaceChecks.RenderAlbedo(body); }
+                        catch (Exception error) { Fail(error.ToString()); yield break; }
+                    }
                     GamePersistence.SaveGame("persistent", HighLogic.SaveFolder, SaveMode.OVERWRITE);
                     // Re-seat the diagnostic camera after descent: its local frame can change
                     // during native flight setup. A pose chosen at orbit entry is not evidence
@@ -163,7 +176,7 @@ namespace Jakobian.KSP
                     // CelestialFrame uses orbit Z-up on both sides of its rotation;
                     // Unity/PQS use Y-up, as in native GetWorldSurfacePosition.
                     global::Vector3d cameraLocal = body.BodyFrame.WorldToLocal((cameraPosition - body.position).xzy).xzy;
-                    double cameraFloor = SystemLoader.Definitions[target].Shape.RadiusAt(new Jakobian.Core.Vector3d(cameraLocal.x, cameraLocal.y, cameraLocal.z));
+                    double cameraFloor = SystemLoader.Definitions[target].Surface.RadiusAt(new Jakobian.Core.Vector3d(cameraLocal.x, cameraLocal.y, cameraLocal.z));
                     ScreenCapture.CaptureScreenshot(Path.Combine(KSPUtil.ApplicationRootPath, ".dev", "screenshots", target + "-landed.png"));
                     Debug.Log("[Jakobian] FLIGHT_RENDER_TRACE " + target + " activeRenderers="
                         + body.pqsController.GetComponentsInChildren<Renderer>().Count(r => r.enabled && r.gameObject.activeInHierarchy)

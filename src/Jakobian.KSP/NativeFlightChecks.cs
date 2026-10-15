@@ -36,10 +36,12 @@ namespace Jakobian.KSP
                 || Math.Abs(request.Longitude - vessel.mainBody.GetLongitude(vessel.CoMD)) > .0001)
                 throw new InvalidOperationException("Resource coordinate bridge mismatch.");
             float abundance = ResourceMap.Instance.GetAbundance(request);
+            if (ResourceMap.Instance.DetermineBiomeName(request) != context.BiomeName)
+                throw new InvalidOperationException("Native resource/science biome mismatch.");
             if (float.IsNaN(abundance) || float.IsInfinity(abundance) || abundance < 0 || abundance > 1)
                 throw new InvalidOperationException("Invalid native resource abundance.");
             Debug.Log("[Jakobian] NATIVE_NAVIGATION_PASS " + vessel.mainBody.bodyName + " phase=" + phase
-                + " nativeUp=gravity navball=gravity radar=ground datum=reference air=vacuum Ore=" + abundance);
+                + " nativeUp=gravity navball=gravity radar=ground datum=reference air=vacuum biome=" + context.BiomeName + " Ore=" + abundance);
         }
     }
 }

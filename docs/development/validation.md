@@ -4,7 +4,7 @@ Original research results live in [validation-record.json](validation-record.jso
 
 ## Current checks
 
-Release build of core, KSP host, console checks and metadata inspector against the actual template. Locked restore, zero compiler warnings/errors. The current analytic harness checks **86,039 assertions**, with reproducible seeds: sphere/torus projection, chart reconstruction, solid versus empty torus hole, inward-facing hole normal, nonunique/invalid queries, point gravity and rotating-force signs, radial-shape bounds/symmetry/direction invariance and independent ellipsoid/superellipsoid implicit-surface checks, plus analytic normals versus finite-difference boundary tangents, compass/pole semantics, coordinates and datum/ground separation. Research 0.1.0 had 16,015 assertions and 0.2.0 had 38,021.
+Release build of core, KSP host, console checks and metadata inspector against the actual template. Locked restore, zero compiler warnings/errors. The current analytic harness checks **112,034 assertions**, with reproducible seeds: sphere/torus projection, chart reconstruction, solid versus empty torus hole, inward-facing hole normal, nonunique/invalid queries, point gravity and rotating-force signs, radial-shape bounds/symmetry/direction invariance and independent ellipsoid/superellipsoid implicit-surface checks, analytic normals versus finite-difference boundary tangents, compass/pole semantics, coordinates and datum/ground separation, plus finite solid-ray crossings/tangencies, budget/precision failures, torus seams/winding/edge incidence and Euler characteristic. Research 0.1.0 had 16,015 assertions, 0.2.0 had 38,021 and 0.3.0 had 86,039.
 
 The randomized cases compare closed-form points/normals constructed from independent parametric coordinates; they do not establish general mesh topology, collision or physical gravity of a massive torus. No artificial-gravity game adapter exists. Console runtime and native Mono bootstrap are separate checks.
 
@@ -15,6 +15,8 @@ The historical bootstrap baseline reached MainMenu and emitted `BOOT_PROBE_PASS`
 Current development probes compare all four fixture bodies' native PQS heights and frame transforms to expected values, verify independent mutable terrain materials, and enter native flight on the three nonspherical bodies. The explicitly enabled flight harness uses velocity braking as an engine substitute, observes a native terrain collider and LANDED flag, then saves/reloads each vessel. Consult [development 0.2.0](v0.2.0.md) for exact evidence and limitations; this does not establish EVA, long-duration contact, every surface location, stock gameplay regression or third-party mod coverage.
 
 The [0.3.0 probes](v0.3.0.md) additionally inspect actual native navball quaternions and both altimeter modes; compare vessel/global up, datum/radar and surface-velocity caches; query native Ore abundance through shared coordinates; and constrain a deliberately underground camera endpoint through ten native render updates. These are current radial/point-gravity fixtures, not validation of future arbitrary-field cache adapters or extraction/scanning.
+
+The [0.4.0 probes](v0.4.0.md) cook isolated torus mesh-collider patches and check native inner/outer/top contact and a collider-free hole. A separate historical/stock runner loads private copies of six retained 0.2.0/0.3.0 Sandbox capsules, checks landed pose/navigation and re-saves/reloads them, then coasts/reloads a stock Kerbin orbit. It is not a complete old-save migration or stock-game regression matrix. Inputs are hashed and preserved.
 
 ## Future pure-core checks
 
@@ -55,3 +57,7 @@ Stress trajectories that continually outrun generation, huge UT/coordinate offse
 ## Release readiness
 
 No arbitrary-body release is ready at this stage. A release requires its milestone's actual native fixtures, compatibility table, migration fixtures, dependency/license/installation review and reproducible packaged source/assets. Keep technical evidence under `docs/development` and future player-facing notes under `docs/releases`. Do not present earlier Ringworld results or a boot-only coexistence test as Jakobian gameplay evidence.
+
+## Mapped radial backend in 0.5.0
+
+The core map checks cover independent interpolation values, longitude wrap including a roundoff endpoint, complete scaled-mesh sample bounds, immutable input ownership, pole agreement, palette classification, displacement limits, radial clearance/datum separation and an independent normal stencil. Native Atlas checks compare 2,520 PQS heights and science biome lookups to shared queries, verify all four biomes occur and compare sampled scaled vertices. Flight adds ResourceMap biome agreement to the existing navigation/contact/reload suite. See [0.5.0](v0.5.0.md) for executed scope and limits.

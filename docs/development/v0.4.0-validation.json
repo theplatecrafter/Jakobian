@@ -1,0 +1,245 @@
+{
+  "version": "0.4.0",
+  "dateUtc": "2026-10-15T01:18:13.0871910Z",
+  "branch": "main",
+  "commitsCreatedByAgent": 0,
+  "game": "KSP 1.12.5 build 03190 Windows x64",
+  "unity": "2019.4.18f1",
+  "sdk": "10.0.203",
+  "build": {
+    "templateManagedAssembliesUnchanged": true,
+    "coreAssertions": 112034,
+    "configuration": "Release",
+    "deployedFilesMatchBuild": true,
+    "errors": 0,
+    "warnings": 0,
+    "fixtureConfigIdenticalTo020": true
+  },
+  "deployment": {
+    "deployedUtc": "2026-10-15T01:08:14.0996033Z",
+    "files": [
+      {
+        "sha256": "908c7d49af0ce913d706bd03b1b7da4030d5129e7714378d8b888ea85340c2a0",
+        "path": "GameData/Jakobian/Plugins/Jakobian.dll"
+      },
+      {
+        "sha256": "3b253a5f76d24554627771b6bcdff0c5e0c2dfb9706fd85f0f384f8a9e9bd1fc",
+        "path": "GameData/Jakobian/Plugins/Jakobian.Core.dll"
+      },
+      {
+        "sha256": "42fb1f3d5fe7b67accef4b2a207c5f6440b711f4daf58e97525daf51b9c8a48c",
+        "path": "GameData/JakobianTestBodies/Bodies.cfg"
+      }
+    ],
+    "version": "0.4.0.0"
+  },
+  "regression": {
+    "inputManifest": [
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\older-probe-saves\\JakobianProbe-JakobianEllipsoid-20261014-230028\\persistent.sfs",
+        "body": "JakobianEllipsoid",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.2.0-JakobianEllipsoid.sfs",
+        "sha256": "2b3735c04a90333b43c98ae256b588590e071cc01fc6515c65933b9b88eea624",
+        "version": "0.2.0"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\older-probe-saves\\JakobianProbe-JakobianCube-20261014-230045\\persistent.sfs",
+        "body": "JakobianCube",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.2.0-JakobianCube.sfs",
+        "sha256": "0d6eff516ce9b727c2c4fd1a876c6e5a9179fcd9290f08b70d013f43ff589373",
+        "version": "0.2.0"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\older-probe-saves\\JakobianProbe-JakobianPeanut-20261014-230151\\persistent.sfs",
+        "body": "JakobianPeanut",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.2.0-JakobianPeanut.sfs",
+        "sha256": "ba6b3108553b914270f80de5f20b40c568217aa145e24df10528035b31400201",
+        "version": "0.2.0"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianEllipsoid-20261014-232324\\persistent.sfs",
+        "body": "JakobianEllipsoid",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.3.0-JakobianEllipsoid.sfs",
+        "sha256": "4c9469e869d6d8881103903320ba2f95dad4e3c0867f66a339db10d0b77a21bc",
+        "version": "0.3.0"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianCube-20261014-232343\\persistent.sfs",
+        "body": "JakobianCube",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.3.0-JakobianCube.sfs",
+        "sha256": "ec51970230e49995fde9743c598ca6f939486bfba9a46f6dd7a970b0ac9b1f8b",
+        "version": "0.3.0"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianPeanut-20261014-232454\\persistent.sfs",
+        "body": "JakobianPeanut",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.3.0-JakobianPeanut.sfs",
+        "sha256": "3e360fe4dbd41048cc2266325b5b35a795a815241e8706bf9b34441fb58d2c06",
+        "version": "0.3.0"
+      }
+    ],
+    "firstLoadPoseTolerance": {
+      "altitudeM": 3,
+      "longitudeDeg": 0.01,
+      "latitudeDeg": 0.01
+    },
+    "privateOutputs": "instances/baseline/.dev/regression-results",
+    "sha256": "f2c00ed8ab57703ef566d63c65cc1784e233a15c2052ffa41a9e8ff1a402a659",
+    "originalAndStagedInputHashesPreserved": true,
+    "watchdog": {
+      "bootstrapMarker": false,
+      "processDisposition": "exited",
+      "flightSuiteMarker": false,
+      "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\regression\\regression-20261014-210814.log",
+      "regressionSuiteMarker": true
+    },
+    "log": "artifacts/regression/regression-20261014-210814.log",
+    "stockOrbit": {
+      "body": "Kerbin",
+      "queryScope": "excluded",
+      "reload": "passed",
+      "semiMajorAxisToleranceM": 50,
+      "coastSeconds": 10,
+      "cameraCorrections": 0,
+      "altitudeToleranceM": 100
+    },
+    "exceptionTokens": 0,
+    "secondReloadChecks": "native landed flag, body readiness and altitude",
+    "historicalCases": [
+      {
+        "fixture": "v0.2.0-JakobianCube.sfs",
+        "body": "JakobianCube",
+        "copy": "JakobianUpgrade-v0.2.0-JakobianCube-20261015-011001"
+      },
+      {
+        "fixture": "v0.2.0-JakobianEllipsoid.sfs",
+        "body": "JakobianEllipsoid",
+        "copy": "JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261015-011022"
+      },
+      {
+        "fixture": "v0.2.0-JakobianPeanut.sfs",
+        "body": "JakobianPeanut",
+        "copy": "JakobianUpgrade-v0.2.0-JakobianPeanut-20261015-011039"
+      },
+      {
+        "fixture": "v0.3.0-JakobianCube.sfs",
+        "body": "JakobianCube",
+        "copy": "JakobianUpgrade-v0.3.0-JakobianCube-20261015-011057"
+      },
+      {
+        "fixture": "v0.3.0-JakobianEllipsoid.sfs",
+        "body": "JakobianEllipsoid",
+        "copy": "JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261015-011114"
+      },
+      {
+        "fixture": "v0.3.0-JakobianPeanut.sfs",
+        "body": "JakobianPeanut",
+        "copy": "JakobianUpgrade-v0.3.0-JakobianPeanut-20261015-011131"
+      }
+    ],
+    "suitePass": true
+  },
+  "flight": {
+    "watchdog": {
+      "flightSuiteMarker": true,
+      "bootstrapMarker": false,
+      "processDisposition": "exited",
+      "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\flight\\all-20261014-211251.log",
+      "regressionSuiteMarker": false
+    },
+    "sha256": "5b282ab9bcf6a72d5f6f6c5bf0dd73bf2a9b451881aabe21232f8f900933b05f",
+    "markerCounts": {
+      "NATIVE_BODY_PASS": 4,
+      "NATIVE_NAVIGATION_PASS": 6,
+      "ALTIMETER_MODE_PASS": 12,
+      "TORUS_NATIVE_MESH_PASS": 1,
+      "NATIVE_CONTEXT_PASS": 4,
+      "FLIGHT_LANDING_PASS": 3,
+      "TORUS_NATIVE_QUERY_PASS": 1,
+      "FLIGHT_RELOAD_PASS": 3,
+      "CAMERA_SEQUENCE_PASS": 3,
+      "CAMERA_GUARD_PASS": 3
+    },
+    "log": "artifacts/flight/all-20261014-211251.log",
+    "freshSaves": [
+      {
+        "body": "JakobianEllipsoid",
+        "save": "JakobianProbe-JakobianEllipsoid-20261015-011432",
+        "landed": true,
+        "reload": true
+      },
+      {
+        "body": "JakobianCube",
+        "save": "JakobianProbe-JakobianCube-20261015-011450",
+        "landed": true,
+        "reload": true
+      },
+      {
+        "body": "JakobianPeanut",
+        "save": "JakobianProbe-JakobianPeanut-20261015-011558",
+        "landed": true,
+        "reload": true
+      }
+    ],
+    "descent": "Explicit test-only approximately 3 m/s braking; native terrain contact and landed state.",
+    "exceptionTokens": 0,
+    "suitePass": true
+  },
+  "torus": {
+    "core": "bounded closed-solid sphere/torus queries",
+    "nativeMono": "four diameter crossings, no axial hole crossings",
+    "nativeCollider": "32 rotated mesh-collider patches: outer/inner/top collider rays and empty hole",
+    "streamingAndAnchorsImplemented": false,
+    "nativeCelestialBodyEnabled": false
+  },
+  "lifecycle": {
+    "fix": "New games start from MainMenu, reload yields to normal update timing, successful probes return through MainMenu before quitting.",
+    "finalLogsExceptionTokens": 0,
+    "earlierAttempt": "artifacts/regression/regression-20261014-205456.log contained native UI exceptions during direct cross-world starts; persisted poses/orbit passed but UI acceptance failed.",
+    "globalNativeUiPatchInstalled": false
+  },
+  "archive": {
+    "ownPrivateResultFoldersMoved": [
+      "JakobianUpgrade-v0.2.0-JakobianCube-20261015-005637",
+      "JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261015-005652",
+      "JakobianUpgrade-v0.2.0-JakobianPeanut-20261015-005702",
+      "JakobianUpgrade-v0.3.0-JakobianCube-20261015-005713",
+      "JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261015-005724",
+      "JakobianUpgrade-v0.3.0-JakobianPeanut-20261015-005735",
+      "JakobianStock-20261015-005746",
+      "JakobianUpgrade-v0.2.0-JakobianCube-20261015-010044",
+      "JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261015-010103",
+      "JakobianUpgrade-v0.2.0-JakobianPeanut-20261015-010121",
+      "JakobianUpgrade-v0.3.0-JakobianCube-20261015-010139",
+      "JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261015-010156",
+      "JakobianUpgrade-v0.3.0-JakobianPeanut-20261015-010214",
+      "JakobianStock-20261015-010232",
+      "JakobianUpgrade-v0.2.0-JakobianCube-20261015-010529",
+      "JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261015-010548",
+      "JakobianUpgrade-v0.2.0-JakobianPeanut-20261015-010606",
+      "JakobianUpgrade-v0.3.0-JakobianCube-20261015-010623",
+      "JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261015-010641",
+      "JakobianUpgrade-v0.3.0-JakobianPeanut-20261015-010659",
+      "JakobianStock-20261015-010717",
+      "JakobianUpgrade-v0.2.0-JakobianCube-20261015-011001",
+      "JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261015-011022",
+      "JakobianUpgrade-v0.2.0-JakobianPeanut-20261015-011039",
+      "JakobianUpgrade-v0.3.0-JakobianCube-20261015-011057",
+      "JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261015-011114",
+      "JakobianUpgrade-v0.3.0-JakobianPeanut-20261015-011131",
+      "JakobianStock-20261015-011149"
+    ],
+    "deletedSaves": 0,
+    "preexistingPlayerAndHistoricalSaveFoldersMoved": 0
+  },
+  "limitations": [
+    "Torus solid/mesh foundation only; no enabled torus celestial body or vessel landing on a torus.",
+    "Ray precision/budget limits and near-tangent contact tolerance are explicit; not arbitrary-precision geometry.",
+    "No descriptor freeze, changed-geometry migration, terrain streaming or stable general-surface anchors.",
+    "Historical coverage is six retained Sandbox capsule fixtures with unchanged geometry; not all craft, careers or mods.",
+    "Stock coverage is one circular Kerbin orbit coast/reload, not full stock scene/gameplay regression.",
+    "Interactive/camera-mod, EVA, wheel, fleet, warp, gas/fluid and drilling/scanning acceptance remain incomplete.",
+    "Terrain visual seams and zero-spin persistence remain unresolved; Kopernicus coexistence still rejected.",
+    "Normal probe lifecycle now exits without exceptions; forced direct Application.Quit in Flight and arbitrary scene/UI behavior are not globally patched."
+  ]
+}
