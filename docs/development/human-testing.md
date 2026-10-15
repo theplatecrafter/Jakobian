@@ -1,4 +1,4 @@
-# Human testing — Jakobian development 0.5.0
+# Human testing — Jakobian development 0.6.0
 
 The latest successfully deployed build is in `C:\Users\Hans\Documents\programming\Jakobian\instances\baseline`. Launch it with [Play Jakobian.cmd](../../Play%20Jakobian.cmd), or run that instance's `KSP_x64.exe`. It uses the supplied KSP 1.12.5 installation and has no Kopernicus dependency.
 
@@ -32,7 +32,7 @@ The shared resource bridge supplies native body/latitude/longitude/datum coordin
 
 ## Manual test
 
-For the new terrain fixture, choose **Resume Saved** and open **`JakobianProbe-JakobianAtlas-20261015-045529`**. It contains the stock capsule from the final Atlas contact/GPU/save/reload run. The [0.5.0 evidence record](v0.5.0-validation.json) lists exact tested hashes and scope. Existing fixture saves remain available; the original four worlds retain their geometry and indices.
+For the terrain fixture, choose **Resume Saved** and open **`JakobianProbe-JakobianAtlas-20261015-141117`**. It contains the stock capsule from the final 0.6.0 Atlas contact/GPU/save/reload run. The [0.6.0 evidence record](v0.6.0-validation.json) lists exact tested hashes and scope. Existing fixture saves remain available; all five worlds retain their 0.5.0 geometry, configuration and indices.
 
 Atlas demonstrates macro albedo and terrain mapping with 256x129 images. Close-up ground can look smooth because fine detail/normal/splat textures are not implemented yet. Inspect larger terrain/color regions from altitude as well as contact at ground level. The isolated native overview render is recorded in the evidence file; it is a controlled material test, not a flight screenshot.
 
@@ -46,6 +46,10 @@ The shape fixture definitions are [Bodies.cfg](../../GameData/JakobianTestBodies
 
 Development 0.5.0 keeps the original four fixture definitions unchanged and adds [Atlas.cfg](../../GameData/JakobianTestBodies/Atlas.cfg). See [map authoring](../modders/radial-maps.md) for the supported PNG8 schema. Its torus geometry and native collider checks are isolated development experiments, not an enabled torus celestial body. The next general-body slice must handle hole/interior flight, spherical-consumer assumptions and stable surface anchors before that fixture is enabled.
 
+## Torus contact development fixture
+
+Development 0.6.0 retains the same five playable radial moons. The new torus contact provider is an experimental API and isolated native test; there is no enabled torus celestial body yet. With baseline closed, run `./tools/Torus-Probe.ps1`. It tests bounded patch streaming, two participants, a swept chart seam, real rigidbody contact on inner/outer/top walls, hole transit and local material-record roundtrip. Its prescribed forces are contact fixtures, not a torus gravity model or centrifuge. The separate physics scene is destroyed before exit and no player craft/save is modified. Look for `TORUS_STREAM_SUITE_PASS` and the watcher's `torusStreamingMarker`; a process exit alone does not prove success. See [architecture](../architecture/torus-contact-streaming.md), [API guide](../modders/experimental-torus-provider.md) and [0.6.0 evidence](v0.6.0-validation.json).
+
 ## Automated development probes
 
 From the repository root, with the baseline game closed:
@@ -53,6 +57,7 @@ From the repository root, with the baseline game closed:
 ```powershell
 ./tools/Build.ps1
 ./tools/Boot-Probe.ps1 -Instance baseline -Graphics
+./tools/Torus-Probe.ps1
 ./tools/Flight-Probe.ps1 -Body all
 # Or only the new terrain fixture:
 ./tools/Flight-Probe.ps1 -Body JakobianAtlas

@@ -12,7 +12,7 @@ Implement Jakobian's own final-node parser, stock template/system construction, 
 
 ## M2 — complete airless static torus slice
 
-Analytic shape/BVH/charts, scaled mesh, local collider streaming, geometry-aware kill/altitude paths, point gravity, surface caches/navball/camera, contact landing/EVA/wheels, material anchors and first scenario save schema. This tests empty hole transit plus both inner and outer surfaces while keeping gravity initially central. Gate: land -> EVA -> save -> reload -> switch vessel -> Map/Tracking -> warp on the actual supported shape; multiple vessels/debris do not lose contact.
+Analytic shape/BVH/charts, scaled mesh, local collider streaming, geometry-aware kill/altitude paths, point gravity, surface caches/navball/camera, contact landing/EVA/wheels, material anchors and first scenario save schema. This tests empty hole transit and both boundary orientations. Native central gravity can support outer landing; stable inner-wall habitation needs rotation or an explicitly separate field. Inner contact in the static slice must use a declared fixture/support force, not relabel central gravity as attraction to every surface. Gate: land -> EVA -> save -> reload -> switch vessel -> Map/Tracking -> warp on the actual supported shape; multiple vessels/debris do not lose contact.
 
 ## M3 — terrain, biomes, science and resources
 
@@ -57,3 +57,5 @@ Development 0.5.0 adds a restricted part of M3: radial height/albedo maps, a sha
 ## Required general-body expansion
 
 The accepted [mathematical bodies, mass and influence-volume contract](../architecture/mathematical-bodies-and-fields.md) is part of the framework scope. After the static torus runtime/contact/anchor gate, implement bounded mathematical expression geometry; arbitrary influence-domain event detection and numerical point-field propagation; rigidly rotating habitats with inertial/rotating centrifugal and Coriolis parity; then mass compilation and distributed gravity, followed by spatial gas/fluid integration. Every step must cover loaded and unloaded craft, save/reload, multiple bodies and force ownership. A mathematical surface, a material volume, mass density and a gravity domain are separate definitions.
+
+Development 0.6.0 adds bounded swept contact planning, transactional torus patch residency, native collider publication and analytic material-coordinate records. The isolated native test exercises two participants, a periodic seam corridor, inner/outer/top rigidbody contact and hole transit. This advances M2 prerequisites; it does not yet bind a torus celestial body or KSP vessel anchors/rails. See [streaming architecture](../architecture/torus-contact-streaming.md) and [0.6.0](../development/v0.6.0.md).

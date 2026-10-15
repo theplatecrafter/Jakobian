@@ -1,6 +1,6 @@
 # Proposed configuration language and Kopernicus migration
 
-Status: **development 0.5.0 has a restricted implemented standalone subset**. Mapped radial terrain and native biomes are described in [radial maps](radial-maps.md). The general language below remains a design proposal. Files under `examples/` use `.cfg.disabled` to keep future features out of the game database. The enabled pack is [Bodies.cfg](../../GameData/JakobianTestBodies/Bodies.cfg).
+Status: **development 0.6.0 retains the restricted implemented standalone body subset from 0.5.0**. The [experimental torus provider API](experimental-torus-provider.md) is separate from this parser; torus CFG input remains disabled. Mapped radial terrain and native biomes are described in [radial maps](radial-maps.md). The general language below remains a design proposal. Files under `examples/` use `.cfg.disabled` to keep future features out of the game database. The enabled pack is [Bodies.cfg](../../GameData/JakobianTestBodies/Bodies.cfg).
 
 ## Implemented subset through 0.5.0
 

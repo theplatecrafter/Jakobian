@@ -61,3 +61,7 @@ No arbitrary-body release is ready at this stage. A release requires its milesto
 ## Mapped radial backend in 0.5.0
 
 The core map checks cover independent interpolation values, longitude wrap including a roundoff endpoint, complete scaled-mesh sample bounds, immutable input ownership, pole agreement, palette classification, displacement limits, radial clearance/datum separation and an independent normal stencil. Native Atlas checks compare 2,520 PQS heights and science biome lookups to shared queries, verify all four biomes occur and compare sampled scaled vertices. Flight adds ResourceMap biome agreement to the existing navigation/contact/reload suite. See [0.5.0](v0.5.0.md) for executed scope and limits.
+
+## Torus contact backend in 0.6.0
+
+Core checks cover material coordinate inverses/seams/ambiguity, matching mesh tessellations, conservative patch bounds, swept contact membership, invalid/budget/capacity requests, transactional readiness, cache limits, stale/duplicate/cross-owner tickets and build retries. The native isolated scene traverses 128 two-participant footprints, checks a 33-sample seam corridor, settles three rigidbodies against the actual mesh colliders, transits the hole and round-trips material records with identity/shape/schema validation. Default physics settings remain unchanged and the local scene is unloaded. See [0.6.0](v0.6.0.md) for exact evidence and the distinction from KSP vessel gameplay.

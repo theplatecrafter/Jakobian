@@ -1,6 +1,6 @@
 # Persistence, identities and migration
 
-Status: proposed schema. No Jakobian world/scenario serializer is implemented yet.
+Status: proposed full schema. Development 0.6.0 adds an experimental [analytic torus material-record codec](../modders/experimental-torus-provider.md), including stable owner/chart IDs and shape checks. It does not install a world/scenario serializer or KSP vessel-anchor restoration; those remain future work.
 
 ## Identity rules
 

@@ -1,0 +1,276 @@
+{
+  "version": "0.6.0",
+  "status": "validated-development-slice",
+  "build": {
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "coreAssertions": 165348,
+    "deployedFilesMatchBuild": true,
+    "deployedAssetCount": 9,
+    "deployedFilesMatchTestedSnapshots": true,
+    "fixtureAndAssetBytesUnchangedFrom050": true,
+    "templateManagedAssembliesUnchanged": true,
+    "templateManagedAssemblyCount": 4
+  },
+  "deployment": {
+    "deployedUtc": "2026-10-15T14:01:36.6600403Z",
+    "version": "0.6.0.0",
+    "files": [
+      {
+        "path": "GameData/Jakobian/Plugins/Jakobian.dll",
+        "sha256": "15863755ec0739a788154cbc07c7e06c4416dd1db823ea61868908175a6036b8"
+      },
+      {
+        "path": "GameData/Jakobian/Plugins/Jakobian.Core.dll",
+        "sha256": "32be66e5ef4348376f2b34389424dc7cb51b73258be1cfb00018a6bb6f824445"
+      },
+      {
+        "path": "GameData/Jakobian/Assets/jakobian-shaders",
+        "sha256": "3dd9409d1258a87f42ca5d9f4fc9f62fee0ee93662ae380a105994c2345f5d43"
+      },
+      {
+        "path": "GameData/Jakobian/Assets/shader-manifest.json",
+        "sha256": "a39155aac7c798620584e56a4cfaf849255c74856448f24d4ee81bc677967ee7"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Atlas.cfg",
+        "sha256": "0178646efb7bdaf023fa2a31372b9549bbe219c221bba322cb0a66561a82cd30"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Bodies.cfg",
+        "sha256": "42fb1f3d5fe7b67accef4b2a207c5f6440b711f4daf58e97525daf51b9c8a48c"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-biomes.png",
+        "sha256": "6b56221e1fba04ab36063ab2cd18155e3000ec2e625345cd75da260e8aa4875c"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-color.png",
+        "sha256": "011ff6c9cb6b4b5be89388a91d4b5b0de308b2c262c80cec5f40afc66aa8d9ce"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-height.png",
+        "sha256": "c2960616ae1d013f9a65c2f4c782a3bc62594c2c732a4720890ef2af82dbf37f"
+      }
+    ]
+  },
+  "torus": {
+    "log": "artifacts/torus/streaming-20261015-100136.log",
+    "sha256": "ff556820bfc25d3ff4db823f7b5b7d8a77e54a17bd6a84846fd8caa2628fb063",
+    "watchdog": {
+      "torusStreamingMarker": true,
+      "flightSuiteMarker": false,
+      "processDisposition": "exited",
+      "bootstrapMarker": false,
+      "regressionSuiteMarker": false,
+      "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\torus\\streaming-20261015-100136.log"
+    },
+    "exceptionTokens": 0,
+    "markers": {
+      "TORUS_STREAM_TRAVERSAL_PASS": 1,
+      "TORUS_STREAM_SWEEP_PASS": 1,
+      "TORUS_STREAM_RIGIDBODY_PASS": 3,
+      "TORUS_STREAM_HOLE_PASS": 1,
+      "TORUS_STREAM_REJECTION_PASS": 1,
+      "TORUS_ANCHOR_ROUNDTRIP_PASS": 1,
+      "TORUS_STREAM_SUITE_PASS": 1
+    },
+    "residentLimit": 96,
+    "participants": 2,
+    "traversalRequests": 128,
+    "seamSamples": 33,
+    "scope": "Isolated Unity physics scene; prescribed test forces; no KSP vessel or celestial torus.",
+    "builds": 2079,
+    "evictions": 1983,
+    "seamCorridorMetres": 125.581039058627,
+    "materialRecords": {
+      "scope": "Local material position only; not KSP vessel persistence.",
+      "sha256": "cf0d9d45fc3328ebdd0b670c4d12176bb294760e381b3fbcd3c621c065af064d",
+      "path": "artifacts/validation/v0.6.0/TorusAnchors.cfg",
+      "count": 3
+    },
+    "nativePassLines": [
+      "[Jakobian] TORUS_STREAM_TRAVERSAL_PASS requests=128 participants=2 residents=96 builds=2079 evictions=1983",
+      "[Jakobian] TORUS_STREAM_SWEEP_PASS samples=33 seam=U corridorM=125.581039058627",
+      "[Jakobian] TORUS_STREAM_RIGIDBODY_PASS u=0 v=0 contacts=752 clearance=1.00036625028085 speed=0.0003433246",
+      "[Jakobian] TORUS_STREAM_RIGIDBODY_PASS u=0 v=0.5 contacts=752 clearance=1.00091556564684 speed=4.597209E-07",
+      "[Jakobian] TORUS_STREAM_RIGIDBODY_PASS u=0.25 v=0.25 contacts=752 clearance=0.999877940400097 speed=1.177387E-07",
+      "[Jakobian] TORUS_STREAM_HOLE_PASS contacts=0 travelM=500 activeRemoteTerrain=8",
+      "[Jakobian] TORUS_STREAM_REJECTION_PASS oldCoverage=retained newCoverage=not-ready",
+      "[Jakobian] TORUS_ANCHOR_ROUNDTRIP_PASS records=3 position=preserved wrongBody=rejected changedShape=rejected futureSchema=rejected nonfinite=rejected",
+      "[Jakobian] TORUS_STREAM_SUITE_PASS scene=isolated defaultPhysics=unchanged"
+    ]
+  },
+  "preliminaryTorusRun": "artifacts/torus/streaming-20261015-095606.log",
+  "limitations": [
+    "No torus celestial body/config parser support.",
+    "No KSP vessel/rails/world-descriptor persistence; material codec only.",
+    "No moving-frame/centrifuge physics, noncentral gravity or numerical flight.",
+    "No atmosphere/water/general expression geometry.",
+    "Contact cooking is synchronous, bounded by count rather than milliseconds."
+  ],
+  "validatedUtc": "2026-10-15T14:15:08.4140714Z",
+  "branch": "main",
+  "commitsCreatedByAgent": 0,
+  "game": "KSP 1.12.5 / 03190 Windows x64",
+  "unity": "2019.4.18f1",
+  "regression": {
+    "archiveDirectory": "instances/baseline/.dev/regression-results",
+    "exceptionTokens": 0,
+    "inputManifest": "instances/baseline/.dev/regression-inputs/manifest.json",
+    "stockCoastSeconds": 10,
+    "sha256": "e1b72a5aa4b13985513700790dec803a85f46f09b5f1869be08b0778a6d48e91",
+    "inputs": [
+      {
+        "sha256": "2b3735c04a90333b43c98ae256b588590e071cc01fc6515c65933b9b88eea624",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\older-probe-saves\\JakobianProbe-JakobianEllipsoid-20261014-230028\\persistent.sfs",
+        "body": "JakobianEllipsoid",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.2.0-JakobianEllipsoid.sfs",
+        "version": "0.2.0"
+      },
+      {
+        "sha256": "0d6eff516ce9b727c2c4fd1a876c6e5a9179fcd9290f08b70d013f43ff589373",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\older-probe-saves\\JakobianProbe-JakobianCube-20261014-230045\\persistent.sfs",
+        "body": "JakobianCube",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.2.0-JakobianCube.sfs",
+        "version": "0.2.0"
+      },
+      {
+        "sha256": "ba6b3108553b914270f80de5f20b40c568217aa145e24df10528035b31400201",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\older-probe-saves\\JakobianProbe-JakobianPeanut-20261014-230151\\persistent.sfs",
+        "body": "JakobianPeanut",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.2.0-JakobianPeanut.sfs",
+        "version": "0.2.0"
+      },
+      {
+        "sha256": "4c9469e869d6d8881103903320ba2f95dad4e3c0867f66a339db10d0b77a21bc",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianEllipsoid-20261014-232324\\persistent.sfs",
+        "body": "JakobianEllipsoid",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.3.0-JakobianEllipsoid.sfs",
+        "version": "0.3.0"
+      },
+      {
+        "sha256": "ec51970230e49995fde9743c598ca6f939486bfba9a46f6dd7a970b0ac9b1f8b",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianCube-20261014-232343\\persistent.sfs",
+        "body": "JakobianCube",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.3.0-JakobianCube.sfs",
+        "version": "0.3.0"
+      },
+      {
+        "sha256": "3e360fe4dbd41048cc2266325b5b35a795a815241e8706bf9b34441fb58d2c06",
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianPeanut-20261014-232454\\persistent.sfs",
+        "body": "JakobianPeanut",
+        "fixture": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-inputs\\v0.3.0-JakobianPeanut.sfs",
+        "version": "0.3.0"
+      }
+    ],
+    "historicalCases": 6,
+    "log": "artifacts/regression/regression-20261015-100505.log",
+    "passLines": [
+      "[Jakobian] TORUS_NATIVE_QUERY_PASS diameterCrossings=4 holeCrossings=0 runtime=gameMono",
+      "[Jakobian] TORUS_NATIVE_MESH_PASS patches=32 inner=contact outer=contact top=contact hole=empty transform=rotated",
+      "[Jakobian] MAPPED_SURFACE_PASS JakobianAtlas samples=2520 biomes=4 scaled=PQS=context shader=Jakobian/MappedTerrain",
+      "[Jakobian] NATIVE_CONTEXT_PASS JakobianAtlas frame=Y/Z chart=stock down=gravity ground=radial",
+      "[Jakobian] NATIVE_BODY_PASS JakobianAtlas PQS=analytic shape=Ellipsoid vertices=8385",
+      "[Jakobian] NATIVE_CONTEXT_PASS JakobianControl frame=Y/Z chart=stock down=gravity ground=radial",
+      "[Jakobian] NATIVE_BODY_PASS JakobianControl PQS=analytic shape=Sphere vertices=8385",
+      "[Jakobian] NATIVE_CONTEXT_PASS JakobianEllipsoid frame=Y/Z chart=stock down=gravity ground=radial",
+      "[Jakobian] NATIVE_BODY_PASS JakobianEllipsoid PQS=analytic shape=Ellipsoid vertices=8385",
+      "[Jakobian] NATIVE_CONTEXT_PASS JakobianCube frame=Y/Z chart=stock down=gravity ground=radial",
+      "[Jakobian] NATIVE_BODY_PASS JakobianCube PQS=analytic shape=Superellipsoid vertices=8385",
+      "[Jakobian] NATIVE_CONTEXT_PASS JakobianPeanut frame=Y/Z chart=stock down=gravity ground=radial",
+      "[Jakobian] NATIVE_BODY_PASS JakobianPeanut PQS=analytic shape=Peanut vertices=8385",
+      "[Jakobian] NATIVE_NAVIGATION_PASS JakobianCube phase=historical-upgrade nativeUp=gravity navball=gravity radar=ground datum=reference air=vacuum biome=Greater Flats Ore=0.02260705",
+      "[Jakobian] HISTORICAL_UPGRADE_PASS fixture=v0.2.0-JakobianCube.sfs body=JakobianCube landed=True pose=preserved reload=passed copy=JakobianUpgrade-v0.2.0-JakobianCube-20261015-140648",
+      "[Jakobian] NATIVE_NAVIGATION_PASS JakobianEllipsoid phase=historical-upgrade nativeUp=gravity navball=gravity radar=ground datum=reference air=vacuum biome=Greater Flats Ore=0.115018",
+      "[Jakobian] HISTORICAL_UPGRADE_PASS fixture=v0.2.0-JakobianEllipsoid.sfs body=JakobianEllipsoid landed=True pose=preserved reload=passed copy=JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261015-140710",
+      "[Jakobian] NATIVE_NAVIGATION_PASS JakobianPeanut phase=historical-upgrade nativeUp=gravity navball=gravity radar=ground datum=reference air=vacuum biome=Greater Flats Ore=0.1250028",
+      "[Jakobian] HISTORICAL_UPGRADE_PASS fixture=v0.2.0-JakobianPeanut.sfs body=JakobianPeanut landed=True pose=preserved reload=passed copy=JakobianUpgrade-v0.2.0-JakobianPeanut-20261015-140728",
+      "[Jakobian] NATIVE_NAVIGATION_PASS JakobianCube phase=historical-upgrade nativeUp=gravity navball=gravity radar=ground datum=reference air=vacuum biome=Greater Flats Ore=0.02261127",
+      "[Jakobian] HISTORICAL_UPGRADE_PASS fixture=v0.3.0-JakobianCube.sfs body=JakobianCube landed=True pose=preserved reload=passed copy=JakobianUpgrade-v0.3.0-JakobianCube-20261015-140745",
+      "[Jakobian] NATIVE_NAVIGATION_PASS JakobianEllipsoid phase=historical-upgrade nativeUp=gravity navball=gravity radar=ground datum=reference air=vacuum biome=Greater Flats Ore=0.115016",
+      "[Jakobian] HISTORICAL_UPGRADE_PASS fixture=v0.3.0-JakobianEllipsoid.sfs body=JakobianEllipsoid landed=True pose=preserved reload=passed copy=JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261015-140802",
+      "[Jakobian] NATIVE_NAVIGATION_PASS JakobianPeanut phase=historical-upgrade nativeUp=gravity navball=gravity radar=ground datum=reference air=vacuum biome=Greater Flats Ore=0.1250055",
+      "[Jakobian] HISTORICAL_UPGRADE_PASS fixture=v0.3.0-JakobianPeanut.sfs body=JakobianPeanut landed=True pose=preserved reload=passed copy=JakobianUpgrade-v0.3.0-JakobianPeanut-20261015-140820",
+      "[Jakobian] STOCK_ORBIT_PASS body=Kerbin scope=excluded coastSeconds=10 orbit=stable reload=passed copy=JakobianStock-20261015-140837",
+      "[Jakobian] REGRESSION_SUITE_PASS"
+    ],
+    "privateOutputsArchived": [
+      "JakobianUpgrade-v0.2.0-JakobianCube-20261015-140648",
+      "JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261015-140710",
+      "JakobianUpgrade-v0.2.0-JakobianPeanut-20261015-140728",
+      "JakobianUpgrade-v0.3.0-JakobianCube-20261015-140745",
+      "JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261015-140802",
+      "JakobianUpgrade-v0.3.0-JakobianPeanut-20261015-140820",
+      "JakobianStock-20261015-140837"
+    ],
+    "originalAndStagedInputsUnchanged": true,
+    "watchdog": {
+      "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\regression\\regression-20261015-100505.log",
+      "torusStreamingMarker": false,
+      "bootstrapMarker": false,
+      "flightSuiteMarker": false,
+      "processDisposition": "exited",
+      "regressionSuiteMarker": true
+    }
+  },
+  "atlasFlight": {
+    "exceptionTokens": 0,
+    "screenshots": [
+      {
+        "path": "artifacts/validation/v0.6.0/JakobianAtlas-flight.png",
+        "sha256": "5d3f888aaee22701d11ce2607e3f1c91ca97c62edf2402745f468d56b02ba5b3"
+      },
+      {
+        "path": "artifacts/validation/v0.6.0/JakobianAtlas-landed.png",
+        "sha256": "bc1082fe399a96618dbe0b7ba9c6d831fa3c702bd0a12ca04b37b07f0f2965a4"
+      },
+      {
+        "path": "artifacts/validation/v0.6.0/JakobianAtlas-overview.png",
+        "sha256": "622cce613d53b9738c14817ee206e5433363d9a928e6f44c260d32295a97c7ac"
+      }
+    ],
+    "sha256": "17e2257c4ad8fc0ae147cdac6760149bde76ce2ca6af5e5e8d7821c4551b6c95",
+    "visualScope": "Macro albedo/controlled overview; close terrain remains smooth without fine detail/normal/splat layers. No broad visual acceptance claim.",
+    "log": "artifacts/flight/JakobianAtlas-20261015-100934.log",
+    "passLines": [
+      "[Jakobian] TORUS_NATIVE_QUERY_PASS diameterCrossings=4 holeCrossings=0 runtime=gameMono",
+      "[Jakobian] TORUS_NATIVE_MESH_PASS patches=32 inner=contact outer=contact top=contact hole=empty transform=rotated",
+      "[Jakobian] MAPPED_SURFACE_PASS JakobianAtlas samples=2520 biomes=4 scaled=PQS=context shader=Jakobian/MappedTerrain",
+      "[Jakobian] NATIVE_CONTEXT_PASS JakobianAtlas frame=Y/Z chart=stock down=gravity ground=radial",
+      "[Jakobian] NATIVE_BODY_PASS JakobianAtlas PQS=analytic shape=Ellipsoid vertices=8385",
+      "[Jakobian] NATIVE_CONTEXT_PASS JakobianControl frame=Y/Z chart=stock down=gravity ground=radial",
+      "[Jakobian] NATIVE_BODY_PASS JakobianControl PQS=analytic shape=Sphere vertices=8385",
+      "[Jakobian] NATIVE_CONTEXT_PASS JakobianEllipsoid frame=Y/Z chart=stock down=gravity ground=radial",
+      "[Jakobian] NATIVE_BODY_PASS JakobianEllipsoid PQS=analytic shape=Ellipsoid vertices=8385",
+      "[Jakobian] NATIVE_CONTEXT_PASS JakobianCube frame=Y/Z chart=stock down=gravity ground=radial",
+      "[Jakobian] NATIVE_BODY_PASS JakobianCube PQS=analytic shape=Superellipsoid vertices=8385",
+      "[Jakobian] NATIVE_CONTEXT_PASS JakobianPeanut frame=Y/Z chart=stock down=gravity ground=radial",
+      "[Jakobian] NATIVE_BODY_PASS JakobianPeanut PQS=analytic shape=Peanut vertices=8385",
+      "[Jakobian] NATIVE_NAVIGATION_PASS JakobianAtlas phase=approach nativeUp=gravity navball=gravity radar=ground datum=reference air=vacuum biome=RustPlains Ore=0.02880647",
+      "[Jakobian] ALTIMETER_MODE_PASS JakobianAtlas mode=ASL value=3717.36922137134",
+      "[Jakobian] ALTIMETER_MODE_PASS JakobianAtlas mode=AGL value=89.855170724024",
+      "[Jakobian] CAMERA_GUARD_PASS JakobianAtlas underground=-10 corrected=1.99996934042247",
+      "[Jakobian] CAMERA_SEQUENCE_PASS JakobianAtlas frames=10 nativePitchHeadingZoom=preserved",
+      "[Jakobian] MAPPED_CONTACT_MESH_PASS meshes=8",
+      "[Jakobian] MAPPED_GPU_PASS isolated=scaled-mesh albedo=palette-regions",
+      "[Jakobian] FLIGHT_LANDING_PASS JakobianAtlas terrainCollider=True landed=True save=JakobianProbe-JakobianAtlas-20261015-141117",
+      "[Jakobian] FLIGHT_RELOAD_PASS JakobianAtlas",
+      "[Jakobian] NATIVE_NAVIGATION_PASS JakobianAtlas phase=landed-reload nativeUp=gravity navball=gravity radar=ground datum=reference air=vacuum biome=RustPlains Ore=0.02884708",
+      "[Jakobian] ALTIMETER_MODE_PASS JakobianAtlas mode=ASL value=3629.49266039221",
+      "[Jakobian] ALTIMETER_MODE_PASS JakobianAtlas mode=AGL value=0.552460491657257",
+      "[Jakobian] FLIGHT_SUITE_PASS bodies=1"
+    ],
+    "humanSave": "JakobianProbe-JakobianAtlas-20261015-141117",
+    "watchdog": {
+      "regressionSuiteMarker": false,
+      "processDisposition": "exited",
+      "bootstrapMarker": false,
+      "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\flight\\JakobianAtlas-20261015-100934.log",
+      "torusStreamingMarker": false,
+      "flightSuiteMarker": true
+    }
+  },
+  "nativeProcessesClosed": true
+}

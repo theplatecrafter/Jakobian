@@ -1,7 +1,7 @@
 using System;
 using Jakobian.Core;
 
-internal static class Program
+internal static partial class Program
 {
     private static int checks;
     private static void Assert(bool pass, string name) { checks++; if (!pass) throw new Exception(name); }
@@ -56,6 +56,7 @@ internal static class Program
         SurfaceContextChecks();
         SolidChecks();
         MapChecks();
+        StreamingChecks();
         Console.WriteLine("PASS: " + checks + " analytic geometry and frame checks. No KSP flight validation implied.");
     }
 

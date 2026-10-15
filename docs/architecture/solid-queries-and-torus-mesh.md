@@ -18,7 +18,7 @@ The existing nearest-point prototypes remain separate. In particular, the torus 
 
 `TorusMeshBaker.Build` creates one deterministic rectangular patch in periodic toroidal coordinates. Vertices are relative to a local double-precision anchor. Its integer sample grid wraps both periodic directions to the same canonical samples, so adjacent/seam patches reconstruct the same boundary points. Analytic vertex normals and triangle winding face away from solid material on both inner and outer walls.
 
-A patch is bounded to at most 129 × 129 vertices. The caller chooses tile counts and tessellation and owns the returned arrays. This is a mesh bake primitive, not a complete streaming scheduler, tile cache, terrain modifier stack, UV/biome atlas or LOD stitcher. Terrain generation/version identity and resident anchors still need implementation before occupied worlds can depend on it.
+A patch is bounded to at most 129 × 129 vertices. Development 0.6.0 adds a separate [contact planner, residency controller and native publisher](torus-contact-streaming.md), plus material coordinates independent of patch tessellation. The caller chooses tile counts and tessellation and owns the returned arrays. The baker remains a mesh primitive; the new contact streamer has one fixed mesh resolution and is not a terrain modifier stack, renderer, UV/biome atlas or LOD stitcher. Terrain generation/version identity and resident anchors still need implementation before occupied worlds can depend on it.
 
 ## Native collider experiment
 
