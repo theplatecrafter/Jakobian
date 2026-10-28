@@ -22,10 +22,21 @@ namespace Jakobian.KSP
             catch (Exception error) { Fail(error.ToString()); yield break; }
             string selection = argument.Substring("-jakobianFlightProbe=".Length);
             string[] targets = selection == "all" ? new[] { "JakobianEllipsoid", "JakobianCube", "JakobianPeanut", "JakobianAtlas" } : new[] { selection };
+            if (Environment.GetCommandLineArgs().Contains("-jakobianWorldIsolationProbe")) targets = new[] { "JakobianAtlas", "JakobianAtlas" };
+            int visits = 0;
             foreach (string target in targets)
             {
+                if (visits > 0)
+                {
+                    HighLogic.LoadScene(GameScenes.MAINMENU);
+                    float deadline = Time.realtimeSinceStartup + 90;
+                    while (HighLogic.LoadedScene != GameScenes.MAINMENU && Time.realtimeSinceStartup < deadline) yield return null;
+                    if (HighLogic.LoadedScene != GameScenes.MAINMENU) { Fail("Inter-game MainMenu teardown timed out."); yield break; }
+                    yield return new WaitForSeconds(2);
+                }
                 yield return RunBody(target);
                 if (!running) yield break;
+                visits++;
             }
             // Quit through normal scene teardown instead of destroying the flight
             // map/UI directly during Application.Quit callback ordering.
@@ -79,6 +90,7 @@ namespace Jakobian.KSP
                 game.Mode = Game.Modes.SANDBOX; game.startScene = GameScenes.FLIGHT;
                 Type alarm = typeof(Game).Assembly.GetTypes().FirstOrDefault(t => t.Name == "AlarmClockScenario");
                 if (alarm != null && !game.scenarios.Exists(s => s.moduleName == alarm.Name)) game.AddProtoScenarioModule(alarm, GameScenes.FLIGHT, GameScenes.SPACECENTER, GameScenes.TRACKSTATION);
+                if (!game.scenarios.Exists(s => s.moduleName == nameof(WorldScenario))) game.AddProtoScenarioModule(typeof(WorldScenario), GameScenes.FLIGHT, GameScenes.SPACECENTER, GameScenes.TRACKSTATION);
                 HighLogic.SaveFolder = folder; HighLogic.CurrentGame = game;
                 game.Start();
             }
@@ -89,6 +101,13 @@ namespace Jakobian.KSP
             if (active == null || active.packed || active.mainBody != body) { Fail("Flight state not ready on requested body."); yield break; }
             Debug.Log("[Jakobian] FLIGHT_PROBE_READY " + target);
             yield return new WaitForSeconds(2);
+            try
+            {
+                if (WorldPersistenceChecks.Scenario().Assessment.Status != Jakobian.Core.WorldCompatibility.LegacyUnverified)
+                    throw new InvalidOperationException("Fresh private game inherited a world baseline from another game.");
+                Debug.Log("[Jakobian] WORLD_GAME_ISOLATION_PASS freshGame=unverified save=" + HighLogic.SaveFolder);
+            }
+            catch (Exception error) { Fail(error.ToString()); yield break; }
             yield return new WaitForEndOfFrame();
             try { NativeFlightChecks.Run(active, "approach"); }
             catch (Exception error) { Fail(error.ToString()); yield break; }
@@ -166,7 +185,13 @@ namespace Jakobian.KSP
                         try { MappedSurfaceChecks.ContactMeshes(body); MappedSurfaceChecks.RenderAlbedo(body); }
                         catch (Exception error) { Fail(error.ToString()); yield break; }
                     }
-                    GamePersistence.SaveGame("persistent", HighLogic.SaveFolder, SaveMode.OVERWRITE);
+                    try
+                    {
+                        if (!WorldPersistenceChecks.Scenario().TryAdoptCurrent()) throw new InvalidOperationException("Private game baseline adoption failed.");
+                        GamePersistence.SaveGame("persistent", HighLogic.SaveFolder, SaveMode.OVERWRITE);
+                        WorldPersistenceChecks.AssertSaved(HighLogic.SaveFolder);
+                    }
+                    catch (Exception error) { Fail(error.ToString()); yield break; }
                     // Re-seat the diagnostic camera after descent: its local frame can change
                     // during native flight setup. A pose chosen at orbit entry is not evidence
                     // that the final camera remains outside an irregular surface.
@@ -196,6 +221,15 @@ namespace Jakobian.KSP
                     { Fail("Landed save/reload mismatch for " + target + " packed=" + restored?.packed + " landed=" + restored?.Landed + " alt=" + restored?.altitude + " expected=" + altitude + " lat=" + restored?.latitude + " lon=" + restored?.longitude); yield break; }
                     Debug.Log("[Jakobian] FLIGHT_RELOAD_PASS " + target);
                     yield return new WaitForSeconds(2);
+                    try
+                    {
+                        if (WorldPersistenceChecks.Scenario().Assessment.Status != Jakobian.Core.WorldCompatibility.Compatible)
+                            throw new InvalidOperationException("Reload lost world descriptors.");
+                        GamePersistence.SaveGame("persistent", HighLogic.SaveFolder, SaveMode.OVERWRITE);
+                        WorldPersistenceChecks.AssertSaved(HighLogic.SaveFolder);
+                        Debug.Log("[Jakobian] WORLD_SCENARIO_ROUNDTRIP_PASS bodies=" + SystemLoader.CurrentWorld.Bodies.Count + " mode=diagnostic-only save=" + HighLogic.SaveFolder);
+                    }
+                    catch (Exception error) { Fail(error.ToString()); yield break; }
                     yield return new WaitForEndOfFrame();
                     try { NativeFlightChecks.Run(restored, "landed-reload"); }
                     catch (Exception error) { Fail(error.ToString()); yield break; }

@@ -2,6 +2,8 @@
 
 This is a sequence of testable deliverables, not a schedule or completed-framework claim. Each milestone produces runnable fixtures and updates the compatibility matrix.
 
+The owner-facing increments and continue/redo rules are tracked in the [per-prompt checkpoint roadmap](prompt-roadmap.md). P04 was split before implementation: P04a installs enforced load/start admission, while P04b addresses live publication and first hole flight. P04a is complete with an independent 96/100 grade, awaiting the owner's continue/redo decision. The milestones below describe the larger framework scope.
+
 ## M0 — research and environment foundation (this pass)
 
 Source/assembly pins, build/test/inspect tools, isolated game copies, diagnostic bootstrap, analytic math probes, architecture/specification and reviewable examples. Gate: zero-warning build, geometry/frame probes, baseline startup marker and accurately recorded upstream-profile result. No arbitrary-body gameplay yet.
@@ -59,3 +61,11 @@ Development 0.5.0 adds a restricted part of M3: radial height/albedo maps, a sha
 The accepted [mathematical bodies, mass and influence-volume contract](../architecture/mathematical-bodies-and-fields.md) is part of the framework scope. After the static torus runtime/contact/anchor gate, implement bounded mathematical expression geometry; arbitrary influence-domain event detection and numerical point-field propagation; rigidly rotating habitats with inertial/rotating centrifugal and Coriolis parity; then mass compilation and distributed gravity, followed by spatial gas/fluid integration. Every step must cover loaded and unloaded craft, save/reload, multiple bodies and force ownership. A mathematical surface, a material volume, mass density and a gravity domain are separate definitions.
 
 Development 0.6.0 adds bounded swept contact planning, transactional torus patch residency, native collider publication and analytic material-coordinate records. The isolated native test exercises two participants, a periodic seam corridor, inner/outer/top rigidbody contact and hole transit. This advances M2 prerequisites; it does not yet bind a torus celestial body or KSP vessel anchors/rails. See [streaming architecture](../architecture/torus-contact-streaming.md) and [0.6.0](../development/v0.6.0.md).
+
+Development 0.7.0 completes checkpoint P01: a general-solid context distinguishes nearest projection, datum, supplied-gravity vertical and first entering down-ray contact, with explicit missing/failed results and a rigid Unity frame bridge. It passed startup/collider and Atlas flight regressions and received an independent 96/100 checkpoint grade.
+
+Development 0.8.0 completes P02's supported-input descriptors, immutable per-game baselines and diagnostic reconciliation. Two private Atlas games independently adopted and restored their own descriptors, with native codec mutation/preservation checks and an independent 96/100 grade. This advances saved-world identity tracking, not pre-physics admission enforcement or migration.
+
+Development 0.9.0 completes P03 within a pre-declared detached boundary: strict torus definition, inactive native prefab binding, closed whole-surface scaled mesh, guarded interactive preview, native resource/identity/render/persistence checks and Atlas regression. Independent grade: 97/100. Live-system publication was deferred behind P04 admission to avoid exposing an unsupported flight destination. P04 admission/native integration and P05 outer contact/anchors remain proposed; the existing five moons retain gameplay.
+
+Development 0.10.0 implements P04a's bounded early load/start admission, explicit legacy policy, mutable raw/proto/live validation and protected hook ownership, with a pinned runtime dependency. The final native fixture refused 23 cases before guarded work; Atlas, six historical saves and stock orbit passed on exact deployed files. [Evidence and reflection](../development/v0.10.0.md) retain remaining limits. P04b live publication/unpack/transfer/hole flight and P05 outer contact/anchors remain future work.

@@ -16,6 +16,8 @@ $taskMarker = Get-Content -LiteralPath (Join-Path $taskTarget '.jakobian-instanc
 if ($taskMarker.owner -ne 'Jakobian') { throw 'Wrong instance owner.' }
 $taskRunning = Get-Process -Name KSP_x64 -ErrorAction SilentlyContinue | Where-Object { $_.Path -eq (Join-Path $taskTarget 'KSP_x64.exe') }
 if ($taskRunning) { throw 'Close this development instance before deploying.' }
+& python (Join-Path $PSScriptRoot 'Prepare-Runtime.py') --preflight $Instance
+if ($LASTEXITCODE -ne 0) { throw 'Runtime dependency preflight failed; no files deployed.' }
 $taskDlls = @('src/Jakobian.KSP/bin/Release/net472/Jakobian.dll','src/Jakobian.Core/bin/Release/net472/Jakobian.Core.dll')
 foreach ($taskDll in $taskDlls) { if (-not (Test-Path -LiteralPath (Join-Path $taskRoot $taskDll))) { throw 'Build Release first.' } }
 $taskBundle = Join-Path $taskRoot 'GameData/Jakobian/Assets/jakobian-shaders'
@@ -25,6 +27,8 @@ if ((Get-FileHash -LiteralPath $taskBundle).Hash.ToLowerInvariant() -ne $taskAss
 foreach ($taskSource in $taskAssetManifest.sources) {
     if ((Get-JakobianTextHash (Join-Path $taskRoot $taskSource.path)) -ne $taskSource.sha256) { throw 'Shader sources changed. Run tools/Build-Assets.ps1 first.' }
 }
+& python (Join-Path $PSScriptRoot 'Prepare-Runtime.py') --install $Instance
+if ($LASTEXITCODE -ne 0) { throw 'Runtime dependency installation failed.' }
 $taskPlugins = Join-Path $taskTarget 'GameData/Jakobian/Plugins'
 New-Item -ItemType Directory -Path $taskPlugins -Force | Out-Null
 foreach ($taskDll in $taskDlls) { Copy-Item -LiteralPath (Join-Path $taskRoot $taskDll) -Destination $taskPlugins }
@@ -32,12 +36,17 @@ $taskAssets = Join-Path $taskTarget 'GameData/Jakobian/Assets'
 New-Item -ItemType Directory -Path $taskAssets -Force | Out-Null
 Copy-Item -LiteralPath $taskBundle -Destination $taskAssets -Force
 Copy-Item -LiteralPath (Join-Path $taskRoot 'GameData/Jakobian/Assets/shader-manifest.json') -Destination $taskAssets -Force
+$taskPreview = Join-Path $taskTarget 'GameData/Jakobian/Preview'
+New-Item -ItemType Directory -Path $taskPreview -Force | Out-Null
+Copy-Item -LiteralPath (Join-Path $taskRoot 'GameData/Jakobian/Preview/Torus.cfg.disabled') -Destination $taskPreview -Force
 $taskFixtures = Join-Path $taskRoot 'GameData/JakobianTestBodies'
 Copy-Item -LiteralPath $taskFixtures -Destination (Join-Path $taskTarget 'GameData') -Recurse -Force
 $taskDev = Join-Path $taskTarget '.dev'
 New-Item -ItemType Directory -Path $taskDev -Force | Out-Null
 Copy-Item -LiteralPath (Join-Path $taskRoot 'template_instance/saves/training/C_Orbit101.sfs') -Destination (Join-Path $taskDev 'FlightSeed.sfs') -Force
 $taskInstalledFiles = @('GameData/Jakobian/Plugins/Jakobian.dll','GameData/Jakobian/Plugins/Jakobian.Core.dll','GameData/Jakobian/Assets/jakobian-shaders','GameData/Jakobian/Assets/shader-manifest.json')
+$taskInstalledFiles += 'GameData/Jakobian/Preview/Torus.cfg.disabled'
+$taskInstalledFiles += Get-ChildItem -LiteralPath (Join-Path $taskTarget 'GameData/000_Harmony') -File | Sort-Object Name | ForEach-Object { 'GameData/000_Harmony/' + $_.Name }
 $taskInstalledFiles += Get-ChildItem -LiteralPath $taskFixtures -Recurse -File | Sort-Object FullName | ForEach-Object { 'GameData/JakobianTestBodies/' + [IO.Path]::GetRelativePath($taskFixtures,$_.FullName).Replace('\','/') }
 $taskFileRecords = foreach ($taskInstalledFile in $taskInstalledFiles) {
     $taskInstalledPath = Join-Path $taskTarget $taskInstalledFile

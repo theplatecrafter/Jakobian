@@ -1,0 +1,18 @@
+{
+  "name": "HarmonyKSP",
+  "version": "2.2.1.0",
+  "url": "https://github.com/KSPModdingLibs/HarmonyKSP/releases/download/2.2.1.0/HarmonyKSP_2.2.1.0_for_KSP1.8%2B.zip",
+  "cache": ".research/packages/HarmonyKSP-2.2.1.0.zip",
+  "sha256": "51d63f6739eaf22f12ce9456adace54385520c67cc13735d5300d5aa15c79476",
+  "files": {
+    "0Harmony.dll": "19ce60ac3280f72ec1751d36a40cb7e2fece2934df8345969dc7feb83bd633e4",
+    "Harmony.version": "cc176f40133e245dd6d37065cf335a4114f7499a22260fb43a59a3db403100d4",
+    "HarmonyInstallChecker.dll": "f11e659e91a52c21c5bda78e52b82a7bdc246bcab6a999733af3c69a11a9dc0e",
+    "HarmonyInstallChecker.pdb": "b2e6c9ac81b86149b65e6638cfa98479d5cc4517dc302e4de2918b556d33deaf",
+    "ReadMe.txt": "8a4af8af688cb26f309aad513aefdad32e374f076f80a221ace236a9b86e360e"
+  },
+  "notices": [
+    { "name": "LICENSE-Harmony.txt", "url": "https://raw.githubusercontent.com/pardeike/Harmony/v2.2.1.0/LICENSE", "sha256": "a5883d0c45eb7e176d3d1631220e7f96e958e37064773d40245ae6db560bbd6d" },
+    { "name": "LICENSE-HarmonyKSP.txt", "url": "https://raw.githubusercontent.com/KSPModdingLibs/HarmonyKSP/2.2.1.0/LICENSE", "sha256": "6e4853ba6fad39fd94be01ff0edae5c3019ff2154b34dffa6c7d84f21fe946c3" }
+  ]
+}

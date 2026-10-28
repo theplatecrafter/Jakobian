@@ -1,0 +1,528 @@
+{
+  "version": "0.10.0",
+  "checkpoint": "P04a",
+  "status": "validated-development-slice",
+  "date": "2026-10-27",
+  "validatedUtc": "2026-10-27T04:29:55.342793+00:00",
+  "branch": "main",
+  "commitsCreatedByAgent": 0,
+  "criteria": "docs/planning/prompt-roadmap.md",
+  "scope": "Five native load/start guards for supported radial worlds. No live torus, unpack/teleport/transfer or active-flight certification.",
+  "build": {
+    "configuration": "Release",
+    "warnings": 0,
+    "errors": 0,
+    "coreAssertions": 509293,
+    "addedCoreAssertions": 1020,
+    "deployedAssetCount": 17,
+    "deployedFilesMatchBuild": true,
+    "deployedFilesMatchAll3TestedSnapshots": true
+  },
+  "deployment": {
+    "version": "0.10.0.0",
+    "deployedUtc": "2026-10-27T04:16:24.8954006Z",
+    "files": [
+      {
+        "path": "GameData/Jakobian/Plugins/Jakobian.dll",
+        "sha256": "042c3e051eb19ebbb61cc75f31298ecb056d91c6b3dbb1333b9337a783e0213c"
+      },
+      {
+        "path": "GameData/Jakobian/Plugins/Jakobian.Core.dll",
+        "sha256": "0bf44ce4b075b28e038e5073abee3db6892b991d61ac0f12f40d095b3625eaef"
+      },
+      {
+        "path": "GameData/Jakobian/Assets/jakobian-shaders",
+        "sha256": "3dd9409d1258a87f42ca5d9f4fc9f62fee0ee93662ae380a105994c2345f5d43"
+      },
+      {
+        "path": "GameData/Jakobian/Assets/shader-manifest.json",
+        "sha256": "a39155aac7c798620584e56a4cfaf849255c74856448f24d4ee81bc677967ee7"
+      },
+      {
+        "path": "GameData/Jakobian/Preview/Torus.cfg.disabled",
+        "sha256": "ecf6cc60702e09c66ecb6f736875168d853620dc3e8c64f5b47d33f4d322b345"
+      },
+      {
+        "path": "GameData/000_Harmony/0Harmony.dll",
+        "sha256": "19ce60ac3280f72ec1751d36a40cb7e2fece2934df8345969dc7feb83bd633e4"
+      },
+      {
+        "path": "GameData/000_Harmony/Harmony.version",
+        "sha256": "cc176f40133e245dd6d37065cf335a4114f7499a22260fb43a59a3db403100d4"
+      },
+      {
+        "path": "GameData/000_Harmony/HarmonyInstallChecker.dll",
+        "sha256": "f11e659e91a52c21c5bda78e52b82a7bdc246bcab6a999733af3c69a11a9dc0e"
+      },
+      {
+        "path": "GameData/000_Harmony/HarmonyInstallChecker.pdb",
+        "sha256": "b2e6c9ac81b86149b65e6638cfa98479d5cc4517dc302e4de2918b556d33deaf"
+      },
+      {
+        "path": "GameData/000_Harmony/LICENSE-Harmony.txt",
+        "sha256": "a5883d0c45eb7e176d3d1631220e7f96e958e37064773d40245ae6db560bbd6d"
+      },
+      {
+        "path": "GameData/000_Harmony/LICENSE-HarmonyKSP.txt",
+        "sha256": "6e4853ba6fad39fd94be01ff0edae5c3019ff2154b34dffa6c7d84f21fe946c3"
+      },
+      {
+        "path": "GameData/000_Harmony/ReadMe.txt",
+        "sha256": "8a4af8af688cb26f309aad513aefdad32e374f076f80a221ace236a9b86e360e"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Atlas.cfg",
+        "sha256": "0178646efb7bdaf023fa2a31372b9549bbe219c221bba322cb0a66561a82cd30"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Bodies.cfg",
+        "sha256": "42fb1f3d5fe7b67accef4b2a207c5f6440b711f4daf58e97525daf51b9c8a48c"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-biomes.png",
+        "sha256": "6b56221e1fba04ab36063ab2cd18155e3000ec2e625345cd75da260e8aa4875c"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-color.png",
+        "sha256": "011ff6c9cb6b4b5be89388a91d4b5b0de308b2c262c80cec5f40afc66aa8d9ce"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-height.png",
+        "sha256": "c2960616ae1d013f9a65c2f4c782a3bc62594c2c732a4720890ef2af82dbf37f"
+      }
+    ]
+  },
+  "runs": {
+    "admission": {
+      "path": "artifacts/admission/gate-20261027-001624.log",
+      "sha256": "7d7aeb51f48278a9f6554cce1f5114469067671a07f8c130e0bc4b50a5e06145",
+      "result": {
+        "worldScenarioMarker": false,
+        "torusPreviewMarker": false,
+        "admissionMarker": true,
+        "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\admission\\gate-20261027-001624.log",
+        "processDisposition": "exited",
+        "torusStreamingMarker": false,
+        "bootstrapMarker": false,
+        "regressionSuiteMarker": false,
+        "flightSuiteMarker": false
+      },
+      "resultReceipt": {
+        "path": "artifacts/admission/gate-20261027-001624.log.result.json",
+        "sha256": "bef4b43621b4ebd16c231d75f91556c2120929f00617436a73e694829b072991"
+      },
+      "snapshotReceipt": {
+        "path": "artifacts/admission/gate-20261027-001624.log.deployment.json",
+        "sha256": "81033eddccf4d9767009791f324d5d1740c8b9a64e33c7d40ea5d16c1393ab3c"
+      },
+      "exceptionTokens": 0,
+      "rejectedCases": [
+        "failed-loader-empty-game",
+        "shape.x",
+        "map.height.sha256",
+        "provider",
+        "native-index",
+        "missing-body",
+        "detached-preview",
+        "future",
+        "invalid",
+        "duplicate",
+        "bad-reference",
+        "padded-name",
+        "direct-Game.Start",
+        "direct-Game.Load",
+        "direct-FlightDriver.Game",
+        "direct-FlightDriver.File",
+        "mutated-proto-reference",
+        "stored-future-live-compatible",
+        "live-future-stored-compatible",
+        "renamed-owned-proto",
+        "missing-proto-data",
+        "recorded-reset-to-legacy",
+        "foreign-owner"
+      ],
+      "allRejectedNativeCountersZero": true,
+      "guardedRoutes": 5,
+      "positiveControls": [
+        "Game(ConfigNode) constructor",
+        "FlightGlobals.ClearpersistentIdDictionaries"
+      ]
+    },
+    "atlas": {
+      "path": "artifacts/flight/JakobianAtlas-20261027-001938.log",
+      "sha256": "99844fea1d0cc3adead50d52205528408a7d4f84bbac07d2a6fd1f85c628d081",
+      "result": {
+        "torusStreamingMarker": false,
+        "torusPreviewMarker": false,
+        "regressionSuiteMarker": false,
+        "bootstrapMarker": false,
+        "flightSuiteMarker": true,
+        "admissionMarker": false,
+        "worldScenarioMarker": true,
+        "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\flight\\JakobianAtlas-20261027-001938.log",
+        "processDisposition": "exited"
+      },
+      "resultReceipt": {
+        "path": "artifacts/flight/JakobianAtlas-20261027-001938.log.result.json",
+        "sha256": "811ab04583488c8cfa386095e8afe78e94774093d0d3ba29ab782c20f0bcba88"
+      },
+      "snapshotReceipt": {
+        "path": "artifacts/flight/JakobianAtlas-20261027-001938.log.deployment.json",
+        "sha256": "81033eddccf4d9767009791f324d5d1740c8b9a64e33c7d40ea5d16c1393ab3c"
+      },
+      "exceptionTokens": 0,
+      "humanSave": "JakobianProbe-JakobianAtlas-20261027-042133",
+      "humanPersistent": {
+        "path": "instances/baseline/saves/JakobianProbe-JakobianAtlas-20261027-042133/persistent.sfs",
+        "sha256": "d7b7d1a19b7568232d1074cf6dbd257cd76106e14faec8b3e72e8f729bc8a10e"
+      }
+    },
+    "regression": {
+      "path": "artifacts/regression/regression-20261027-002259.log",
+      "sha256": "38dfc183aecd7276be20e780eda394dfd786860530165bf7d7fef41c64a3e3b6",
+      "result": {
+        "worldScenarioMarker": false,
+        "admissionMarker": false,
+        "log": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\artifacts\\regression\\regression-20261027-002259.log",
+        "regressionSuiteMarker": true,
+        "bootstrapMarker": false,
+        "torusPreviewMarker": false,
+        "flightSuiteMarker": false,
+        "processDisposition": "exited",
+        "torusStreamingMarker": false
+      },
+      "resultReceipt": {
+        "path": "artifacts/regression/regression-20261027-002259.log.result.json",
+        "sha256": "246f1c9c5a3a650a7b407d1a8d1fb873b80fdf2f0072d6ba6cd7a3bc0b308cd5"
+      },
+      "snapshotReceipt": {
+        "path": "artifacts/regression/regression-20261027-002259.log.deployment.json",
+        "sha256": "81033eddccf4d9767009791f324d5d1740c8b9a64e33c7d40ea5d16c1393ab3c"
+      },
+      "exceptionTokens": 0,
+      "historical": [
+        {
+          "fixture": "v0.2.0-JakobianCube.sfs",
+          "body": "JakobianCube",
+          "privateCopy": "JakobianUpgrade-v0.2.0-JakobianCube-20261027-042454"
+        },
+        {
+          "fixture": "v0.2.0-JakobianEllipsoid.sfs",
+          "body": "JakobianEllipsoid",
+          "privateCopy": "JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261027-042514"
+        },
+        {
+          "fixture": "v0.2.0-JakobianPeanut.sfs",
+          "body": "JakobianPeanut",
+          "privateCopy": "JakobianUpgrade-v0.2.0-JakobianPeanut-20261027-042532"
+        },
+        {
+          "fixture": "v0.3.0-JakobianCube.sfs",
+          "body": "JakobianCube",
+          "privateCopy": "JakobianUpgrade-v0.3.0-JakobianCube-20261027-042550"
+        },
+        {
+          "fixture": "v0.3.0-JakobianEllipsoid.sfs",
+          "body": "JakobianEllipsoid",
+          "privateCopy": "JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261027-042607"
+        },
+        {
+          "fixture": "v0.3.0-JakobianPeanut.sfs",
+          "body": "JakobianPeanut",
+          "privateCopy": "JakobianUpgrade-v0.3.0-JakobianPeanut-20261027-042625"
+        }
+      ],
+      "stockOrbitPrivateCopy": "JakobianStock-20261027-042643"
+    }
+  },
+  "sourceHashes": [
+    {
+      "path": "Directory.Build.props",
+      "sha256": "87c4fefe542608065cffdf137cb98d8fdc9262515d1b52908b57148ff67c1d2b"
+    },
+    {
+      "path": "src/Jakobian.Core/AdmissionPolicy.cs",
+      "sha256": "6e21a9663d6a196a655e005feeb46596360b31faf789261c9113a8431aa6be10"
+    },
+    {
+      "path": "src/Jakobian.KSP/GameAdmission.cs",
+      "sha256": "cd6cee9f6d015b0e6f66d0d17566eac4147cf238b82fcd8222fcccc75981ca07"
+    },
+    {
+      "path": "src/Jakobian.KSP/AdmissionRuntime.cs",
+      "sha256": "cb15b7e28fc5568ce6b701e3a3d3af80a879a457cdd8e71652658e0e97e80055"
+    },
+    {
+      "path": "src/Jakobian.KSP/AdmissionProbe.cs",
+      "sha256": "d52552a686e4bc3560958bc99e771719ab0248b10e22c4ae6325c1326c08949d"
+    },
+    {
+      "path": "src/Jakobian.KSP/SystemLoader.cs",
+      "sha256": "cdff0b659312ba0c7df31995b1f3327f04b4a3183875307b3fee946f64fee1ea"
+    },
+    {
+      "path": "src/Jakobian.KSP/WorldSnapshot.cs",
+      "sha256": "d8292e965772d1a534e6a7cf0d537f174e01862ba808719014961e563768194e"
+    },
+    {
+      "path": "src/Jakobian.KSP/WorldScenario.cs",
+      "sha256": "910d484808cde5b801b4885f05aefe0ceadac8229ae6118ce1a2850a6d1e35df"
+    },
+    {
+      "path": "src/Jakobian.KSP/Bootstrap.cs",
+      "sha256": "539c0002b04580f62ba559e7f997222be49bdc6290b1397df2f4e42cb04dc528"
+    },
+    {
+      "path": "src/Jakobian.KSP/Jakobian.KSP.csproj",
+      "sha256": "8b1ea160ab58e742f6b1834943bb1d0dd7cec5657d8d4793759e6b9a7a211b09"
+    },
+    {
+      "path": "tests/Jakobian.Core.Tests/AdmissionChecks.cs",
+      "sha256": "4a942a8c083ee89804f41f52060766b51bad6319c97a311761f26de47e558219"
+    },
+    {
+      "path": "tests/Jakobian.Core.Tests/Program.cs",
+      "sha256": "6dc9c58256ebe19524c8254f815be00a7828bed231c6e671a04d743e6f704092"
+    },
+    {
+      "path": "tools/Prepare-Runtime.py",
+      "sha256": "1001b27a659e287b4e24e8b6f060cf34c6556d5a8cd38cee1d03e407b079c84f"
+    },
+    {
+      "path": "tools/Build.ps1",
+      "sha256": "3f005dbbc3d2a039e137a317a01df2b27077bfc2e8393b131a95d267491b8ad1"
+    },
+    {
+      "path": "tools/Deploy.ps1",
+      "sha256": "58d2539dfa5eb62bf7ef28f6ace326f60ff1e9a27031982508400b7c89f99559"
+    },
+    {
+      "path": "tools/Admission-Probe.ps1",
+      "sha256": "95f9844e279ac2992ea84a01efc77c4ae3fe68550edaee6f70432a40520f806f"
+    },
+    {
+      "path": "tools/Watch-Probe.ps1",
+      "sha256": "10137118443387220dd3233791c297e140259bb9649a0b126147d586dc967799"
+    }
+  ],
+  "preservation": {
+    "preexistingPersistentFiles": [
+      {
+        "sha256": "349c746140e6e8a0294e15d0421f070f4e5357d47d65acc9c0bd316b65588957",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianAtlas-20261015-044206\\persistent.sfs"
+      },
+      {
+        "sha256": "0fbfe26a001a5361b853185c242dec406f602b3736a740286b53b8e3fa6ce0a4",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianAtlas-20261015-044644\\persistent.sfs"
+      },
+      {
+        "sha256": "fbb3e53c279f4e61b9d037912759c05639b4ddc29ef7a4f951a2d8ee7ed7c048",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianAtlas-20261015-045030\\persistent.sfs"
+      },
+      {
+        "sha256": "e9dcd03ac9cfc4b03ee033d0ca05763e9a6c4c300d260f4f2200bc5eefa8d530",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianAtlas-20261015-045529\\persistent.sfs"
+      },
+      {
+        "sha256": "290526659cd77a780803959324d21e7ce0f7f73ff0f10360a7740884a971e7e7",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianAtlas-20261015-141117\\persistent.sfs"
+      },
+      {
+        "sha256": "828aacc5907b60d3ded3bb87292a80c85cdc2ef82c2ee6b52f536042d6014d7a",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianAtlas-20261027-021657\\persistent.sfs"
+      },
+      {
+        "sha256": "c045b1303d0d8a0ad07f68e0929992837d513a5974d1dffdee74404bcdb0f987",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianAtlas-20261027-023942\\persistent.sfs"
+      },
+      {
+        "sha256": "036d211a6bb30b2669074b48cd008f5d3eb9233ec05411a2c981cc9789d965c8",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianAtlas-20261027-024032\\persistent.sfs"
+      },
+      {
+        "sha256": "375269209098c9766940eb96f1dffec3781b3df3a0abdc7d23637ac4d0f1ff9e",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianAtlas-20261027-033228\\persistent.sfs"
+      },
+      {
+        "sha256": "ec51970230e49995fde9743c598ca6f939486bfba9a46f6dd7a970b0ac9b1f8b",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianCube-20261014-232343\\persistent.sfs"
+      },
+      {
+        "sha256": "482b2dce3e56da5b0ca3633248772c32a843e355c93d54d613d3e9ef7b20697b",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianCube-20261015-011450\\persistent.sfs"
+      },
+      {
+        "sha256": "b03b1f0b6cce2037964955a0cdf2d243d605d0581c7b8038a78835a5e33a765a",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianCube-20261015-044027\\persistent.sfs"
+      },
+      {
+        "sha256": "4c9469e869d6d8881103903320ba2f95dad4e3c0867f66a339db10d0b77a21bc",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianEllipsoid-20261014-232324\\persistent.sfs"
+      },
+      {
+        "sha256": "bfc97f3163e0690ce8dbb2a24584647542c42fa942c90642e0d9c8a5571f513d",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianEllipsoid-20261015-011432\\persistent.sfs"
+      },
+      {
+        "sha256": "bfc8469b133a414efffac8203be9a4f13952496c866a2b32abb91667863bc238",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianEllipsoid-20261015-044006\\persistent.sfs"
+      },
+      {
+        "sha256": "3e360fe4dbd41048cc2266325b5b35a795a815241e8706bf9b34441fb58d2c06",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianPeanut-20261014-232454\\persistent.sfs"
+      },
+      {
+        "sha256": "e3e17518276163bdfa23f6efc7cf1810d28768f7daf807af5c8f510f1a33de78",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianPeanut-20261015-011558\\persistent.sfs"
+      },
+      {
+        "sha256": "20004bacd4dc7f078046ebd870d8660136b7c26f39fd0a61b3306586ba03469b",
+        "path": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianProbe-JakobianPeanut-20261015-044135\\persistent.sfs"
+      }
+    ],
+    "all18PreexistingPersistentUnchanged": true,
+    "historicalManifest": {
+      "path": "instances/baseline/.dev/regression-inputs/manifest.json",
+      "sha256": "cb40eab5a96843c87c4c904a9ed43f77fe64d73c9d68902f036e8fa4d2ee9ba6"
+    },
+    "originalAndStagedHistoricalInputs": 6,
+    "all12HistoricalPathsUnchanged": true,
+    "templateAssemblies": [
+      {
+        "file": "Assembly-CSharp.dll",
+        "sha256": "d9e42483f25ee80a9c11d6c1c0a0d29b4ec78c1e08d76c971b71580c9cce51e4"
+      },
+      {
+        "file": "Assembly-CSharp-firstpass.dll",
+        "sha256": "058da112ebb5c6c1ef7abc512bb44ffc415951d0c5f0a36f8dfc6c6445db4a34"
+      },
+      {
+        "file": "UnityEngine.CoreModule.dll",
+        "sha256": "36d48c2068f85117781e380375d027ef0942f3b0c98654282603649106d76a72"
+      },
+      {
+        "file": "UnityEngine.PhysicsModule.dll",
+        "sha256": "b9554e5b8c17d50ba942a028424674c2356668fea4f5e5f2c71238c271f236d8"
+      }
+    ],
+    "allTemplateAssembliesUnchanged": true,
+    "priorFixtureAssets": [
+      {
+        "path": "GameData/Jakobian/Assets/jakobian-shaders",
+        "sha256": "3dd9409d1258a87f42ca5d9f4fc9f62fee0ee93662ae380a105994c2345f5d43"
+      },
+      {
+        "path": "GameData/Jakobian/Assets/shader-manifest.json",
+        "sha256": "a39155aac7c798620584e56a4cfaf849255c74856448f24d4ee81bc677967ee7"
+      },
+      {
+        "path": "GameData/Jakobian/Preview/Torus.cfg.disabled",
+        "sha256": "ecf6cc60702e09c66ecb6f736875168d853620dc3e8c64f5b47d33f4d322b345"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Atlas.cfg",
+        "sha256": "0178646efb7bdaf023fa2a31372b9549bbe219c221bba322cb0a66561a82cd30"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Bodies.cfg",
+        "sha256": "42fb1f3d5fe7b67accef4b2a207c5f6440b711f4daf58e97525daf51b9c8a48c"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-biomes.png",
+        "sha256": "6b56221e1fba04ab36063ab2cd18155e3000ec2e625345cd75da260e8aa4875c"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-color.png",
+        "sha256": "011ff6c9cb6b4b5be89388a91d4b5b0de308b2c262c80cec5f40afc66aa8d9ce"
+      },
+      {
+        "path": "GameData/JakobianTestBodies/Maps/Atlas-height.png",
+        "sha256": "c2960616ae1d013f9a65c2f4c782a3bc62594c2c732a4720890ef2af82dbf37f"
+      }
+    ],
+    "all8PriorFixtureAssetsUnchanged": true,
+    "archivedPrivateRegressionOutputs": [
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianUpgrade-v0.2.0-JakobianCube-20261027-042454",
+        "destination": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-results\\JakobianUpgrade-v0.2.0-JakobianCube-20261027-042454"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261027-042514",
+        "destination": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-results\\JakobianUpgrade-v0.2.0-JakobianEllipsoid-20261027-042514"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianUpgrade-v0.2.0-JakobianPeanut-20261027-042532",
+        "destination": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-results\\JakobianUpgrade-v0.2.0-JakobianPeanut-20261027-042532"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianUpgrade-v0.3.0-JakobianCube-20261027-042550",
+        "destination": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-results\\JakobianUpgrade-v0.3.0-JakobianCube-20261027-042550"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261027-042607",
+        "destination": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-results\\JakobianUpgrade-v0.3.0-JakobianEllipsoid-20261027-042607"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianUpgrade-v0.3.0-JakobianPeanut-20261027-042625",
+        "destination": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-results\\JakobianUpgrade-v0.3.0-JakobianPeanut-20261027-042625"
+      },
+      {
+        "source": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\saves\\JakobianStock-20261027-042643",
+        "destination": "C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\baseline\\.dev\\regression-results\\JakobianStock-20261027-042643"
+      }
+    ]
+  },
+  "dependency": {
+    "lock": {
+      "path": "docs/development/runtime-dependency-lock.json",
+      "sha256": "1d5b98eef27523ad9baf973473237d0ecce8df4d8ac6bda9b0481c7397beb04b"
+    },
+    "communityFiles": 5,
+    "addedLicenseNotices": 2,
+    "all7FilesAndArchiveMatchLock": true,
+    "conflictTest": {
+      "path": "artifacts/validation/v0.10.0/dependency-conflict.json",
+      "sha256": "6324d1de9ed30ad546a8e72bfb80aaff74de889219aabc23ce73bbbccc76d435",
+      "result": {
+        "sentinelSha256": "2781278ef03bb24623608ad57f8b8460e240edb9220aa776b8a28cfe2ee64baf",
+        "diagnostic": "Traceback (most recent call last):\r\n  File \"C:\\Users\\Hans\\Documents\\programming\\Jakobian\\tools\\Prepare-Runtime.py\", line 74, in <module>\r\n    main()\r\n    ~~~~^^\r\n  File \"C:\\Users\\Hans\\Documents\\programming\\Jakobian\\tools\\Prepare-Runtime.py\", line 65, in main\r\n    raise ValueError('Existing runtime dependency differs; not replacing: ' + str(dest))\r\nValueError: Existing runtime dependency differs; not replacing: C:\\Users\\Hans\\Documents\\programming\\Jakobian\\instances\\runtime-guard-20261027-001253\\GameData\\000_Harmony\\0Harmony.dll",
+        "differentLibraryRejected": true,
+        "fixture": "runtime-guard-20261027-001253",
+        "unchanged": true,
+        "newDependencyFilesWritten": 0
+      }
+    }
+  },
+  "limitations": [
+    "No live general-body publication or hole flight; P04b remains next.",
+    "No active-vessel unpack, teleport, transfer or arbitrary-mod security barrier.",
+    "Cooperative exact-version patch profile only; foreign postfixes can execute after a refused prefix and hostile same-frame unpatch/calls are outside the guarantee.",
+    "Refusal popup/save-browser UX is source reviewed, not interactively exercised.",
+    "Constructor/ID-clear observer positive controls are explicit; FlightState.Load/scene-call observers lack separate isolated positive controls.",
+    "Native patch-audit per-frame cost is not benchmarked.",
+    "Dependency duplicate-path/junction refusals are source-reviewed; only different-library refusal is fixture-tested."
+  ],
+  "nativeProcessesAtHandoff": "All three owned test processes exited; no KSP_x64 process remained at archive time.",
+  "independentReview": {
+    "score": 96,
+    "criteriaMet": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "unresolvedMajorDefects": 0,
+    "report": {
+      "path": "docs/development/p04a-review.md",
+      "sha256": "c81b02b34bc07f74e4cd6a6d90bb1cd173ff88a25640bac63dc02ebdfcb10978"
+    },
+    "rubric": {
+      "correctness": 30,
+      "nativeEvidence": 27,
+      "regression": 20,
+      "documentation": 14,
+      "scope": 5
+    }
+  }
+}

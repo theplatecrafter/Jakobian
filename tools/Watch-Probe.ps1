@@ -13,4 +13,7 @@ $taskMarker = (Test-Path -LiteralPath $LogPath) -and [IO.File]::ReadAllText($Log
 $taskFlightMarker = (Test-Path -LiteralPath $LogPath) -and [IO.File]::ReadAllText($LogPath).Contains('[Jakobian] FLIGHT_SUITE_PASS')
 $taskRegressionMarker = (Test-Path -LiteralPath $LogPath) -and [IO.File]::ReadAllText($LogPath).Contains('[Jakobian] REGRESSION_SUITE_PASS')
 $taskTorusMarker = (Test-Path -LiteralPath $LogPath) -and [IO.File]::ReadAllText($LogPath).Contains('[Jakobian] TORUS_STREAM_SUITE_PASS')
-@{ processDisposition = $taskResult; bootstrapMarker = $taskMarker; flightSuiteMarker = $taskFlightMarker; regressionSuiteMarker = $taskRegressionMarker; torusStreamingMarker = $taskTorusMarker; log = $LogPath } | ConvertTo-Json | Set-Content -LiteralPath ($LogPath + '.result.json')
+$taskWorldMarker = (Test-Path -LiteralPath $LogPath) -and [IO.File]::ReadAllText($LogPath).Contains('[Jakobian] WORLD_SCENARIO_ROUNDTRIP_PASS')
+$taskPreviewMarker = (Test-Path -LiteralPath $LogPath) -and [IO.File]::ReadAllText($LogPath).Contains('[Jakobian] TORUS_PREVIEW_SUITE_PASS')
+$taskAdmissionMarker = (Test-Path -LiteralPath $LogPath) -and [IO.File]::ReadAllText($LogPath).Contains('[Jakobian] ADMISSION_SUITE_PASS')
+@{ processDisposition = $taskResult; bootstrapMarker = $taskMarker; flightSuiteMarker = $taskFlightMarker; regressionSuiteMarker = $taskRegressionMarker; torusStreamingMarker = $taskTorusMarker; worldScenarioMarker = $taskWorldMarker; torusPreviewMarker = $taskPreviewMarker; admissionMarker = $taskAdmissionMarker; log = $LogPath } | ConvertTo-Json | Set-Content -LiteralPath ($LogPath + '.result.json')

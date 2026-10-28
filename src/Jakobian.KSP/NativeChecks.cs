@@ -11,6 +11,7 @@ namespace Jakobian.KSP
             TorusMeshChecks.Run();
             if (SystemLoader.Error != null) throw new InvalidOperationException(SystemLoader.Error);
             if (SystemLoader.Definitions.Count > 0 && !SystemLoader.Bound) throw new InvalidOperationException("System binding incomplete.");
+            WorldPersistenceChecks.Run();
             CelestialBody kerbin = FlightGlobals.Bodies.Single(b => b.bodyName == "Kerbin");
             if (kerbin.flightGlobalsIndex != 1 || kerbin.Radius != 600000) throw new InvalidOperationException("Stock homeworld changed.");
             foreach (var pair in SystemLoader.Definitions)

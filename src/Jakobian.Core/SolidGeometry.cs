@@ -27,8 +27,9 @@ namespace Jakobian.Core
             int evaluationBudget, out SolidRayHit[] hits);
     }
 
-    public sealed class AnalyticSolid : IClosedSolid
+    public sealed class AnalyticSolid : IGeneralSurfaceGeometry
     {
+        private readonly IAnalyticSurface surface;
         public bool IsTorus { get; }
         public double MajorRadius { get; }
         public double MinorRadius { get; }
@@ -40,6 +41,16 @@ namespace Jakobian.Core
             if (!Vector3d.Finite(major) || !Vector3d.Finite(minor) || minor <= 0 || major + minor > 1e15
                 || (torus && major <= minor)) throw new ArgumentOutOfRangeException(nameof(minor));
             MajorRadius = major; MinorRadius = minor; IsTorus = torus;
+            surface = torus ? (IAnalyticSurface)new TorusSurface(major, minor) : new SphereSurface(minor);
+        }
+
+        public bool TryNearest(Vector3d point, out SurfaceSample sample)
+        {
+            if (!surface.TryNearest(point, out sample)) return false;
+            // General contexts use the versioned material chart used by TorusAnchorCodec.
+            if (IsTorus) sample = new SurfaceSample(sample.SurfaceId, TorusAnchor.ChartId, sample.Point,
+                sample.Normal, sample.SignedDistance, TorusAnchor.Wrap(sample.U), TorusAnchor.Wrap(sample.V));
+            return true;
         }
 
         public double SignedDistance(Vector3d p)

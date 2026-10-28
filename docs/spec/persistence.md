@@ -1,6 +1,8 @@
 # Persistence, identities and migration
 
-Status: proposed full schema. Development 0.6.0 adds an experimental [analytic torus material-record codec](../modders/experimental-torus-provider.md), including stable owner/chart IDs and shape checks. It does not install a world/scenario serializer or KSP vessel-anchor restoration; those remain future work.
+Status: proposed full schema with an implemented subset. Development 0.8.0 / P02 adds [per-game world baselines and reconciliation diagnostics](../modders/saved-world-baselines.md) for supported radial inputs. It preserves incompatible/future records and requires explicit first adoption. This is not a pre-physics load blocker or generator/migration archive. Development 0.6.0's [analytic torus material-record codec](../modders/experimental-torus-provider.md) supplies local coordinate records; actual KSP vessel-anchor restoration remains future work.
+
+Development 0.10.0 / P04a supplies a separate [five-entrypoint load/start gate](../modders/load-admission.md), enforcing the recorded-world policy before guarded construction/load work. This does not enforce active-flight admission or provide a saved-generator archive/migration engine.
 
 ## Identity rules
 

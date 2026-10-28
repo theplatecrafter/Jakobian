@@ -2,6 +2,8 @@
 
 Status: architecture assessment. **No general-body compatibility is certified.** Boot coexistence of a diagnostic plugin is narrower than flight or save compatibility. Exact installed versions and test outcomes are recorded in [validation](../development/validation-record.json).
 
+Development 0.10.0 requires the hash-locked HarmonyKSP 2.2.1.0 runtime for five early [load/start guards](../modders/load-admission.md). Their supported profile requires the exact game/library bytes and exclusive patch ownership of those five methods; conflicting ownership refuses admission, and loss of protection terminates the unsupported profile. Other mods may patch unrelated methods, but no new third-party flight compatibility is certified by this checkpoint. Kopernicus coexistence remains blocked pending single-loader coordination. See [current native evidence](../development/v0.10.0-validation.json), distinct from the original research bootstrap profile above.
+
 ## Compatibility levels
 
 - **Native spherical path:** Jakobian configures valid stock spherical machinery through its own loader; supported Kopernicus-equivalent semantics need implementation and regression tests.
@@ -36,6 +38,7 @@ This checklist covers observed feature categories, not a declaration of complete
 | Mod / family | Assessment for arbitrary geometry | Required validation |
 | --- | --- | --- |
 | Kopernicus | source reference and optional config/provider/coexistence target; Jakobian owns loading | standalone baseline without Kopernicus, explicit single-injector coordination when installed, no duplicate services/bodies, packs and saves |
+| HarmonyKSP | required pinned runtime from 0.10.0; supported cooperative patch profile | exact library/game hashes, unique installation, five exclusive guarded methods, refusal on changed ownership; no arbitrary-mod security guarantee |
 | ModuleManager | keep actual parser/pass semantics | patched nodes, cache invalidation, `NEEDS`/body selectors, duplicate definitions |
 | MFI | useful hooks, exclusive override slots can conflict | exact owner/base/post behavior, per-body scope and no double forces |
 | KSPCommunityFixes | existing integrator replacements | final cache writers, aero/thermal/integration composition, stock parity |

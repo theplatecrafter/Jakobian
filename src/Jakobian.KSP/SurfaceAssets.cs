@@ -11,6 +11,9 @@ namespace Jakobian.KSP
         internal MappedRadialSurface Surface;
         internal Texture2D AlbedoTexture;
         internal RadialMap BiomePixels;
+        internal readonly Dictionary<string, string> MapFingerprints = new Dictionary<string, string>(StringComparer.Ordinal);
+        internal readonly Dictionary<string, string> MapSources = new Dictionary<string, string>(StringComparer.Ordinal);
+        internal static string ShaderFingerprint { get; private set; }
         internal readonly Dictionary<uint, CBAttributeMapSO.MapAttribute> Biomes = new Dictionary<uint, CBAttributeMapSO.MapAttribute>();
         private static Shader shader;
         private static AssetBundle bundle;
@@ -20,6 +23,7 @@ namespace Jakobian.KSP
             {
                 if (shader != null) return shader;
                 string path = Path.Combine(KSPUtil.ApplicationRootPath, "GameData/Jakobian/Assets/jakobian-shaders");
+                ShaderFingerprint = WorldBodyDescriptor.HashBytes(File.ReadAllBytes(path));
                 bundle = AssetBundle.LoadFromFile(path);
                 if (bundle == null) throw new ArgumentException("Missing or incompatible Jakobian shader bundle: " + path);
                 shader = bundle.LoadAsset<Shader>("Assets/JakobianMappedTerrain.shader");
@@ -35,7 +39,8 @@ namespace Jakobian.KSP
             if (node != null && node.HasValue("heightMap"))
             {
                 Texture2D texture;
-                heights = ReadMap(node.GetValue("heightMap"), true, out texture);
+                heights = ReadMap(node.GetValue("heightMap"), true, out texture, out var fingerprint);
+                assets.MapFingerprints.Add("height", fingerprint); assets.MapSources.Add("height", node.GetValue("heightMap"));
                 UnityEngine.Object.Destroy(texture);
                 for (int y = 0; y < heights.Height; y++) for (int x = 0; x < heights.Width; x++)
                 {
@@ -48,7 +53,8 @@ namespace Jakobian.KSP
             if (node != null && node.HasValue("colorMap"))
             {
                 // Validate the same pole convention even though albedo is sampled by the GPU.
-                Texture2D texture; ReadMap(node.GetValue("colorMap"), false, out texture); assets.AlbedoTexture = texture;
+                Texture2D texture; ReadMap(node.GetValue("colorMap"), false, out texture, out var fingerprint); assets.AlbedoTexture = texture;
+                assets.MapFingerprints.Add("color", fingerprint); assets.MapSources.Add("color", node.GetValue("colorMap"));
             }
             ConfigNode biomes = node?.GetNode("Biomes");
             if ((biomes != null) != (node != null && node.HasValue("biomeMap"))) throw new ArgumentException(d.Name + ": Biomes and biomeMap must be supplied together.");
@@ -70,7 +76,8 @@ namespace Jakobian.KSP
                 }
                 if (assets.Biomes.Count == 0 || assets.Biomes.Count > 256) throw new ArgumentException("Biomes requires 1..256 palette entries.");
                 Texture2D texture;
-                assets.BiomePixels = ReadMap(node.GetValue("biomeMap"), true, out texture);
+                assets.BiomePixels = ReadMap(node.GetValue("biomeMap"), true, out texture, out var fingerprint);
+                assets.MapFingerprints.Add("biome", fingerprint); assets.MapSources.Add("biome", node.GetValue("biomeMap"));
                 UnityEngine.Object.Destroy(texture);
                 for (int y = 0; y < assets.BiomePixels.Height; y++) for (int x = 0; x < assets.BiomePixels.Width; x++)
                     if (!assets.Biomes.ContainsKey(assets.BiomePixels.Pixel(x,y))) throw new ArgumentException(d.Name + ": unmapped biome color at " + x + "," + y);
@@ -94,11 +101,12 @@ namespace Jakobian.KSP
                 if ((File.GetAttributes(part) & FileAttributes.ReparsePoint) != 0) throw new ArgumentException("Map paths may not traverse links: " + relative);
             return path;
         }
-        private static RadialMap ReadMap(string relative, bool linear, out Texture2D texture)
+        private static RadialMap ReadMap(string relative, bool linear, out Texture2D texture, out string fingerprint)
         {
             string path = MapPath(relative);
             if (new FileInfo(path).Length > 16 * 1024 * 1024) throw new ArgumentException("PNG exceeds 16 MiB: " + relative);
             byte[] bytes = File.ReadAllBytes(path);
+            fingerprint = WorldBodyDescriptor.HashBytes(bytes);
             byte[] signature = {137,80,78,71,13,10,26,10};
             if (bytes.Length < 33) throw new ArgumentException("Truncated PNG: " + relative);
             for (int i=0; i<8; i++) if (bytes[i] != signature[i]) throw new ArgumentException("Invalid PNG signature: " + relative);

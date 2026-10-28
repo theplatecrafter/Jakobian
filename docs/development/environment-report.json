@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-27",
   "workspace": "C:\\Users\\Hans\\Documents\\programming\\Jakobian",
   "sdk": "10.0.203",
   "python": "Python 3.13.14",
@@ -41,6 +41,7 @@
     "remote": "none",
     "commits_created": 0
   },
-  "development_build": "0.6.0",
-  "latestValidation": "docs/development/v0.6.0-validation.json"
+  "development_build": "0.10.0",
+  "latestValidation": "docs/development/v0.10.0-validation.json",
+  "runtime_dependency": "HarmonyKSP 2.2.1.0; docs/development/runtime-dependency-lock.json"
 }

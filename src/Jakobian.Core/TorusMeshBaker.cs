@@ -14,6 +14,29 @@ namespace Jakobian.Core
 
     public static class TorusMeshBaker
     {
+        /// <summary>Watertight shared-index whole surface in local metres; no UV texture-atlas contract.</summary>
+        public static SurfaceMeshPatch BuildClosed(double major, double minor, int segmentsU = 128, int segmentsV = 64)
+        {
+            var solid = new AnalyticSolid(major, minor);
+            if (segmentsU < 8 || segmentsU > 256 || segmentsV < 8 || segmentsV > 128)
+                throw new ArgumentOutOfRangeException(nameof(segmentsU));
+            var vertices = new Vector3d[segmentsU * segmentsV]; var normals = new Vector3d[vertices.Length];
+            for (int u = 0; u < segmentsU; u++) for (int v = 0; v < segmentsV; v++)
+            {
+                double a = 2 * Math.PI * u / segmentsU, b = 2 * Math.PI * v / segmentsV;
+                vertices[u * segmentsV + v] = Position(major, minor, a, b);
+                normals[u * segmentsV + v] = new Vector3d(Math.Cos(a) * Math.Cos(b), Math.Sin(b), Math.Sin(a) * Math.Cos(b));
+            }
+            var triangles = new int[vertices.Length * 6]; int k = 0;
+            for (int u = 0; u < segmentsU; u++) for (int v = 0; v < segmentsV; v++)
+            {
+                int a = u * segmentsV + v, b = ((u + 1) % segmentsU) * segmentsV + v;
+                int c = u * segmentsV + (v + 1) % segmentsV, d = ((u + 1) % segmentsU) * segmentsV + (v + 1) % segmentsV;
+                triangles[k++] = a; triangles[k++] = c; triangles[k++] = b;
+                triangles[k++] = b; triangles[k++] = c; triangles[k++] = d;
+            }
+            return new SurfaceMeshPatch(new Vector3d(), vertices, normals, triangles);
+        }
         public static SurfaceMeshPatch Build(double major, double minor, int tileU, int tileV, int tilesU, int tilesV, int segments)
         {
             var solid = new AnalyticSolid(major, minor);

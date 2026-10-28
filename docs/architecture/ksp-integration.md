@@ -56,6 +56,8 @@ Body-local doubles are necessary but insufficient. At astronomical ring radii, s
 
 Development 0.2.0 first implements radial nonspherical bodies through native PQS. The first general-topology slice remains an airless static torus with stock spherical homeworld. Arbitrary homeworld/KSC, non-orientable landable surfaces, changing topology under occupied terrain, arbitrary articulated body motion and interacting loaded frames are future capability gates. They must either be supported by a dedicated provider or rejected with specific diagnostics, not silently flattened into a sphere.
 
+Development 0.10.0 implements early admission prefixes on `GamePersistence.LoadGameCfg(ConfigNode,string,bool,bool)`, `Game.Start`, `Game.Load` and the Game/string overloads of `FlightDriver.StartAndFocusVessel`. The first runs before persistent-ID clearing and native Game construction; mutable proto/live records are checked again on Game routes. This requires a pinned HarmonyKSP runtime and audited exclusive ownership of the five targets. [Admission policy and bypass limits](../modders/load-admission.md) define the narrow cooperative profile. These entrypoints do not cover active-vessel unpack, teleport or body transfer; P04b must establish those barriers before live torus visits.
+
 ## Observations from the 0.2.0 native implementation
 
 - `PSystemSpawn` permits independent publication before native construction in the tested baseline. Cloned native metadata, stock-parent orbit references and separate new-body PQS/scaled representations require post-spawn binding to the live bodies. Final ModuleManager database ordering remains untested.

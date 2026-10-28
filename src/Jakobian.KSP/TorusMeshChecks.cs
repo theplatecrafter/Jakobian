@@ -44,6 +44,7 @@ namespace Jakobian.KSP
                 Check(Vector3.zero, Vector3.right, 2000, 800, Vector3.left);
                 Check(new Vector3(1000, 1000, 0), Vector3.down, 2000, 800, Vector3.up);
                 Check(new Vector3(0, -2000, 0), Vector3.up, 4000, -1, Vector3.zero);
+                GeneralContextNativeChecks.Run(root.transform, colliders);
                 Debug.Log("[Jakobian] TORUS_NATIVE_MESH_PASS patches=32 inner=contact outer=contact top=contact hole=empty transform=rotated");
             }
             finally

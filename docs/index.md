@@ -1,6 +1,6 @@
 # Jakobian development
 
-Research baseline: **14 October 2026**; development updated **15 October 2026**. Target game: **KSP 1.12.5, Windows x64**. Workspace: `C:\Users\Hans\Documents\programming\Jakobian`.
+Research baseline: **14 October 2026**; development updated **27 October 2026**. Target game: **KSP 1.12.5, Windows x64**. Workspace: `C:\Users\Hans\Documents\programming\Jakobian`.
 
 Jakobian is a **standalone mod framework under development**, with its own system loader and no required Kopernicus installation. The full framework targets the familiar Kopernicus authoring model and landable bodies with arbitrary *supported* geometry: irregular solids, rings, tori, cylinders, hollow shells, disconnected assemblies and locally volumetric terrain. Geometry, gravity, breathable air and water are separate definitions. An interior floor must work as well as an exterior surface.
 
@@ -13,6 +13,14 @@ Development **0.4.0** adds closed-solid sphere/torus queries, bounded multiple-i
 Development **0.5.0** adds height/albedo maps, a shared displaced radial field, a custom terrain shader and native biome integration on the new Atlas fixture. See the [map authoring contract](modders/radial-maps.md) and [0.5.0 development record](development/v0.5.0.md). The broader [mathematical bodies and fields design](architecture/mathematical-bodies-and-fields.md) covers function-defined solids, mass distribution, rotating habitats and non-spherical influence domains; these remain implementation milestones.
 
 Development **0.6.0** adds bounded torus contact streaming, swept coverage, transactional native patch publication and analytic material-coordinate records. The [isolated native contact fixture](architecture/torus-contact-streaming.md) tests real rigidbodies and hole transit; [the provider API](modders/experimental-torus-provider.md) remains separate from enabled celestial-body configuration. See [0.6.0](development/v0.6.0.md).
+
+Development **0.7.0 / P01** adds a [general-solid surface context](modders/general-surface-context.md) separating nearest surface, datum, gravity vertical and down-ray contact. Work now follows a [per-prompt checkpoint roadmap](planning/prompt-roadmap.md) with fixed acceptance criteria, continue/redo rules and an independent assessment. See [0.7.0](development/v0.7.0.md).
+
+Development **0.8.0 / P02** adds [saved-world baselines](modders/saved-world-baselines.md), deterministic input fingerprints, per-game native scenario persistence and explicit compatibility diagnostics. These preserve incompatible/future records and do not provide a pre-physics game-load blocker. See [0.8.0](development/v0.8.0.md).
+
+Development **0.9.0 / P03** adds a [detached torus prefab and scaled preview](modders/detached-torus-preview.md), with a strict experimental definition, closed shared-index mesh and guarded human launcher. It leaves the live body system and flight destinations unchanged. See [0.9.0](development/v0.9.0.md).
+
+Development **0.10.0 / P04a** adds [enforced load/start admission](modders/load-admission.md) using hash-locked HarmonyKSP. Five native entrypoints refuse incompatible/future/unsupported records and invalid references before guarded native work. Live torus publication/unpack/transfer and hole flight remain P04b. See [0.10.0](development/v0.10.0.md).
 
 ## Read in this order
 
@@ -44,4 +52,4 @@ All authored Markdown lives under `docs/`. Source and DLL snapshots under ignore
 
 ## Setup result
 
-The original research bootstrap evidence is retained in [validation-record.json](development/validation-record.json) and the [startup investigation](development/startup-investigation.md). Development 0.6.0 has a zero-warning build and 165,348 core assertions. Three final native runs passed isolated torus streaming/contact/material-record checks, Atlas mapped terrain/contact/GPU/navigation/reload checks, six historical-save upgrades and a stock orbit coast/reload. All three logs are exception-free through shutdown. The [current evidence](development/v0.6.0-validation.json) records exact tested hashes and limitations. [0.5.0](development/v0.5.0-validation.json), [0.4.0](development/v0.4.0-validation.json), [0.3.0](development/v0.3.0-validation.json) and [0.2.0](development/v0.2.0-validation.json) remain historical evidence. Kopernicus coexistence remains unsupported until single-loader coordination is implemented. The main development branch is `main`.
+The original research bootstrap evidence is retained in [validation-record.json](development/validation-record.json) and the [startup investigation](development/startup-investigation.md). Development 0.10.0 / P04a has a zero-warning build and 509,293 core assertions, 23 native admission refusals across five guarded routes, Atlas landing/save/reload, six historical landed-save regressions and stock-orbit regression. The [current evidence](development/v0.10.0-validation.json) records exact tested hashes, dependency provenance, preservation and limits. [0.9.0 / P03](development/v0.9.0-validation.json) retains detached torus rendering/lifecycle and desktop preview checks. [0.8.0 / P02](development/v0.8.0-validation.json) retains two-game world-baseline isolation evidence; [0.7.0 / P01](development/v0.7.0-validation.json) retains the general-solid context/collider evidence. [0.6.0](development/v0.6.0-validation.json), [0.5.0](development/v0.5.0-validation.json), [0.4.0](development/v0.4.0-validation.json), [0.3.0](development/v0.3.0-validation.json) and [0.2.0](development/v0.2.0-validation.json) remain historical evidence. Kopernicus coexistence remains unsupported until single-loader coordination is implemented. The main development branch is `main`.

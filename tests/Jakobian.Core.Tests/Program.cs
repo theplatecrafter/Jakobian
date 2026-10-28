@@ -57,6 +57,10 @@ internal static partial class Program
         SolidChecks();
         MapChecks();
         StreamingChecks();
+        GeneralContextChecks();
+        WorldDescriptorChecks();
+        TorusPreviewChecks();
+        AdmissionChecks();
         Console.WriteLine("PASS: " + checks + " analytic geometry and frame checks. No KSP flight validation implied.");
     }
 

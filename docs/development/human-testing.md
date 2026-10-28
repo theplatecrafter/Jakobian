@@ -1,8 +1,16 @@
-# Human testing — Jakobian development 0.6.0
+# Human testing — Jakobian development 0.10.0
 
 The latest successfully deployed build is in `C:\Users\Hans\Documents\programming\Jakobian\instances\baseline`. Launch it with [Play Jakobian.cmd](../../Play%20Jakobian.cmd), or run that instance's `KSP_x64.exe`. It uses the supplied KSP 1.12.5 installation and has no Kopernicus dependency.
 
 This build implements a first restricted shape backend using native PQS terrain: one positive radius per direction. It is intended to exercise the independent loader, real terrain, native gravity and map representation. Torus holes, hollow bodies, arbitrary meshes, local atmosphere/water, rotating habitats and full Kopernicus feature parity remain future work.
+
+P01 / 0.7.0 adds an experimental general-solid query API and native development checks. It separates nearest clearance, datum altitude and contact along supplied gravity, including a clear miss through a torus hole. The five playable moons still use the established radial gameplay path. See the [query guide](../modders/general-surface-context.md) and [per-prompt roadmap](../planning/prompt-roadmap.md). `GENERAL_CONTEXT_NATIVE_PASS` is a query/collider development result, not certification of a playable torus world.
+
+P02 / 0.8.0 adds a world-baseline panel in Flight, Space Center and Tracking Station. Existing/new unrecorded games show **LegacyUnverified**. **Record current world baseline** records today's definitions on your next game save; it does not verify what older versions used. Later mismatches show explicit diagnostics and retain the saved descriptors. This feature **does not block flight or unsafe game loading**. Restore matching mod files before using an incompatible world. See [baseline policy](../modders/saved-world-baselines.md). No player game is adopted automatically by development probes.
+
+P03 / 0.9.0 adds [Preview Jakobian Torus.cmd](../../Preview%20Jakobian%20Torus.cmd). With baseline closed, launch it to inspect the detached torus above MainMenu; use top/tilted view and rotation controls, then **Close preview** to return to the normal menu. The torus is a uniform-color scaled geometry preview, **not a selectable live body or flight destination**. It does not load/adopt a player game. The five playable moons remain unchanged. See the [preview guide](../modders/detached-torus-preview.md).
+
+P04a / 0.10.0 adds [load/start admission](../modders/load-admission.md). Recorded worlds with changed/missing/unsupported data or invalid native body references are refused before the supported load/start work; the refusal dialog has no bypass. Restore matching files and retry. Unrecorded legacy saves with valid references still load as unverified. The hash-locked community HarmonyKSP dependency is installed by the build/deploy tools; conflicting libraries are not overwritten. This does not publish a live torus or guard active-vessel unpack/teleport.
 
 Kopernicus coexistence is currently blocked with a loader ownership error; baseline runs Jakobian alone. Terrain tile color/lighting seams and camera behavior remain visual acceptance work. The automated probe re-aims its camera after touchdown, so those screenshots do not certify ordinary camera navigation across every slope.
 
@@ -32,7 +40,7 @@ The shared resource bridge supplies native body/latitude/longitude/datum coordin
 
 ## Manual test
 
-For the terrain fixture, choose **Resume Saved** and open **`JakobianProbe-JakobianAtlas-20261015-141117`**. It contains the stock capsule from the final 0.6.0 Atlas contact/GPU/save/reload run. The [0.6.0 evidence record](v0.6.0-validation.json) lists exact tested hashes and scope. Existing fixture saves remain available; all five worlds retain their 0.5.0 geometry, configuration and indices.
+For the terrain fixture, choose **Resume Saved** and open **`JakobianProbe-JakobianAtlas-20261027-042133`**. It contains the stock capsule and adopted world baseline from the final 0.10.0 Atlas contact/GPU/save/reload run; its name uses UTC. The [0.10.0 evidence record](v0.10.0-validation.json) lists exact tested hashes and scope. Existing fixture saves remain available; all five worlds retain their 0.5.0 geometry, configuration and indices.
 
 Atlas demonstrates macro albedo and terrain mapping with 256x129 images. Close-up ground can look smooth because fine detail/normal/splat textures are not implemented yet. Inspect larger terrain/color regions from altitude as well as contact at ground level. The isolated native overview render is recorded in the evidence file; it is a controlled material test, not a flight screenshot.
 
@@ -57,10 +65,14 @@ From the repository root, with the baseline game closed:
 ```powershell
 ./tools/Build.ps1
 ./tools/Boot-Probe.ps1 -Instance baseline -Graphics
+./tools/Admission-Probe.ps1
+./tools/Preview-Probe.ps1
 ./tools/Torus-Probe.ps1
 ./tools/Flight-Probe.ps1 -Body all
 # Or only the new terrain fixture:
 ./tools/Flight-Probe.ps1 -Body JakobianAtlas
+# Two independent private games for descriptor adoption/isolation/reload:
+./tools/Flight-Probe.ps1 -Body JakobianAtlas -WorldIsolation
 ./tools/Regression-Probe.ps1
 ```
 

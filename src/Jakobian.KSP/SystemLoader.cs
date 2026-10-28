@@ -12,6 +12,7 @@ namespace Jakobian.KSP
         internal static readonly Dictionary<CelestialBody, BodyDefinition> OwnedBodies = new Dictionary<CelestialBody, BodyDefinition>();
         internal static string Error;
         internal static bool Published, Bound;
+        internal static Jakobian.Core.WorldCatalog CurrentWorld;
         private GameObject container;
 
         private void Awake()
@@ -19,6 +20,7 @@ namespace Jakobian.KSP
             if (Published) return;
             try
             {
+                if (!AdmissionRuntime.IsProtected) throw new InvalidOperationException("Required load admission hooks are unavailable.");
                 if (AppDomain.CurrentDomain.GetAssemblies().Any(a => a.GetName().Name == "Kopernicus"))
                     throw new InvalidOperationException("Kopernicus coexistence ownership adapter is not implemented. Jakobian will not publish a competing system.");
                 var definitions = new List<BodyDefinition>();
@@ -28,7 +30,7 @@ namespace Jakobian.KSP
                     if (config.config.GetValue("schemaVersion") != "1") throw new ArgumentException("Jakobian schemaVersion must be 1.");
                     foreach (ConfigNode body in config.config.GetNodes("Body")) definitions.Add(BodyDefinition.Parse(body));
                 }
-                if (definitions.Count == 0) { Debug.Log("[Jakobian] No body definitions; stock system retained."); return; }
+                if (definitions.Count == 0) { CurrentWorld = new Jakobian.Core.WorldCatalog(new Jakobian.Core.WorldBodyDescriptor[0]); Debug.Log("[Jakobian] No body definitions; stock system retained."); return; }
                 PSystem stock = PSystemManager.Instance.systemPrefab;
                 var originals = Flatten(stock.rootBody).ToList();
                 var names = new HashSet<string>(originals.Select(b => b.celestialBody.bodyName));
@@ -193,6 +195,7 @@ namespace Jakobian.KSP
                 { fader.celestialBody = cb; fader.fadeStart = 20000; fader.fadeEnd = 30000; }
                 Debug.Log("[Jakobian] BODY_BOUND " + cb.bodyName + " nativeIndex=" + cb.flightGlobalsIndex + " pqs=" + (cb.pqsController != null));
             }
+            CurrentWorld = WorldCatalogBuilder.Build();
             Bound = true; Debug.Log("[Jakobian] SYSTEM_READY");
         }
     }
